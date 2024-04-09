@@ -2,12 +2,19 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  text-align: left;
+}
+
+.container {
+  display: flex; /* Use flexbox */
+  align-self: top;
+  
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
+  flex: 1; /* Let the logo take up as much space as it needs */
+  max-height: 90px; /* Allow the logo's height to adjust proportionally */
+  padding: 0;
   will-change: filter;
   transition: filter 300ms;
 }
@@ -18,23 +25,51 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.title {
+  flex: 2; /* Let the title take up as much space as it needs */
+  max-height: 32px;
+  padding: 10px;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.title:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.title.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.search-bar {
+  display: flex;
+  align-items: center;
 }
 
-.card {
-  padding: 2em;
+.search-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  font-size: 16px;
+}
+
+.search-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Adjustments for better aesthetics */
+.search-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
 }
 
 .read-the-docs {
