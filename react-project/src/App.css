@@ -7,7 +7,10 @@
 
 .container {
   display: flex; /* Use flexbox */
-  align-self: top;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   
 }
 
@@ -19,10 +22,10 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #bc763caa);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #eaf641aa);
 }
 
 .title {
@@ -33,15 +36,20 @@
   transition: filter 300ms;
 }
 .title:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 15px #2731edaa);
 }
 .title.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 15px #3c12adaa);
 }
 
 .search-bar {
   display: flex;
   align-items: center;
+}
+
+.search-inputs {
+  display: flex;
+  margin-right: 10px;
 }
 
 .search-input {
@@ -50,6 +58,16 @@
   border: 1px solid #ccc;
   border-radius: 5px 0 0 5px;
   font-size: 16px;
+}
+
+.date-input,
+.guests-input {
+  padding: 10px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 120px; /* Adjust as needed */
 }
 
 .search-button {
@@ -63,7 +81,9 @@
 }
 
 /* Adjustments for better aesthetics */
-.search-input:focus {
+.search-input:focus,
+.date-input:focus,
+.guests-input:focus  {
   outline: none;
   border-color: #007bff;
 }
