@@ -14,9 +14,9 @@ function App() {
     <>
       <div className="navbar">
         <a href="#home">home</a>
-        <a href="#about">about</a>
-        <a href="#room">room</a>
-        <a href="#review">review</a>
+        <a href="#help">help</a>
+        <a href="#login">login</a>
+        <a href="#signup">sign-up</a>
       </div>
       <div className="container">
         <a href="/index.html" target="_blank">
@@ -26,7 +26,7 @@ function App() {
       </div>
       <div className="search-bar">
         <div className="search-inputs">
-          <input type="text" className="search-input" placeholder="Search for hotels, destinations, or properties" />
+          <input type="text" className="search-input" placeholder="Search for hotels or destinations" />
           <input type="text" className="date-input" placeholder="Check-in" />
           <input type="text" className="date-input" placeholder="Check-out" />
           <input type="number" className="guests-input" placeholder="Guests" />
