@@ -13,10 +13,10 @@ function App() {
   return (
     <>
       <div className="navbar">
-        <a href="#home">home</a>
-        <a href="#help">help</a>
-        <a href="#login">login</a>
-        <a href="#signup">sign-up</a>
+        <a href="#home">Home</a>
+        <a href="#help">Help</a>
+        <a href="#login">Login</a>
+        <a href="#signup">Sign-up</a>
       </div>
       <div className="container">
         <a href="/index.html" target="_blank">
@@ -37,9 +37,9 @@ function App() {
         Click on the Search button to look for a hotel
       </p>
 
+     <h3>Popular destinations</h3><br/>
      <div className='Images'>
-     <h3>Popular destinations</h3>
-       <div className='row'>
+        <div className='row'>
         <div className='image-container'>
            <img src={Delft} alt="Delft" />
           <p>Delft</p>

@@ -19,11 +19,11 @@
 
 .container {
   display: flex;
-  /* Use flexbox */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  height: 20%;
   background: linear-gradient(#e18c46, #f3d8c2);
   border-radius: 0 100px 0 100px;
   z-index: 1;
@@ -73,9 +73,11 @@
 }
 
 .search-bar {
-  margin: 8rem 0 0 0;
+  position: relative;
+  margin-top: 20%;
+  margin-left: 20px;
   display: flex;
-  align-items: center;
+  align-content: center;
 }
 
 .search-inputs {
@@ -127,18 +129,9 @@
 
 .read-the-docs {
   color: #888;
+  margin-left: 20px;
 }
 
-/*.Images img {
-  flex: 1;
-  width: 200px;
-  height: 100px;
-  margin: 10px;
-  border-radius: 8%;
-  margin-top: 20px;
-  margin-bottom: -20px;
-}
-*/
 .Images {
   display: flex;
   flex-wrap: wrap;
@@ -153,7 +146,7 @@
 .image-container img {
   flex: 1;
   width: 90%;
-  height: 50%;
+  height: 60%;
   padding: 20px;
   border-radius: 2em;
 }
@@ -169,5 +162,4 @@
 
 .row {
   display: flex;
-  justify-content: space-around;
 }
