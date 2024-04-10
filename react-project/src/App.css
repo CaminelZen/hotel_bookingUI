@@ -6,42 +6,56 @@
 }
 
 .container {
-  display: flex; /* Use flexbox */
+  display: flex;
+  /* Use flexbox */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #efb17f;
   border-radius: 0 100px 0 100px;
-  
+
+}
+
+.navbar a {
+  font-family: Arial, Helvetica, sans-serifk;
+  color: var(--black);
+  margin: 0 1rem;
 }
 
 .logo {
-  flex: 1; /* Let the logo take up as much space as it needs */
-  max-height: 60px; /* Allow the logo's height to adjust proportionally */
+  flex: 1;
+  /* Let the logo take up as much space as it needs */
+  max-height: 60px;
+  /* Allow the logo's height to adjust proportionally */
   padding: 0 0 0 20px;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 15px #25140daa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 15px #25140daa);
 }
 
 .title {
-  flex: 2; /* Let the title take up as much space as it needs */
+  flex: 2;
+  /* Let the title take up as much space as it needs */
   max-height: 100px;
   padding: 50px 20px 0 30px;
   will-change: filter;
   transition: filter 300ms;
-  text-align-last: right ;
+  text-align-last: right;
   color: #34197f;
 }
+
 .title:hover {
   filter: drop-shadow(0 0 15px #757bedaa);
 }
+
 .title.react:hover {
   filter: drop-shadow(0 0 15px #dcd2f7aa);
 }
@@ -65,7 +79,8 @@
   border: 1px solid #34197f;
   border-radius: 5px;
   font-size: 16px;
-  width: 120px; /* Adjust as needed */
+  width: 120px;
+  /* Adjust as needed */
 }
 
 .search-button {
@@ -81,7 +96,7 @@
 /* Adjustments for better aesthetics */
 .search-input:focus,
 .date-input:focus,
-.guests-input:focus  {
+.guests-input:focus {
   outline: none;
   border-color: #34197f;
 }
@@ -119,4 +134,45 @@
   top: 10px;
   right: 10px;
   cursor: pointer;
+}
+
+/*.Images img {
+  flex: 1;
+  width: 200px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 8%;
+  margin-top: 20px;
+  margin-bottom: -20px;
+}
+*/
+.Images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image-container {
+  text-align: center;
+}
+
+.image-container img {
+  flex: 1;
+  width: 200px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 8%;
+}
+
+.image-container p {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  margin-top: 5px;
+
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
 }
