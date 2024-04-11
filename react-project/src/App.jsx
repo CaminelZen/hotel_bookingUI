@@ -104,7 +104,7 @@ function App() {
               </div>
               <p className="main-button"><button onClick={handleLogin}>Log In</button></p>
               <p className="other-button">If you do not have an account, please:
-              <button onClick={handleSignup}>Sign Up</button></p>
+              <button onClick={() => setShowSignup(true) & setShowLogin(false)}>Sign Up</button></p>
           </div>
         </div>
       )}
@@ -119,7 +119,7 @@ function App() {
               </div>
               <p className="main-button"><button onClick={handleSignup}>Sign Up</button></p>
               <p className="other-button">If you already have an account, please:
-              <button onClick={handleLogin}>Log In</button></p>
+              <button onClick={() => setShowLogin(true) & setShowSignup(false)}>Log In</button></p>
               </div>
           </div>
       )}
