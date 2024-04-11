@@ -13,6 +13,7 @@ import Amsterdam from '/Amsterdam.jpg';
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -24,11 +25,11 @@ function App() {
     setShowLogin(false);
   };
 
-  const handleSignUp = () => {
+  const handleSignup = () => {
     // sign-up logic here
     console.log('Sign up');
     // Close the modal after handling sign-up
-    setShowLogin(false);
+    setShowSignup(false);
   };
 
   return (
@@ -37,8 +38,8 @@ function App() {
         <a href="http://127.0.0.1:8000/hello">Home</a>
         <a href="#about">About</a>
         <a href="#help">Help</a>
-        <a href="#login" onClick={() => setShowLogin(true)}>Login</a>
-        <a href="#signup">Signup</a>
+        <a href="#login" onClick={() => setShowLogin(true)}>Log In</a>
+        <a href="#signup" onClick={() => setShowSignup(true)}>Sign Up</a>
       </div>
       <div className="container">
         <a href="/index.html" target="_blank">
@@ -91,24 +92,37 @@ function App() {
       </div>
     </div>
     
-    {/* Modal */}
+    {/* Login & Signup */}
     {showLogin && (
         <div className="login">
           <div className="login-content">
           <span className="close" onClick={() => setShowLogin(false)}>&times;</span>
-          <h2>Login</h2>
+          <h2>Log In</h2>
               <div className='input-container'>
               <input type="text" placeholder="Username" value={username} onChange={(username) => setUsername(username.target.value)} />
               <input type="password" placeholder="Password" value={password} onChange={(email) => setPassword(email.target.value)} />
               </div>
-              <div className="login-buttons">
-              <button onClick={handleLogin}>Login</button>
-              <button onClick={handleSignUp}>Signup</button>
-              </div>
+              <p className="main-button"><button onClick={handleLogin}>Log In</button></p>
+              <p className="other-button">If you do not have an account, please:
+              <button onClick={handleSignup}>Sign Up</button></p>
           </div>
         </div>
       )}
-
+    {showSignup && (
+        <div className="login">
+          <div className="login-content">
+          <span className="close" onClick={() => setShowSignup(false)}>&times;</span>
+          <h2>Sign Up</h2>
+              <div className='input-container'>
+              <input type="text" placeholder="Username" value={username} onChange={(username) => setUsername(username.target.value)} />
+              <input type="password" placeholder="Password" value={password} onChange={(email) => setPassword(email.target.value)} />
+              </div>
+              <p className="main-button"><button onClick={handleSignup}>Sign Up</button></p>
+              <p className="other-button">If you already have an account, please:
+              <button onClick={handleLogin}>Log In</button></p>
+              </div>
+          </div>
+      )}
     </>
   )
 }
