@@ -134,8 +134,7 @@ function App() {
           </div>
         </div>
       </div>
-    </div>
-    
+        
     {/* Login & Signup */}
     {showLogin && (
         <div className="login">
