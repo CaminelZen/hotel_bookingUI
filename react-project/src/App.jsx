@@ -12,13 +12,20 @@ import Amsterdam from '/Amsterdam.jpg';
 
 
 function App() {
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ top: 0, behavior: "smooth" });
+    }
+  };
   return (
-    <>
-      <div className="navbar">
-        <a href="#home">home</a>
-        <a href="#help">help</a>
-        <a href="#login">login</a>
-        <a href="#signup">sign-up</a>
+    <> 
+    <div className="navbar">
+        <a href="#home" onClick={() => scrollToSection('home')}>Home</a>
+        <a href="#about" onClick={() => scrollToSection('about')}>About</a>
+        <a href="#help" onClick={() => scrollToSection('help')}>Help</a>
+        <a href="#login" onClick={() => scrollToSection('login')}>Login</a>
+        <a href="#signup" onClick={() => scrollToSection('login')}>Sign-up</a>
       </div>
       <section id="home"></section>
 
@@ -83,11 +90,11 @@ function App() {
       </section>
 
      <div className='Images'>
-     <h3>Popular destinations</h3>
+     <h3>Explore Netherlands</h3>
        <div className='row'>
         <div className='image-container'>
-           <img src={Delft} alt="Delft" />
-          <p>Delft</p>
+           <img src={Amsterdam} alt="Amsterdam" />
+          <p>Amsterdam</p>
         </div>
         <div className='image-container'>
           <img src={Eindhoven} alt="Eindhoven" />
@@ -113,7 +120,25 @@ function App() {
           </div>
         </div>
       </div>
-    </div>
+      <section className='about' id='about'>
+        <div className="row">
+          <div className="content">
+            <h3>About Us</h3>
+            <p>At EasyBook, we believe in making travel effortless and enjoyable. Whether you are planning a relaxing getaway, a business trip, or an adventure-filled holiday, we are here to simplify the process of finding the perfect accommodation for your needs.</p>
+            <p>Our mission is to provide seamless booking experiences, offering a wide range of hotels, resorts, and other accommodations worldwide. We strive to make travel planning as easy as possible, so you can focus on creating unforgettable memories.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className='help' id='help'>
+        <div className="row">
+          <div className="content">
+            <h3>Welcome to the Help Center</h3>
+            <p>We are available 24 hours a day</p>
+            <p>Contact us at <span className="phone-number">060 542369</span></p>
+          </div>
+        </div>
+      </section>
 
     </>
   )
