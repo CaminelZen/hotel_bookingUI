@@ -19,13 +19,13 @@ function App() {
     }
   };
   return (
-    <> 
-    <div className="navbar">
-        <a href="#home" onClick={() => scrollToSection('home')}>Home</a>
-        <a href="#about" onClick={() => scrollToSection('about')}>About</a>
-        <a href="#help" onClick={() => scrollToSection('help')}>Help</a>
-        <a href="#login" onClick={() => scrollToSection('login')}>Login</a>
-        <a href="#signup" onClick={() => scrollToSection('login')}>Sign-up</a>
+    <>
+      <div className="navbar">
+        <a href="http://127.0.0.1:8000/hello">Home</a>
+        <a href="#about"onClick={() => scrollToSection(true)}>About</a>
+        <a href="#help" onClick={() => scrollToSection(true)}>Help</a>
+        <a href="#login" onClick={() => setShowLogin(true)}>Log In</a>
+        <a href="#signup" onClick={() => setShowSignup(true)}>Sign Up</a>
       </div>
       <section id="home"></section>
 
