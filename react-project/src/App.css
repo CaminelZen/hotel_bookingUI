@@ -27,6 +27,7 @@
   background: linear-gradient(#e18c46, #f3d8c2);
   border-radius: 0 100px 0 100px;
   z-index: 1;
+  margin: 0 auto;
 }
 
 .navbar a {
@@ -34,6 +35,8 @@
   color: var(--black);
   margin: 0 1rem;
 }
+
+
 
 .logo {
   flex: 1;
@@ -72,36 +75,49 @@
   filter: drop-shadow(0 0 15px #dcd2f7aa);
 }
 
-.search-bar {
-  margin: 8rem 0 0 0;
+
+
+
+.read-the-docs {
+  color: #888;
+}
+
+/*availability*/
+section{
+  padding:  2rem 7%;
+}
+
+.availability form{
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+  background: #eee;
+  padding: .1rem;
+  border-radius: .5rem;
+  margin-top: -10%;
 }
 
-.search-inputs {
-  display: flex;
-  margin-right: 10px;
+.availability form .box{
+  flex: 1 1 10rem;
+  
 }
 
-.search-input {
-  flex: 2;
-  padding: 10px;
-  margin-right: 5px;
-  border: 1px solid #34197f;
-  border-radius: 5px;
-  font-size: 16px;
-}  
-
-.date-input,
-.guests-input {
-  flex: 1;
-  padding: 10px;
-  margin-right: 5px;
-  border: 1px solid #34197f;
-  border-radius: 5px;
-  font-size: 16px;
-  width: 5em;
+.availability form .box p{
+  font-size: 1rem;
+  color: var(--primary);
+  font-family: Arial, Helvetica, sans-serif;
 }
+
+.availability form .box .input{
+    width: calc(100% - 2rem);
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: black;
+    margin: .5rem 0;
+    border-radius: 1rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+
+  }
 
 .search-button {
   padding: 10px 20px;
@@ -112,39 +128,18 @@
   cursor: pointer;
   font-size: 16px;
 }
+/*end*/
 
-/* Adjustments for better aesthetics */
-.search-input:focus,
-.date-input:focus,
-.guests-input:focus {
-  outline: none;
-  border-color: #34197f;
-}
-
-.search-button:hover {
-  background-color: #0056b3;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-/*.Images img {
-  flex: 1;
-  width: 200px;
-  height: 100px;
-  margin: 10px;
-  border-radius: 8%;
-  margin-top: 20px;
-  margin-bottom: -20px;
-}
-*/
+/*images*/
 .Images {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
-
+.Images h3{
+  margin-left: 2% ;
+  font-family: Arial, Helvetica, sans-serif
+}
 .image-container {
   text-align: left;
   width: 100%
@@ -170,4 +165,70 @@
 .row {
   display: flex;
   justify-content: space-around;
+}
+/*end*/
+
+/*about*/
+.about .row{
+  display:flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6rem;
+}
+
+.about .row .content{
+  flex: 1 1 51rem;
+
+}
+
+.about .row .content h3{
+  font-size: 2.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color:#34197f;
+  text-align: center;
+  
+}
+
+.about .row .content p{
+  font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #666;
+  padding: 1 rem 0;
+  line-height: 1.8;
+}
+
+/*help*/
+.help .row{
+  display:flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6rem;
+}
+.help .row .content{
+  flex: 1 1 51rem;
+
+}
+
+.help .row .content h3{
+  font-size: 1.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color:#34197f;
+  text-align: center;
+  
+}
+
+.help .row .content p{
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #666;
+  padding: 0rem;
+  line-height: 1.5;
+  text-align: center;
+}
+.phone-number {
+  text-decoration: underline;
+  color: initial;
+}
+.phone-number:hover {
+  color: blue;
 }
