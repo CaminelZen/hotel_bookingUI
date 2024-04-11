@@ -19,11 +19,11 @@
 
 .container {
   display: flex;
-  /* Use flexbox */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  height: 20%;
   background: linear-gradient(#e18c46, #f3d8c2);
   border-radius: 0 100px 0 100px;
   z-index: 1;
@@ -39,10 +39,8 @@
 
 
 .logo {
-  flex: 1;
-  /* Let the logo take up as much space as it needs */
-  max-height: 60px;
-  /* Allow the logo's height to adjust proportionally */
+  flex: 1;   /* Let the logo take up as much space as it needs */
+  max-height: 60px;   /* Allow the logo's height to adjust proportionally */
   padding: 0 0 0 20px;
   will-change: filter;
   transition: filter 300ms;
@@ -75,16 +73,118 @@
   filter: drop-shadow(0 0 15px #dcd2f7aa);
 }
 
-
-
-
-.read-the-docs {
-  color: #888;
+.login {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/*availability*/
-section{
-  padding:  2rem 7%;
+.login-content {
+  background-color: rgb(236, 233, 228);
+  padding: 20px;
+  border-radius: 8px;
+  border: solid 1px #34197f;
+  box-shadow: 0 2px 4px rgba(48, 8, 50, 0.1);
+  width: 400px; /* Adjust the width as needed */
+  display: flex; /* Use flexbox to align items */
+  flex-direction: column; /* Align items vertically */
+  position: relative; /* Positioning for close button */
+}
+
+.input-container {
+  margin: 10px auto; /* Center align the input fields */
+  width: 80%; /* Adjust the width of the container */
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container input {
+  width: 100%; /* Take up full width of the container */
+  padding: 8px; /* Adjust padding as needed */
+  margin-bottom: 10px; /* Add some space between input fields */
+}
+
+.login-buttons {
+  align-self: flex-end; /* Align buttons to the end (bottom) of the container */
+}
+
+.login-buttons button {
+  margin: 10px; 
+  border: solid 1px #34197f;
+  padding: 0 10px 0 10 px;
+  border-radius: 8px; 
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.search-bar {
+  position: relative;
+  margin-top: 20%;
+  margin-left: 20px;
+  display: flex;
+  align-content: center;
+}
+
+.login-content {
+  background-color: rgb(236, 233, 228);
+  padding: 20px;
+  border-radius: 8px;
+  border: solid 1px #34197f;
+  box-shadow: 0 2px 4px rgba(48, 8, 50, 0.1);
+  width: 400px; /* Adjust the width as needed */
+  display: flex; /* Use flexbox to align items */
+  flex-direction: column; /* Align items vertically */
+  position: relative; /* Positioning for close button */
+}
+
+.input-container {
+  margin: 10px auto; /* Center align the input fields */
+  width: 80%; /* Adjust the width of the container */
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container input {
+  width: 100%; /* Take up full width of the container */
+  padding: 8px; /* Adjust padding as needed */
+  margin-bottom: 10px; /* Add some space between input fields */
+}
+
+.login-buttons {
+  align-self: flex-end; /* Align buttons to the end (bottom) of the container */
+}
+
+.login-buttons button {
+  margin: 10px; 
+  border: solid 1px #34197f;
+  padding: 0 10px 0 10 px;
+  border-radius: 8px; 
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.search-bar {
+  position: relative;
+  margin-top: 20%;
+  margin-left: 20px;
+  display: flex;
+  align-content: center;
 }
 
 .availability form{
@@ -128,9 +228,33 @@ section{
   cursor: pointer;
   font-size: 16px;
 }
-/*end*/
 
-/*images*/
+/* Adjustments for better aesthetics */
+.search-input:focus,
+.date-input:focus,
+.guests-input:focus {
+  outline: none;
+  border-color: #34197f;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/*.Images img {
+  flex: 1;
+  width: 200px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 8%;
+  margin-top: 20px;
+  margin-bottom: -20px;
+}
+*/
 .Images {
   display: flex;
   flex-wrap: wrap;
@@ -148,7 +272,7 @@ section{
 .image-container img {
   flex: 1;
   width: 90%;
-  height: 50%;
+  height: 60%;
   padding: 20px;
   border-radius: 2em;
 }
@@ -164,7 +288,6 @@ section{
 
 .row {
   display: flex;
-  justify-content: space-around;
 }
 /*end*/
 
