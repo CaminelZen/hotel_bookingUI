@@ -1,23 +1,44 @@
-import Logo from '/Logo.png'
-import './App.css'
-import Delft from '/Delft.jpg'
-import Eindhoven from '/Eindhoven.jpg'
-import Maastricht from '/Maastricht.jpg'
-import Rotterdam from '/Rotterdam.jpg'
-import DenHaag from '/DenHaag.jpg'
-import Amsterdam from '/Amsterdam.jpg'
-import { handleClick } from './functions'
+import React from 'react'
+import { useState } from 'react';
+import Logo from '/Logo.png';
+import './App.css';
+import Delft from '/Delft.jpg';
+import Eindhoven from '/Eindhoven.jpg';
+import Maastricht from '/Maastricht.jpg';
+import Rotterdam from '/Rotterdam.jpg';
+import DenHaag from '/DenHaag.jpg';
+import Amsterdam from '/Amsterdam.jpg';
 
 
 
 function App() {
+  const [showLogin, setShowLogin] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    // login logic here
+    console.log('Username:', username);
+    console.log('Password:', password);
+    // Close the modal after handling login
+    setShowLogin(false);
+  };
+
+  const handleSignUp = () => {
+    // sign-up logic here
+    console.log('Sign up');
+    // Close the modal after handling sign-up
+    setShowLogin(false);
+  };
+
   return (
     <>
       <div className="navbar">
         <a href="http://127.0.0.1:8000/hello">Home</a>
+        <a href="#about">About</a>
         <a href="#help">Help</a>
-        <a href="#login"onClick={handleClick}>Login</a>
-        <a href="#signup">Sign-up</a>
+        <a href="#login" onClick={() => setShowLogin(true)}>Login</a>
+        <a href="#signup">Signup</a>
       </div>
       <div className="container">
         <a href="/index.html" target="_blank">
@@ -69,6 +90,24 @@ function App() {
         </div>
       </div>
     </div>
+    
+    {/* Modal */}
+    {showLogin && (
+        <div className="login">
+          <div className="login-content">
+          <span className="close" onClick={() => setShowLogin(false)}>&times;</span>
+          <h2>Login</h2>
+              <div className='input-container'>
+              <input type="text" placeholder="Username" value={username} onChange={(username) => setUsername(username.target.value)} />
+              <input type="password" placeholder="Password" value={password} onChange={(email) => setPassword(email.target.value)} />
+              </div>
+              <div className="login-buttons">
+              <button onClick={handleLogin}>Login</button>
+              <button onClick={handleSignUp}>Signup</button>
+              </div>
+          </div>
+        </div>
+      )}
 
     </>
   )
