@@ -141,7 +141,8 @@
 
 .search-bar {
   position: relative;
-  margin-top: 20%;
+  margin-top: 0; /* Remove margin-top */
+  margin-bottom: 30px; /* Add margin-bottom */
   margin-left: 20px;
   display: flex;
   align-content: center;
@@ -150,6 +151,7 @@
 .search-inputs {
   display: flex;
   flex-direction: column;
+  color: #888;
 }
 
 .row {
@@ -160,6 +162,7 @@
 .row input,
 .row select {
   flex: 1;
+  color: #888;
   margin-right: 10px; /* Adjust margin as needed */
 }
 
@@ -169,13 +172,15 @@
 }
 
 .search-button {
-  padding: 10px 20px;
+  padding: 10px 30px; /* Increase padding */
   background-color: #34197f;
   color: #fff;
   border: none;
   border-radius: 5px 5px 5px 5px;
   cursor: pointer;
   font-size: 16px;
+  margin-top: -10px; /* Add margin-top */
+  align-self: center; /* Center align the button */
 }
 
 /* Adjustments for better aesthetics */
