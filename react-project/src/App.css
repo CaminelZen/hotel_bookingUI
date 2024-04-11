@@ -35,6 +35,14 @@
   margin: 0 1rem;
 }
 
+.navbar a:hover {
+  filter: drop-shadow(0 0 15px #757bedaa);
+}
+
+.navbar a.react:hover {
+  filter: drop-shadow(0 0 50px #dcd2f7aa);
+}
+
 .logo {
   flex: 1;
   /* Let the logo take up as much space as it needs */

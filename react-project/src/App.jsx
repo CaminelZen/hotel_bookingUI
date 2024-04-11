@@ -6,6 +6,7 @@ import Maastricht from '/Maastricht.jpg'
 import Rotterdam from '/Rotterdam.jpg'
 import DenHaag from '/DenHaag.jpg'
 import Amsterdam from '/Amsterdam.jpg'
+import { handleClick } from './functions'
 
 
 
@@ -13,9 +14,9 @@ function App() {
   return (
     <>
       <div className="navbar">
-        <a href="#home">Home</a>
+        <a href="http://127.0.0.1:8000/hello">Home</a>
         <a href="#help">Help</a>
-        <a href="#login">Login</a>
+        <a href="#login"onClick={handleClick}>Login</a>
         <a href="#signup">Sign-up</a>
       </div>
       <div className="container">
