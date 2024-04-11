@@ -41,28 +41,71 @@ function App() {
         <a href="#login" onClick={() => setShowLogin(true)}>Log In</a>
         <a href="#signup" onClick={() => setShowSignup(true)}>Sign Up</a>
       </div>
+      <section id="home"></section>
+
       <div className="container">
         <a href="/index.html" target="_blank">
           <img src={Logo} className="logo" alt="EasyBook logo" />
         </a>
         <h1 className="title">The Hotel Booking App</h1>
       </div>
-      <div className="search-bar">
-        <div className="search-inputs">
-          <input type="text" className="search-input" placeholder="Search for hotels or destinations" />
-          <input type="text" className="date-input" placeholder="Check-in" />
-          <input type="text" className="date-input" placeholder="Check-out" />
-          <input type="number" className="guests-input" placeholder="Guests" />
-          <button className="search-button">Search</button>
-        </div>
-      </div>
-      <p className="read-the-docs">
-        Click on the Search button to look for a hotel
-      </p>
 
-     <h3>Popular destinations</h3><br/>
+      <section className='availability'>
+
+        <form action=''>
+
+          <div className="box">
+            <p> check in <span>*</span></p>
+            <input type="date" className='input' />
+          </div>
+
+          <div className="box">
+            <p> check out <span>*</span></p>
+            <input type="date" className='input' />
+          </div>
+
+          <div className="box">
+            <p> adults <span>*</span></p>
+            <select name="adults" id='' className='input'>
+              <option value="1">1 adults</option>
+              <option value="2">2 adults</option>
+              <option value="3">3 adults</option>
+              <option value="4">4 adults</option>
+              <option value="5">5 adults</option>
+              <option value="6">6 adults</option>
+            </select>
+          </div>
+
+          <div className="box">
+            <p> children <span>*</span></p>
+            <select name="children" id='' className='input'>
+              <option value="1">1 child</option>
+              <option value="2">2 children</option>
+              <option value="3">3 children</option>
+              <option value="4">4 children</option>
+              <option value="5">5 children</option>
+              <option value="6">6 children</option>
+            </select>
+          </div>
+
+          <div className="box">
+            <p> rooms <span>*</span></p>
+            <select name="rooms" id='' className='input'>
+              <option value="1">1 room</option>
+              <option value="2">2 rooms</option>
+              <option value="3">3 rooms</option>
+              <option value="4">4 rooms</option>
+              <option value="5">5 rooms</option>
+              <option value="6">6 rooms</option>
+            </select>
+          </div>
+          <button className="search-button">Search</button>
+        </form>
+      </section>
+
      <div className='Images'>
-        <div className='row'>
+     <h3>Popular destinations</h3>
+       <div className='row'>
         <div className='image-container'>
            <img src={Delft} alt="Delft" />
           <p>Delft</p>
@@ -81,13 +124,14 @@ function App() {
             <img src={DenHaag} alt="The Hague" />
             <p>The Hague</p>
           </div>
-        <div className='image-container'>
-          <img src={Maastricht} alt="Maastricht" />
-          <p>Maastricht</p>
-        </div>
-        <div className='image-container'>
-          <img src={Amsterdam} alt="Amsterdam" />
-          <p>Amsterdam</p>
+          <div className='image-container'>
+            <img src={Maastricht} alt="Maastricht" />
+            <p>Maastricht</p>
+          </div>
+          <div className='image-container'>
+            <img src={Delft} alt="Delft" />
+            <p>Delft</p>
+          </div>
         </div>
       </div>
     </div>

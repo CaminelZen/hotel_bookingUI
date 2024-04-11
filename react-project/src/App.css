@@ -27,6 +27,7 @@
   background: linear-gradient(#e18c46, #f3d8c2);
   border-radius: 0 100px 0 100px;
   z-index: 1;
+  margin: 0 auto;
 }
 
 .navbar a {
@@ -34,6 +35,8 @@
   color: var(--black);
   margin: 0 1rem;
 }
+
+
 
 .logo {
   flex: 1;   /* Let the logo take up as much space as it needs */
@@ -150,30 +153,88 @@
   align-content: center;
 }
 
-.search-inputs {
+.login-content {
+  background-color: rgb(236, 233, 228);
+  padding: 20px;
+  border-radius: 8px;
+  border: solid 1px #34197f;
+  box-shadow: 0 2px 4px rgba(48, 8, 50, 0.1);
+  width: 400px; /* Adjust the width as needed */
+  display: flex; /* Use flexbox to align items */
+  flex-direction: column; /* Align items vertically */
+  position: relative; /* Positioning for close button */
+}
+
+.input-container {
+  margin: 10px auto; /* Center align the input fields */
+  width: 80%; /* Adjust the width of the container */
   display: flex;
-  margin-right: 10px;
+  flex-direction: column;
 }
 
-.search-input {
-  flex: 2;
-  padding: 10px;
-  margin-right: 5px;
-  border: 1px solid #34197f;
-  border-radius: 5px;
-  font-size: 16px;
-}  
-
-.date-input,
-.guests-input {
-  flex: 1;
-  padding: 10px;
-  margin-right: 5px;
-  border: 1px solid #34197f;
-  border-radius: 5px;
-  font-size: 16px;
-  width: 5em;
+.input-container input {
+  width: 100%; /* Take up full width of the container */
+  padding: 8px; /* Adjust padding as needed */
+  margin-bottom: 10px; /* Add some space between input fields */
 }
+
+.login-buttons {
+  align-self: flex-end; /* Align buttons to the end (bottom) of the container */
+}
+
+.login-buttons button {
+  margin: 10px; 
+  border: solid 1px #34197f;
+  padding: 0 10px 0 10 px;
+  border-radius: 8px; 
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.search-bar {
+  position: relative;
+  margin-top: 20%;
+  margin-left: 20px;
+  display: flex;
+  align-content: center;
+}
+
+.availability form{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  background: #eee;
+  padding: .1rem;
+  border-radius: .5rem;
+  margin-top: -10%;
+}
+
+.availability form .box{
+  flex: 1 1 10rem;
+  
+}
+
+.availability form .box p{
+  font-size: 1rem;
+  color: var(--primary);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.availability form .box .input{
+    width: calc(100% - 2rem);
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: black;
+    margin: .5rem 0;
+    border-radius: 1rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+
+  }
 
 .search-button {
   padding: 10px 20px;
@@ -199,15 +260,27 @@
 
 .read-the-docs {
   color: #888;
-  margin-left: 20px;
 }
 
+/*.Images img {
+  flex: 1;
+  width: 200px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 8%;
+  margin-top: 20px;
+  margin-bottom: -20px;
+}
+*/
 .Images {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
-
+.Images h3{
+  margin-left: 2% ;
+  font-family: Arial, Helvetica, sans-serif
+}
 .image-container {
   text-align: left;
   width: 100%
@@ -232,4 +305,70 @@
 
 .row {
   display: flex;
+}
+/*end*/
+
+/*about*/
+.about .row{
+  display:flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6rem;
+}
+
+.about .row .content{
+  flex: 1 1 51rem;
+
+}
+
+.about .row .content h3{
+  font-size: 2.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color:#34197f;
+  text-align: center;
+  
+}
+
+.about .row .content p{
+  font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #666;
+  padding: 1 rem 0;
+  line-height: 1.8;
+}
+
+/*help*/
+.help .row{
+  display:flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6rem;
+}
+.help .row .content{
+  flex: 1 1 51rem;
+
+}
+
+.help .row .content h3{
+  font-size: 1.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color:#34197f;
+  text-align: center;
+  
+}
+
+.help .row .content p{
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #666;
+  padding: 0rem;
+  line-height: 1.5;
+  text-align: center;
+}
+.phone-number {
+  text-decoration: underline;
+  color: initial;
+}
+.phone-number:hover {
+  color: blue;
 }
