@@ -168,7 +168,8 @@
 
 .search-bar {
   position: relative;
-  margin-top: 20%;
+  margin-top: 0; /* Remove margin-top */
+  margin-bottom: 30px; /* Add margin-bottom */
   margin-left: 20px;
   display: flex;
   align-content: center;
@@ -176,23 +177,20 @@
 
 .availability form{
   display: flex;
-  flex-wrap: wrap;
-  gap: .5rem;
-  background: #eee;
-  padding: .1rem;
-  border-radius: .5rem;
-  margin-top: -5%;
+  flex-direction: column;
+  color: #888;
 }
 
-.availability form .box{
-  flex: 1 1 10rem;
-  
+.row {
+  display: flex;
+  margin-bottom: 10px; /* Adjust margin as needed */
 }
 
-.availability form .box p{
-  font-size: 1rem;
-  color: var(--primary);
-  font-family: Arial, Helvetica, sans-serif;
+.row input,
+.row select {
+  flex: 1;
+  color: #888;
+  margin-right: 10px; /* Adjust margin as needed */
 }
 
 .availability form .box .input{
@@ -214,6 +212,8 @@
   border-radius: 5px 5px 5px 5px;
   cursor: pointer;
   font-size: 16px;
+  margin-top: -10px; /* Add margin-top */
+  align-self: center; /* Center align the button */
 }
 
 /* Adjustments for better aesthetics */
@@ -282,7 +282,7 @@
 }
 
 .about .row .content h3{
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-family: Arial, Helvetica, sans-serif;
   color:#34197f;
   text-align: center;
