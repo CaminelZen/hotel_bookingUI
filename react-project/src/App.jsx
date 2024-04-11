@@ -12,6 +12,13 @@ import Amsterdam from '/Amsterdam.jpg';
 
 
 function App() {
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ top: 0, behavior: "smooth" });
+    }
+  };
+
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
   const [username, setUsername] = useState('');
@@ -50,23 +57,12 @@ function App() {
         <h1 className="title">The Hotel Booking App</h1>
       </div>
 
-      <section className='availability'>
-
-        <form action=''>
-
-          <div className="box">
-            <p> check in <span>*</span></p>
-            <input type="date" className='input' />
-          </div>
-
-          <div className="box">
-            <p> check out <span>*</span></p>
-            <input type="date" className='input' />
-          </div>
-
-          <div className="box">
-            <p> adults <span>*</span></p>
-            <select name="adults" id='' className='input'>
+      <div className="search-bar">
+        <div className="search-inputs">
+          <input type="text" className="search-input" placeholder="Search for hotels or destinations" />
+          <input type="date" className="date-input" placeholder="Check-in" />
+          <input type="date" className="date-input" placeholder="Check-out" />
+          <select name="adults" id='' className='input' placeholder="Adults">
               <option value="1">1 adults</option>
               <option value="2">2 adults</option>
               <option value="3">3 adults</option>
@@ -74,11 +70,7 @@ function App() {
               <option value="5">5 adults</option>
               <option value="6">6 adults</option>
             </select>
-          </div>
-
-          <div className="box">
-            <p> children <span>*</span></p>
-            <select name="children" id='' className='input'>
+            <select name="children" id='' className='input' placeholder="Children">
               <option value="1">1 child</option>
               <option value="2">2 children</option>
               <option value="3">3 children</option>
@@ -86,11 +78,7 @@ function App() {
               <option value="5">5 children</option>
               <option value="6">6 children</option>
             </select>
-          </div>
-
-          <div className="box">
-            <p> rooms <span>*</span></p>
-            <select name="rooms" id='' className='input'>
+            <select name="rooms" id='' className='input'placeholder="Rooms">
               <option value="1">1 room</option>
               <option value="2">2 rooms</option>
               <option value="3">3 rooms</option>
@@ -100,12 +88,15 @@ function App() {
             </select>
           </div>
           <button className="search-button">Search</button>
-        </form>
-      </section>
-
-     <div className='Images'>
+      </div>
+    
+    <div className='Images'>
      <h3>Popular destinations</h3>
        <div className='row'>
+        <div className='image-container'>
+           <img src={Amsterdam} alt="Amsterdam" />
+          <p>Amsterdam</p>
+        </div>
         <div className='image-container'>
            <img src={Delft} alt="Delft" />
           <p>Delft</p>
@@ -166,6 +157,28 @@ function App() {
               </div>
           </div>
       )}
+    
+    <section className='about' id='about'>
+        <div className="row">
+          <div className="content">
+            <h3>About Us</h3>
+            <p>At EasyBook, we believe in making travel effortless and enjoyable. Whether you are planning a relaxing getaway, a business trip, or an adventure-filled holiday, we are here to simplify the process of finding the perfect accommodation for your needs.</p>
+            <p>Our mission is to provide seamless booking experiences, offering a wide range of hotels, resorts, and other accommodations worldwide. We strive to make travel planning as easy as possible, so you can focus on creating unforgettable memories.</p>
+          </div>
+        </div>
+      </section>
+ 
+      <section className='help' id='help'>
+        <div className="row">
+          <div className="content">
+            <h3>Welcome to the Help Center</h3>
+            <p>We are available 24 hours a day</p>
+            <p>Contact us at <span className="phone-number">060 542369</span></p>
+          </div>
+        </div>
+      </section>
+
+
     </>
   )
 }
