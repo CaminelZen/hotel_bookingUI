@@ -44,7 +44,7 @@
   .search-button {
     padding: 10px 30px;
     /* Increase padding */
-    background-color: #34197f;
+    background-color: #0e4459;
     color: #fff;
     border: none;
     border-radius: 5px 5px 5px 5px;
@@ -61,9 +61,10 @@
   .date-input:focus,
   .guests-input:focus {
     outline: none;
-    border-color: #34197f;
+    border-color: #0e4459;
+    ;
   }
   
   .search-button:hover {
-    background-color: #0056b3;
+    background-color: #0e4459;
   }

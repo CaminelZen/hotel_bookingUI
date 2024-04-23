@@ -11,7 +11,6 @@
     margin: 0 auto;
   }
   
-  
   .logo {
     flex: 1;
     /* Let the logo take up as much space as it needs */
@@ -23,11 +22,11 @@
   }
   
   .logo:hover {
-    filter: drop-shadow(0 0 15px #2761acaa);
+    filter: drop-shadow(0 0 25px #2761acaa);
   }
   
   .logo.react:hover {
-    filter: drop-shadow(0 0 15px #123177aa);
+    filter: drop-shadow(0 0 25px #123177aa);
   }
   
   .title {
@@ -42,9 +41,9 @@
   }
   
   .title:hover {
-    filter: drop-shadow(0 0 15px #757bedaa);
+    filter: drop-shadow(0 0 15px #04274faa);
   }
   
   .title.react:hover {
-    filter: drop-shadow(0 0 15px #dcd2f7aa);
+    filter: drop-shadow(0 0 15px #0b306aaa);
   }

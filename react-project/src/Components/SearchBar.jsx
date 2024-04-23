@@ -1,6 +1,6 @@
 import './SearchBar.css';
 
-export default function SearchBar () {
+const SearchBar = () => {
     return(
         <div className="search-bar">
         <div className="search-inputs">
@@ -39,4 +39,6 @@ export default function SearchBar () {
         <button className="search-button">Search</button>
         </div>
     )
-}
+};
+
+export default SearchBar;

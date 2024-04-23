@@ -1,6 +1,6 @@
 import './Help.css';
 
-function Help() {
+const Help = () => {
     return (
         <section className='help' id='help'>
         <div className="row">
@@ -37,7 +37,7 @@ function Help() {
             <ul>
                 <li><strong>Contact Us:</strong> For assistance, reach out to our customer support team.
                     <ul>
-                        <li>Phone: 1-800-EASYBOOK</li>
+                        <li>Phone: +31 620 123 654</li>
                         <li>Email: <a href="mailto:support@easybook.com">support@easybook.com</a></li>
                         <li>Live Chat: Available during business hours (9:00 AM - 6:00 PM, Monday to Friday).</li>
                     </ul>
@@ -58,12 +58,12 @@ function Help() {
 
             <h4>FAQs:</h4>
             <ul>
-                <li><strong>Browse Frequently Asked Questions:</strong> Find answers to common inquiries about EasyBook's services.</li>
+                <li><strong>Browse Frequently Asked Questions:</strong> Find answers to common inquiries about the services we provide.</li>
             </ul>
 
             <h2>Terms of Service and Policies:</h2>
             <ul>
-                <li><strong>Terms of Service:</strong> Review EasyBook's terms of service and booking policies.</li>
+                <li><strong>Terms of Service:</strong> Please review and agree to the terms of service and booking policies.</li>
             </ul>
 
             <h4>Feedback and Suggestions:</h4>
@@ -75,4 +75,4 @@ function Help() {
               </section>
     );
 }
-export default Help
+export default Help;

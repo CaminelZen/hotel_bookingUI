@@ -1,14 +1,13 @@
 import { useState, useContext } from "react";
+import PropTypes from 'prop-types';
 import { UserContext } from "../context/UserContext";
 
-const baseURL = "http://localhost:8000";
-
-export default function SignUp() {
+const SignUp = ({ setShowSignUp }) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    const [token, setToken] = useContext(UserContext);
+    const [, setToken] = useContext(UserContext);
 
     const submitRegistration = async () => {
         const requestOptions = {
@@ -18,7 +17,7 @@ export default function SignUp() {
         };
 
         try {
-            const response = await fetch(`${baseURL}/users`, requestOptions);
+            const response = await fetch(`http://127.0.0.1:8000/users`, requestOptions);
             const data = await response.json();
 
             if (!response.ok) {
@@ -31,15 +30,17 @@ export default function SignUp() {
         }
     };
 
-    const handleSubmit = (e) => {
+    const newUser = (e) => {
         e.preventDefault();
         submitRegistration();
     };
 
-    return (
+  return (
+    <div className="modal">
+      <div className="modal-content">
+        <span className="close" onClick={() => setShowSignUp(false)}>&times;</span>
+        <h2>Sign Up</h2>
         <div className="column">
-            <form className="box" onSubmit={handleSubmit}>
-                <h1 className="title has-text-centered">Sign Up</h1>
                 {errorMessage && <p className="has-text-danger">{errorMessage}</p>}
                 <div className="field">
                     <label className="label">Email</label>
@@ -82,7 +83,14 @@ export default function SignUp() {
                 </div>
                 <br />
                 <button className="button is-primary" type="submit">Sign Up</button>
-            </form>
         </div>
-    );
+      </div>
+      New user created: {newUser}
+    </div>
+  );
 }
+SignUp.propTypes = {
+    setShowSignUp: PropTypes.func.isRequired
+};
+
+export default SignUp;

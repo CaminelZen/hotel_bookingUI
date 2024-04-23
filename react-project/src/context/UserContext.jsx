@@ -34,7 +34,6 @@ export const UserProvider = (props) => {
         </UserContext.Provider>
     )
 };
-// Add prop validation
 UserProvider.propTypes = {
     children: PropTypes.node.isRequired,
 };

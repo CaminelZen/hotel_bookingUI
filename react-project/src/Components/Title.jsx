@@ -1,7 +1,7 @@
 import Logo from '/Logo.png';
 import './Title.css';
 
- export default function Title () {
+const Title = () => {
     return(
         <div className="container">
         <a href="/index.html" target="_blank">
@@ -10,7 +10,7 @@ import './Title.css';
         <h1 className="title">The Hotel Booking App</h1>
       </div>
     )
+ };
 
-
- }
+ export default Title;
      

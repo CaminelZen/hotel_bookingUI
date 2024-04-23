@@ -12,11 +12,14 @@ import SignUp from './Components/SignUp';
 export default function App() {
   const [showLogIn, setShowLogIn] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
+  
   return (
     <>
     <section id='home'>
       <Title />
       <Navbar setShowLogIn={setShowLogIn} setShowSignUp={setShowSignUp} />
+            <LogIn showLogIn={showLogIn} setShowLogIn={setShowLogIn} />
+            <SignUp showSignUp={showSignUp} setShowSignUp={setShowSignUp} />
       <SearchBar />
       <Cities />
     </section>
@@ -24,8 +27,6 @@ export default function App() {
       <About />
       <Help />
     </div>
-    {showLogIn && <LogIn />}
-    {showSignUp && <SignUp />}
     </>
   );
 }
