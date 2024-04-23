@@ -1,6 +1,6 @@
 import './About.css';
 
-function About() {
+function About () {
   return (
     <section className='about' id='about'>
       <div className="row">
@@ -13,5 +13,4 @@ function About() {
     </section>
   );
 }
-
 export default About;

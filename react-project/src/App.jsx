@@ -1,24 +1,18 @@
-
-import { useState } from 'react';
-
+import React, { useState } from 'react';
 import './App.css';
-
-import About from './components/About';
-import Help from './components/Help';
-/* import Cities from './components/Cities'; */
-import SearchBar from './components/SearchBar';
-
-import Register from './components/Register';
-import Login from './components/Login';
-import Navbar from './components/Navbar';
-import Title from './components/Logo';
-import Home from './components/Home';
-
+import About from '.Components/About.jsx';
+//import Cities from '.Components/Cities';
+import Help from '.Components/Help';
+import Home from '.Components/Home';
+import LogIn from '.Components/LogIn';
+import Title from '.Components/Title';
+import Navbar from '.Components/Navbar';
+import Register from '.Components/Register';
+import SearchBar from '.Components/SearchBar';
 
 
 function App() {
   
-
   const [showLogin, setShowLogin] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
   const [username, setUsername] = useState('');
@@ -42,7 +36,7 @@ function App() {
   return (
     <>
     <Register />
-    <Login />
+    <LogIn />
     <Navbar setShowLogin={setShowLogin} setShowSignup={setShowSignup} />
     <Title />
     <SearchBar/>   

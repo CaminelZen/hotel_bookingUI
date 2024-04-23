@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import './Navbar.css'
+import './Navbar.css';
 
 const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);

@@ -1,6 +1,6 @@
-import './SearchBar.css'
+import './SearchBar.css';
 
-function SearchBar () {
+export default function SearchBar () {
     return(
         <div className="search-bar">
         <div className="search-inputs">
@@ -40,4 +40,3 @@ function SearchBar () {
         </div>
     )
 }
-export default SearchBar

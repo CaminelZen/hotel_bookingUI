@@ -1,4 +1,4 @@
-import './Help.css'
+import './Help.css';
 
 function Help() {
     return (
