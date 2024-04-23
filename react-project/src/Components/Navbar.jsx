@@ -12,11 +12,11 @@ const scrollToSection = (sectionId) => {
 export default function Navbar({setShowLogin, setShowSignup}){
     return (
         <div className="navbar">
-            <a href="http://127.0.0.1:8000/hello">Home</a>
+            <a href="#home">Home</a>
             <a href="#about" onClick={() => scrollToSection(true)}>About</a>
             <a href="#help" onClick={() => scrollToSection(true)}>Help</a>
-            <a href="#login" onClick={() => setShowLogin(true)}>Log In</a>
-            <a href="#signup" onClick={() => setShowSignup(true)}>Sign Up</a>
+            <a href="#login">Log In</a>
+            <a href="#signup">Sign Up</a>
         </div>
     );
 }
