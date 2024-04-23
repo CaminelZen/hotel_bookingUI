@@ -1,0 +1,22 @@
+
+.navbar {
+    position: fixed;
+    /* Fix the navbar position */
+    right: 0;
+    /* Align to the right */
+    padding: 5px 35px 0 0;
+    /* Add padding on the right */
+    top: 0;
+    /* Place it at the top of the viewport */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: var(--black);
+    margin: 0 1rem;
+    z-index: 2;
+  }
+
+  .navbar a {
+    font-family: Arial, Helvetica, sans-serifk;
+    color: var(--black);
+    margin: 0 1rem;
+  }
