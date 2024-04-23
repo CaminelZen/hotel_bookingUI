@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import './Navbar.css';
 
+
+
 const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -9,18 +11,18 @@ const scrollToSection = (sectionId) => {
 };
     
 
-export default function Navbar () {
+export default function Navbar ({ setShowLogIn, setShowSignUp }) {
     return (
         <div className="navbar">
-            <a href="#home">Home</a>
+            <a href="#home" onClick={() => scrollToSection(true)}>Home</a>
             <a href="#about" onClick={() => scrollToSection(true)}>About</a>
             <a href="#help" onClick={() => scrollToSection(true)}>Help</a>
-            <a href="#login">Log In</a>
-            <a href="#signup">Sign Up</a>
+            <a href="#login" onClick={() => setShowLogIn(true)}>Log In</a>
+            <a href="#signup" onClick={() => setShowSignUp(true)}>Sign Up</a>
         </div>
     );
 }
 Navbar.propTypes = {
-    setShowLogin: PropTypes.func.isRequired,
-    setShowSignup: PropTypes.func.isRequired
+    setShowLogIn: PropTypes.func.isRequired,
+    setShowSignUp: PropTypes.func.isRequired
 };

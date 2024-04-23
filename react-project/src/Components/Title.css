@@ -5,7 +5,7 @@
     left: 0;
     width: 100%;
     height: 20%;
-    background: linear-gradient(#e18c46, #f3d8c2);
+    background: linear-gradient(#ffffff, #a1b7e2);
     border-radius: 0 100px 0 100px;
     z-index: 1;
     margin: 0 auto;
@@ -15,7 +15,7 @@
   .logo {
     flex: 1;
     /* Let the logo take up as much space as it needs */
-    max-height: 60px;
+    max-height: 120px;
     /* Allow the logo's height to adjust proportionally */
     padding: 0 0 0 20px;
     will-change: filter;
@@ -23,11 +23,11 @@
   }
   
   .logo:hover {
-    filter: drop-shadow(0 0 15px #25140daa);
+    filter: drop-shadow(0 0 15px #2761acaa);
   }
   
   .logo.react:hover {
-    filter: drop-shadow(0 0 15px #25140daa);
+    filter: drop-shadow(0 0 15px #123177aa);
   }
   
   .title {
@@ -38,7 +38,7 @@
     will-change: filter;
     transition: filter 300ms;
     text-align-last: right;
-    color: #34197f;
+    color: #0e4459;
   }
   
   .title:hover {

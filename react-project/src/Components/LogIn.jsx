@@ -1,19 +1,18 @@
-{/*import ErrorMessage from "./ErrorMessage";
 import { UserContext } from "../context/UserContext";
 import { useState, useContext } from "react";
 
 
-const Login = () => {
+export default function LogIn () {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [, setToken] = useContext(UserContext);
 
-    const submitLogin = async () => {
+    const submitLogIn = async () => {
         const requestOptions = {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: JSON.stringify(grant_type=&username=${username}&password=${password}&scope=&client_id=&client_secret=),
+            body: JSON.stringify({username}, {password}),
         };
         const response = await fetch("http://localhost:8000/login", requestOptions);
         const data = await response.json();
@@ -27,16 +26,16 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        submitLogin();
+        submitLogIn();
     };
 
 
     return (
         <div className="column">
             <form className="box" onSubmit={handleSubmit}>
-                <h1 className="title has-text-centered">Login</h1>
+                <h1 className="title has-text-centered">Log In</h1>
                 <div className="field">
-                    <label className="label">User Name</label>
+                    <label className="label">Username</label>
                     <div className="control">
                         <input
                             type='username'
@@ -62,12 +61,10 @@ const Login = () => {
                         />
                     </div>
                 </div>
-                <ErrorMessage message={errorMessage} />
+                {errorMessage}
                 <br />
-                <button className="button is-primary" type="submit">Login</button>
+                <button className="button is-primary" type="submit">Log In</button>
             </form>
         </div>
     );
-};
-
-export default Login*/}
+}
