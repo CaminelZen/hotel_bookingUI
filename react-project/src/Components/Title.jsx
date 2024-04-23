@@ -1,7 +1,7 @@
 import Logo from '/Logo.png';
-import './Logo.css';
+import './Title.css';
 
- export default function Title (){
+ export default function Title () {
     return(
         <div className="container">
         <a href="/index.html" target="_blank">

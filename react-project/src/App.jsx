@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
 import './App.css';
+import Title from './Components/Title';
+import SearchBar from './Components/SearchBar';
+import Navbar from './Components/Navbar'
 
 
 
@@ -7,7 +9,12 @@ function App() {
 
   return (
     <>
-    bla bla bla
+    <div id='Home'>
+    <Title />
+    <SearchBar />
+    <Navbar />
+    </div>
+
 
     </>
   )
