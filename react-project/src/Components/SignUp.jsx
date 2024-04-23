@@ -1,50 +1,51 @@
-import  { useState } from "react";
-/* import { UserContext } from "../context/userContext";
-import ErrorMessage from "./ErrorMessage"; */
+import { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
-/* const baseURL = "http://localhost:8000"; */
+const baseURL = "http://localhost:8000";
 
-const Register = () => {
-    const [username, setUsername] = useState("")
+export default function SignUp() {
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-  /*   const [confirmationPassword, setConfirmationPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    const [token, setToken] = useContext(UserContext); / */
+    const [token, setToken] = useContext(UserContext);
 
     const submitRegistration = async () => {
         const requestOptions = {
             method: "POST",
-            headers: { 'Content-Type': "application/json" }, // Added Authorization header
+            headers: { 'Content-Type': "application/json" },
             body: JSON.stringify({ username: username, email: email, password: password })
         };
 
-        const response = await fetch("http://localhost:8000/users", requestOptions);
-        /*const data = await response.json(); */
+        try {
+            const response = await fetch(`${baseURL}/users`, requestOptions);
+            const data = await response.json();
 
-        if (!response.ok) {
-            throw new Error ('Login failed');
-        /*     setErrorMessage(data.detail);
-        } else {
-            setToken(data.access_token); */
+            if (!response.ok) {
+                throw new Error(data.detail);
+            } else {
+                setToken(data.access_token);
+            }
+        } catch (error) {
+            setErrorMessage(error.message);
         }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         submitRegistration();
-        }
-    
-    
+    };
+
     return (
         <div className="column">
             <form className="box" onSubmit={handleSubmit}>
-                <h1 className="title has-text-centered">Register</h1>
+                <h1 className="title has-text-centered">Sign Up</h1>
+                {errorMessage && <p className="has-text-danger">{errorMessage}</p>}
                 <div className="field">
-                    <label className="label">Email Address</label>
+                    <label className="label">Email</label>
                     <div className="control">
                         <input
-                            type='email'
+                            type="email"
                             placeholder="Enter email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -54,10 +55,10 @@ const Register = () => {
                     </div>
                 </div>
                 <div className="field">
-                    <label className="label">User Name</label>
+                    <label className="label">Username</label>
                     <div className="control">
                         <input
-                            type='username'
+                            type="text"
                             placeholder="Enter username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
@@ -70,7 +71,7 @@ const Register = () => {
                     <label className="label">Password</label>
                     <div className="control">
                         <input
-                            type='password'
+                            type="password"
                             placeholder="Enter password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
@@ -79,13 +80,9 @@ const Register = () => {
                         />
                     </div>
                 </div>
-                
-                
                 <br />
-                <button className="button is-primary" type="submit">Register</button>
+                <button className="button is-primary" type="submit">Sign Up</button>
             </form>
         </div>
     );
-};
-
-export default Register;
+}
