@@ -9,7 +9,7 @@ const scrollToSection = (sectionId) => {
 };
     
 
-export default function Navbar({setShowLogin, setShowSignup}){
+export default function Navbar () {
     return (
         <div className="navbar">
             <a href="#home">Home</a>

@@ -1,4 +1,4 @@
-/* import Delft from '/Delft.jpg';
+import Delft from '/Delft.jpg';
 import Eindhoven from '/Eindhoven.jpg';
 import Maastricht from '/Maastricht.jpg';
 import Rotterdam from '/Rotterdam.jpg';
@@ -7,34 +7,9 @@ import Amsterdam from '/Amsterdam.jpg';
 import './Cities.css'
 
 
-function Cities (){ */
+export default function Cities () { 
 
-/* const getCity = async (cityId) => {
-  try {
-    const requestOptions = {
-      method: 'GET',
-      headers: { "Content-Type": "application/json" },
-    };
-    const response = await fetch(`http://localhost:8000/cities/${cityId}`, requestOptions);
-    if (!response.ok) {
-      throw new Error('City not found');
-    }
-
-    // Now you can fetch hotels based on the selected city
-    const hotelsResponse = await fetch(`http://localhost:8000/hotels/${location}`, requestOptions);
-    if (!hotelsResponse.ok) {
-      throw new Error('Failed to fetch hotels');
-    }
-    const hotelsData = await hotelsResponse.json();
-
-    // Handle hotelsData as needed (e.g., display in UI)
-    console.log('Hotels in the selected city:', hotelsData);
-  } catch (error) {
-    console.error('Error:', error.message);
-  }
-}
- */
-/* return (
+return (
   <div className='Images'>
     <h3>Popular destinations</h3>
     <div className='row'>
@@ -68,6 +43,3 @@ function Cities (){ */
       </div>
 
     )}
-
-
-export default Cities */
