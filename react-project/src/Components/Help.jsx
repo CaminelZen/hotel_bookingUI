@@ -58,12 +58,12 @@ function Help() {
 
             <h4>FAQs:</h4>
             <ul>
-                <li><strong>Browse Frequently Asked Questions:</strong> Find answers to common inquiries about EasyBook's services.</li>
+                <li><strong>Browse Frequently Asked Questions:</strong> Find answers to common inquiries about EasyBook&apos;s services.</li>
             </ul>
 
             <h2>Terms of Service and Policies:</h2>
             <ul>
-                <li><strong>Terms of Service:</strong> Review EasyBook's terms of service and booking policies.</li>
+                <li><strong>Terms of Service:</strong> Review EasyBook&apos;s terms of service and booking policies.</li>
             </ul>
 
             <h4>Feedback and Suggestions:</h4>
