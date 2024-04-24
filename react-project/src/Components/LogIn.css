@@ -1,0 +1,63 @@
+.login-content {
+    background-color: rgb(236, 233, 228);
+    padding: 20px;
+    border-radius: 12px;
+    border: solid 2px #34197f;
+    box-shadow: 0 2px 8px rgba(48, 8, 50, 0.1);
+    width: 400px; 
+    display: flex; 
+    flex-direction: column; 
+    position: relative;
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+  }
+  
+  .input {
+    width: 100%; 
+    padding: 10px; 
+    font-size: 16px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    transition: border-color 0.3s ease; 
+  }
+  
+  .input:focus {
+    outline: none; 
+    border-color: #007bff; 
+  }
+  
+  .main-button {
+    font-size: 16px;
+    right: 0;
+    align-self: flex-end;
+  }
+  
+  .main-button button {
+    background-color: #34197f;
+    color: white;
+    border: none;
+    margin: 0 20px 0 0;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .other-button {
+    font-size: 16px;
+    right: 0;
+    align-self: flex-end; 
+  }
+  
+  .other-button button {
+    background-color: #34197f;
+    color: white;
+    border: none;
+    margin: 0 20px 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }

@@ -1,8 +1,9 @@
 import { useState, useContext } from "react";
 import PropTypes from 'prop-types';
 import { UserContext } from "../context/UserContext";
+import './LogIn.css';
 
-const SignUp = ({ setShowSignUp }) => {
+const SignUp = ({ setShowSignUp, setShowLogIn }) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -33,64 +34,30 @@ const SignUp = ({ setShowSignUp }) => {
     const newUser = (e) => {
         e.preventDefault();
         submitRegistration();
+        setShowSignUp(false);
     };
 
-  return (
-    <div className="modal">
-      <div className="modal-content">
-        <span className="close" onClick={() => setShowSignUp(false)}>&times;</span>
-        <h2>Sign Up</h2>
-        <div className="column">
-                {errorMessage && <p className="has-text-danger">{errorMessage}</p>}
-                <div className="field">
-                    <label className="label">Email</label>
-                    <div className="control">
-                        <input
-                            type="email"
-                            placeholder="Enter email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="input"
-                            required
-                        />
-                    </div>
+    return (
+        <div className="login">
+            <div className="login-content">
+            <span className="close" onClick={() => setShowSignUp(false)}>&times;</span>
+            <h2>Sign Up</h2>
+                <div className='input-container'>
+                <input type="text" placeholder="Username" value={username} onChange={(username) => setUsername(username.target.value)} />
+                <input type="email" placeholder="Email" value={email} onChange={(email) => setEmail(email.target.value)} />
+                <input type="password" placeholder="Password" value={password} onChange={(password) => setPassword(password.target.value)} />
                 </div>
-                <div className="field">
-                    <label className="label">Username</label>
-                    <div className="control">
-                        <input
-                            type="text"
-                            placeholder="Enter username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            className="input"
-                            required
-                        />
-                    </div>
-                </div>
-                <div className="field">
-                    <label className="label">Password</label>
-                    <div className="control">
-                        <input
-                            type="password"
-                            placeholder="Enter password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="input"
-                            required
-                        />
-                    </div>
-                </div>
-                <br />
-                <button className="button is-primary" type="submit">Sign Up</button>
-        </div>
-      </div>
-      New user created: {newUser}
-    </div>
+                <p className="main-button"><button onClick={newUser}>Sign Up</button></p>
+                <p className="other-button">If you already have an account, please:
+                <button onClick={() => { setShowLogIn(true); setShowSignUp(false); }}>Log In</button></p>
+            </div>
+            {errorMessage}
+          </div>
   );
 }
 SignUp.propTypes = {
-    setShowSignUp: PropTypes.func.isRequired
+  setShowLogIn: PropTypes.func.isRequired,
+  setShowSignUp: PropTypes.func.isRequired
 };
 
 export default SignUp;
