@@ -7,7 +7,7 @@
     height: 20%;
     background: linear-gradient(#ffffff, #a1b7e2);
     border-radius: 0 100px 0 100px;
-    z-index: 1;
+    z-index: 0;
     margin: 0 auto;
   }
   

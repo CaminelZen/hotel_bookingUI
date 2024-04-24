@@ -59,11 +59,14 @@ const Help = () => {
             <h4>FAQs:</h4>
             <ul>
                 <li><strong>Browse Frequently Asked Questions:</strong> Find answers to common inquiries about the services we provide.</li>
+
             </ul>
 
             <h2>Terms of Service and Policies:</h2>
             <ul>
+
                 <li><strong>Terms of Service:</strong> Please review and agree to the terms of service and booking policies.</li>
+
             </ul>
 
             <h4>Feedback and Suggestions:</h4>
