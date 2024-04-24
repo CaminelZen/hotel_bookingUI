@@ -39,7 +39,7 @@ const SearchBar = () => {
       <div className="SearchItem">
         <FontAwesomeIcon icon={faSearch} className='Icon' />
         <input type="text"
-          placeholder='Search for hotels or destinations'
+          placeholder='Search for hotels by destinations'
           className='SearchInput'
         />
       </div>
@@ -67,34 +67,3 @@ const SearchBar = () => {
               <span className="optionCounterNumber">{options.adult}</span>
               <button className="optionCounterButton" onClick={() => handleOption("adult", "i")}>+</button>
             </div>
-          </div>
-          <div className="optionItem">
-            <span className="optionText">Children</span>
-            <div className="optionCounter">
-              <button
-                disabled={options.children <= 1}
-                className="optionCounterButton" onClick={() => handleOption("children", "d")}>-</button>
-              <span className="optionCounterNumber">{options.children}</span>
-              <button className="optionCounterButton" onClick={() => handleOption("children", "i")}>+</button>
-            </div>
-          </div>
-          <div className="optionItem">
-            <span className="optionText">Room</span>
-            <div className="optionCounter">
-              <button
-                disabled={options.room <= 1}
-                className="optionCounterButton" onClick={() => handleOption("room", "d")}>-</button>
-              <span className="optionCounterNumber">{options.room}</span>
-              <button className="optionCounterButton" onClick={() => handleOption("room", "i")}>+</button>
-            </div>
-          </div>
-        </div>}
-      </div>
-      <div className="SearchItem"></div>
-      <button className='SearchBtn'>Search</button>
-    </div>
-  )
-}
-
-
-export default SearchBar

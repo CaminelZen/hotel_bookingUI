@@ -7,7 +7,7 @@ import Amsterdam from '/Amsterdam.jpg';
 import './Cities.css'
 
 
-export default function Cities () { 
+const Cities = () => { 
 
 return (
   <div className='Images'>
@@ -42,4 +42,5 @@ return (
     </div>
       </div>
 
-    )}
+    )};
+export default Cities;

@@ -16,24 +16,22 @@ import Footer from './Components/Footer/Footer'
 export default function App() {
   const [showLogIn, setShowLogIn] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
+  
   return (
     <>
     <section id='home'>
       <Title />
       <Navbar setShowLogIn={setShowLogIn} setShowSignUp={setShowSignUp} />
-      
-      <Home/>
-      
-      {/* <Cities /> */}
+           <LogIn showLogIn={showLogIn} setShowLogIn={setShowLogIn} />
+            <SignUp showSignUp={showSignUp} setShowSignUp={setShowSignUp} />
+      <SearchBar />
+      <Cities />
     </section>
     <div>
       <MailList/>
       <About />
       {/* <Help /> */}
     </div>
-    {showLogIn && <LogIn />}
-    {showSignUp && <SignUp />}
-    <Footer/>
     </>
   );
 }

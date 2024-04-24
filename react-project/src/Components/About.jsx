@@ -1,6 +1,6 @@
 import './About.css';
 
-function About () {
+const About = () => {
   return (
     <section className='about' id='about'>
       <div className="row">
@@ -11,7 +11,7 @@ function About () {
           <p>Our mission is to provide seamless booking experiences, offering a wide range of hotels, resorts, and other accommodations worldwide. We strive to make travel planning as easy as possible, so you can focus on creating unforgettable memories.</p>
           <h2>What We Offer</h2>
           <ul>
-              <li><strong>Wide Range of Accommodations:</strong> From luxurious hotels to budget-friendly options, we offer a diverse selection of accommodations to suit every traveler's preferences and budget.</li>
+              <li><strong>Wide Range of Accommodations:</strong> From luxurious hotels to budget-friendly options, we offer a diverse selection of accommodations to suit every preference and budget.</li>
               <li><strong>Seamless Booking Experience:</strong> Our user-friendly platform ensures a hassle-free booking process, allowing you to find and reserve your ideal accommodation with ease.</li>
               <li><strong>Customer-Centric Approach:</strong> We are committed to providing exceptional customer service and support, ensuring that your travel needs are met every step of the way.</li>
           </ul>

@@ -11,14 +11,14 @@ const scrollToSection = (sectionId) => {
 };
     
 
-export default function Navbar ({ setShowLogIn, setShowSignUp }) {
+const Navbar = ({ setShowLogIn, setShowSignUp }) => {
     return (
         <div className="navbar">
             <a href="#home" onClick={() => scrollToSection(true)}>Home</a>
             <a href="#about" onClick={() => scrollToSection(true)}>About</a>
             <a href="#help" onClick={() => scrollToSection(true)}>Help</a>
-            <a href="#login" onClick={() => setShowLogIn(true)}>Log In</a>
-            <a href="#signup" onClick={() => setShowSignUp(true)}>Sign Up</a>
+            <a href="#login" onClick={() => { setShowLogIn(true); setShowSignUp(false); }}>Log In</a>
+            <a href="#signup" onClick={() => { setShowSignUp(true); setShowLogIn(false); }}>Sign Up</a>
         </div>
     );
 }
@@ -26,3 +26,5 @@ Navbar.propTypes = {
     setShowLogIn: PropTypes.func.isRequired,
     setShowSignUp: PropTypes.func.isRequired
 };
+
+export default Navbar;

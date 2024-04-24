@@ -8,15 +8,19 @@
     /* Add padding on the right */
     top: 0;
     /* Place it at the top of the viewport */
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    color: var(--black);
     margin: 0 1rem;
     z-index: 2;
   }
 
   .navbar a {
-    font-family: Arial, Helvetica, sans-serifk;
-    color: var(--black);
+    font-family: Helvetica;
+    font-weight: bold;
+    color: rgb(10, 45, 68);
+    padding: 5px;
+    width: auto;
+    border-radius: 5px;
+    background-color: rgb(220, 224, 238);
+    box-shadow: 5px;
+    border: solid 1px;
     margin: 0 1rem;
   }
