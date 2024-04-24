@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import PropTypes from 'prop-types';
-import { UserContext } from "../context/UserContext";
+import { UserContext } from "./context/UserContext";
 import './LogIn.css';
 
 const SignUp = ({ setShowSignUp, setShowLogIn }) => {
