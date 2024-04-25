@@ -5,9 +5,9 @@
     border: solid 2px #34197f;
     box-shadow: 0 2px 8px rgba(48, 8, 50, 0.1);
     width: 400px; 
-    display: flex; 
     flex-direction: column; 
-    position: relative;
+    position: absolute;
+    z-index: 3;
   }
   
   .close {
