@@ -1,14 +1,14 @@
-import './SearchBar.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPerson, faSearch, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
-import { DateRange } from 'react-date-range'
+import './SearchBar.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPerson, faSearch, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { useState, useRef, useEffect } from 'react';
-import { format } from 'date-fns'
+import { format } from 'date-fns';
 
 const SearchBar = () => {
-  const [locationn, setLocation] = useState([]);
+  const [locationn, setLocation] = useState('');
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -22,7 +22,8 @@ const SearchBar = () => {
     children: 0,
     room: 1,
   });
-  const [openPersonOptions, setOpenPersonOptions] = useState(false); // New state variable for person options
+  const [openPersonOptions, setOpenPersonOptions] = useState(false);
+  const [hotels, setHotels] = useState([]);
 
   const searchBarRef = useRef(null);
 
@@ -34,14 +35,15 @@ const SearchBar = () => {
   }, []);
 
   const handleClickOutside = (event) => {
-    if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
+    if (searchBarRef.current &&
+      !searchBarRef.current.contains(event.target)) {
       setOpenDate(false);
-      setOpenPersonOptions(false); // Close person options when clicking outside
+      setOpenPersonOptions(false);
     }
   };
 
-  const fetchLocation = (location) => {
-    fetch(`http://localhost:8000/hotels/${location}`, {
+  const fetchHotels = () => {
+    fetch(`http://localhost:8000/hotels/${locationn}`, {
       method: 'GET'
     })
       .then((response) => {
@@ -51,16 +53,25 @@ const SearchBar = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
+        setHotels(data);
       })
       .catch((error) => {
         console.error('Error fetching hotel locations:', error);
       });
   };
 
+  const handleSearch = () => {
+    fetchHotels();
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      fetchHotels();
+    }
+  };
+
   const handleChange = (value) => {
     setLocation(value);
-    fetchLocation(value);
   };
 
   const handleOption = (name, operation) => {
@@ -80,12 +91,18 @@ const SearchBar = () => {
           className='SearchInput'
           value={locationn}
           onChange={(e) => handleChange(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
       </div>
 
       <div className="SearchItem">
         <FontAwesomeIcon icon={faCalendarDays} className='Icon' />
-        <span onClick={() => setOpenDate(!openDate)} className='SearchText'>{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")} `}</span>
+        <span onClick={() => {
+          setOpenDate(!openDate);
+          setOpenPersonOptions(false);
+        }} className='SearchText'>
+          {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")} `}
+        </span>
         {openDate && <DateRange
           editableDateInputs={true}
           onChange={item => setDate([item.selection])}
@@ -97,7 +114,12 @@ const SearchBar = () => {
 
       <div className="SearchItem">
         <FontAwesomeIcon icon={faPerson} className='Icon' />
-        <span onClick={() => setOpenPersonOptions(!openPersonOptions)} className='SearchText'>{`${options.adult} adult, ${options.children} children, ${options.room} room`}</span>
+        <span onClick={() => {
+          setOpenPersonOptions(!openPersonOptions);
+          setOpenDate(false);
+        }} className='SearchText'>
+          {`${options.adult} adult, ${options.children} children, ${options.room} room`}
+        </span>
         {openPersonOptions && <div className="options">
           <div className="optionItem">
             <span className="optionText">Adult</span>
@@ -131,8 +153,29 @@ const SearchBar = () => {
           </div>
         </div>}
       </div>
-      <div className="SearchItem"></div>
-      <button className='SearchBtn'>Search</button>
+
+      <div className="SearchItem">
+        <button className='SearchBtn' onClick={handleSearch}>Search</button>
+      </div>
+
+      <div className="SearchItemHotelContainer">
+        
+        {/* Render fetched hotels */}
+        {hotels.map(hotel => (
+          <div className='SearchItemHotel' key={hotel.id}>
+            <h2>{hotel.hotel_name}</h2>
+            
+            <p>{hotel.room_number}</p>
+            <p>{hotel.bed_size}</p>
+            <p>{hotel.price}</p>
+            <p>{hotel.available}</p>
+            <p>{hotel.review}</p>
+            <p>{hotel.rating}</p>
+            
+            {/* Render other hotel details as needed */}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
