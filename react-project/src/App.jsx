@@ -6,10 +6,11 @@ import Title from './Components/Header/Title'
 import Navbar from './Components/Header/Navbar'
 import LogIn from './Components/Authentication/LogIn'
 import SignUp from './Components/Authentication/SignUp'
-import Featured from './Components/Featured/Featured'
+/* import Featured from './Components/Featured/Featured' */
 import Footer from './Components/Footer/Footer'
 import MailList from './Components/MailList/MailList'
 import SearchBar from './Components/SearchBar/SearchBar'
+
 
 
 export default function App() {
@@ -27,7 +28,8 @@ export default function App() {
         return (
           <div className="content" id='home'>
             <SearchBar />
-            <Featured />   
+            
+            {/* <Featured />  */}  
           </div>
         );
     }
