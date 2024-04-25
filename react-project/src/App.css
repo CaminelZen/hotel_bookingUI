@@ -2,11 +2,30 @@
 
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
+  padding: 4rem;
   text-align: left;
 }
 
+.app-container {
+  position: relative;
+}
+
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(white, rgb(119, 176, 206));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.main-content {
+  margin-top: 100px; /* Adjust according to header height */
+}
 
 .login {
   position: fixed;

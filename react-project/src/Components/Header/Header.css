@@ -1,0 +1,17 @@
+.logo {
+    max-width: 100px;
+  }
+  
+  .title {
+    right: 0;
+    top: 0;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .navbar a {
+    margin-left: 10px;
+  }
