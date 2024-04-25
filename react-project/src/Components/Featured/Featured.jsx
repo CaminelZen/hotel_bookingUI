@@ -6,57 +6,43 @@ import Maastricht from '/Maastricht.jpg';
 import Rotterdam from '/Rotterdam.jpg';
 import DenHaag from '/DenHaag.jpg';
 
-const Featured = () => {
+const cities = [
+    { name: "Amsterdam", image: Amsterdam },
+    { name: "Rotterdam", image: Rotterdam },
+    { name: "The Hague", image: DenHaag },
+    { name: "Delft", image: Delft },
+    { name: "Eindhoven", image: Eindhoven },
+    { name: "Maastricht", image: Maastricht },
+  ];
+  
+  const Featured = () => {
+    // Function to chunk the cities array into rows of three
+    const chunkArray = (arr, size) =>
+      Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
+        arr.slice(i * size, i * size + size)
+      );
+  
+    // Chunk the cities array into rows of three
+    const rows = chunkArray(cities, 3);
+  
     return (
-        <div className="featured">
-            <div className="featuredItem">
-                <img src={Amsterdam} alt="Amsterdam" className="featuredImg" />
-                <div className="featuredTitles">
-                    <h1>Amsterdam</h1>
-                    <h2>23 properties</h2>
+      <div className="featured">
+        {rows.map((row, rowIndex) => (
+          <div className="row" key={rowIndex}>
+            {row.map((city, index) => (
+              <div className="featuredItem" key={index}>
+                <div className="imageContainer">
+                  <img src={city.image} alt={city.name} className="featuredImg" />
                 </div>
-            </div>
-            <div className="featuredItem">
-                <img src={Rotterdam} alt="Rotterdam" className="featuredImg" />
                 <div className="featuredTitles">
-                    <h1>Rotterdam</h1>
-                    <h2>28 properties</h2>
+                  <p>{city.name}</p>
                 </div>
-            </div>
-            <div className="featuredItem">
-                <img src={DenHaag} alt="DenHaag" className="featuredImg" />
-                <div className="featuredTitles">
-                    <h1>The Hague</h1>
-                    <h2>52 properties</h2>
-                </div>
-            </div>
-        <div className="featured">
-            <div className="featuredItem">
-                <img src={Delft} alt="Delft" className="featuredImg" />
-                <div className="featuredTitles">
-                    <h1>Delft</h1>
-                    <h2>18 properties</h2>
-                </div>
-            </div>
-            <div className="featuredItem">
-                <img src={Eindhoven} alt="Eindhoven" className="featuredImg" />
-                <div className="featuredTitles">
-                    <h1>Eindhoven</h1>
-                    <h2>41 properties</h2>
-                </div>
-            </div>
-            <div className="featuredItem">
-                <img src={Maastricht} alt="Maastricht" className="featuredImg" />
-                <div className="featuredTitles">
-                    <h1>Maastricht</h1>
-                    <h2>63 properties</h2>
-                </div>
-            </div>
-        </div>
-
-        </div>
-
-    )
-}
-
-export default Featured
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    );
+  };
+  
+  export default Featured;

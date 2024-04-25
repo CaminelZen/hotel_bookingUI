@@ -3,8 +3,8 @@ import './MailList.css'
 const MailList = () =>{
     return(
         <div className='mail'>
-            <h1 className="mailTitle">Book Smarter, Travel Easier.</h1>
-            <span className="mailDesc">Unlock Endless Adventures: Subscribe Today!</span>
+            <h1 className="mailTitle">Unlock Endless Adventures:</h1>
+            <span className="mailDesc">Subscribe to receive our special offers!</span>
             <div className="mailInputContainer">
                 <input type="text" placeholder="Your Email" />
                 <button>Subscribe</button>

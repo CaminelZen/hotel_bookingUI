@@ -2,15 +2,15 @@
 .Search {
   height: 30px;
   background-color: white;
-  border: 3px solid rgb(181, 147, 181);
+  border: 3px solid rgb(16, 51, 70);
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 10px 0px;
+  padding: 10px;
   border-radius: 5px;
   position: relative;
-  top: 100px;
-  bottom: -25px;
+  top: 50px;
+  bottom: 30px;
   width: 100%;
   max-width: 1024px;
 }
@@ -42,7 +42,7 @@
 }
 
 .SearchBtn {
-  background-color: #256694;
+  background-color: rgb(16, 51, 70);
   color: white;
   font-weight: 500;
   border: none;
