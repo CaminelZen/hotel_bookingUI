@@ -1,4 +1,4 @@
-import "./Footer.css"
+import "./MailList.css"
 
 const Footer = () => {
     return(

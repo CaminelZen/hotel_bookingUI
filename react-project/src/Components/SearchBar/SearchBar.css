@@ -1,15 +1,15 @@
 .Search {
   height: 30px;
   background-color: white;
-  border: 3px solid rgb(181, 147, 181);
+  border: 3px solid rgb(16, 51, 70);
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 10px 0px;
+  padding: 10px;
   border-radius: 5px;
   position: relative;
-  top: 100px;
-  bottom: -25px;
+  top: 50px;
+  bottom: 30px;
   width: 100%;
   max-width: 1024px;
 }
@@ -41,7 +41,7 @@
 }
 
 .SearchBtn {
-  background-color: #256694;
+  background-color: rgb(16, 51, 70);
   color: white;
   font-weight: 500;
   border: none;
@@ -88,31 +88,32 @@
   cursor: not-allowed;
 }
 
-
-
-
-
-/* hotel styling */
-.searchItemHotelContainer {
-  display: flex;
+.SearchItemHotelContainer {
+  display: fixed;
+  left: -100px;
   flex-wrap: wrap;
+  justify-content: space-between;
   margin-top: 20px;
 }
 
-.searchItemHotel {
+.SearchItemHotel {
+  width: calc(50% - 10px); /* Adjust width as needed */
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  width: 300px;
+  margin-bottom: 20px;
 }
 
-.searchItemHotel h2 {
+.HotelName {
   font-size: 20px;
-  margin-bottom: 10px;
+  font-weight: bold;
 }
 
-.searchItemHotel p {
-  margin: 5px 0;
+.RoomNumber,
+.BedSize,
+.Price,
+.Availability,
+.Review,
+.Rating {
+  margin-top: 5px;
 }

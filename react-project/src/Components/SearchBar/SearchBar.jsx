@@ -159,22 +159,18 @@ const SearchBar = () => {
       </div>
 
       <div className="SearchItemHotelContainer">
-        
-        {/* Render fetched hotels */}
-        {hotels.map(hotel => (
-          <div className='SearchItemHotel' key={hotel.id}>
-            <h2>{hotel.hotel_name}</h2>
-            
-            <p>{hotel.room_number}</p>
-            <p>{hotel.bed_size}</p>
-            <p>{hotel.price}</p>
-            <p>{hotel.available}</p>
-            <p>{hotel.review}</p>
-            <p>{hotel.rating}</p>
-            
-            {/* Render other hotel details as needed */}
-          </div>
-        ))}
+  {/* Render fetched hotels */}
+  {hotels.map((hotel, index) => (
+    <div className="SearchItemHotel" key={index}>
+      <h2 className="HotelName">{hotel.hotel_name}</h2>
+      <p className="RoomNumber">Room Number: {hotel.room_number}</p>
+      <p className="BedSize">Bed Size: {hotel.bed_size}</p>
+      <p className="Price">Price: {hotel.price}</p>
+      <p className="Availability">Availability: {hotel.available}</p>
+      <p className="Review">Review: {hotel.review}</p>
+      <p className="Rating">Rating: {hotel.rating}</p>
+    </div>
+  ))}
       </div>
     </div>
   );

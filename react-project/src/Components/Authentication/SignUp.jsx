@@ -40,7 +40,7 @@ const SignUp = ({ setShowSignUp, setShowLogIn }) => {
     return (
         <div className="login">
             <div className="login-content">
-            <span className="close" onClick={() => setShowSignUp(false)}>&times;</span>
+            <span className="close" onClick={() => {setShowSignUp(false) }}>&times;</span>
             <h2>Sign Up</h2>
                 <div className='input-container'>
                 <input type="text" placeholder="Username" value={username} onChange={(username) => setUsername(username.target.value)} />

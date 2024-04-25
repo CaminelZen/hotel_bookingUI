@@ -6,17 +6,22 @@ import Title from './Components/Header/Title'
 import Navbar from './Components/Header/Navbar'
 import LogIn from './Components/Authentication/LogIn'
 import SignUp from './Components/Authentication/SignUp'
-/* import Featured from './Components/Featured/Featured' */
-import Footer from './Components/Footer/Footer'
-import MailList from './Components/MailList/MailList'
+import Featured from './Components/Featured/Featured'
+import MailList from './Components/Footer/MailList';
 import SearchBar from './Components/SearchBar/SearchBar'
-
-
 
 export default function App() {
   const [showLogIn, setShowLogIn] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
   const [activeContent, setActiveContent] = useState('home');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState('');
+
+  const handleLogout = () => {
+    // Perform logout actions here
+    setIsLoggedIn(false);
+    setUsername('');
+  };
 
   const renderContent = () => {
     switch (activeContent) {
@@ -26,10 +31,9 @@ export default function App() {
         return <Help />;
       default:
         return (
-          <div className="content" id='home'>
+          <div id='home'>
             <SearchBar />
-            
-            {/* <Featured />  */}  
+            <Featured />
           </div>
         );
     }
@@ -39,17 +43,21 @@ export default function App() {
     <div className="app-container">
       <section className="header-container">
         <Title />
-        <Navbar setActiveContent={setActiveContent} setShowLogIn={setShowLogIn} setShowSignUp={setShowSignUp} />
+        <Navbar 
+          setActiveContent={setActiveContent} 
+          setShowLogIn={setShowLogIn} 
+          setShowSignUp={setShowSignUp} 
+          isLoggedIn={isLoggedIn} 
+          username={username} 
+          handleLogout={handleLogout} 
+        />
       </section>
     <div className="main-content">
       {renderContent()}
-    </div>
-      {showLogIn && <LogIn setShowLogIn={setShowLogIn} setShowSignUp={setShowSignUp} />}
-      {showSignUp && <SignUp setShowSignUp={setShowSignUp} setShowLogIn={setShowLogIn} />}
-    <div>
-      <Footer />
       <MailList />
     </div>
+    {showLogIn && <LogIn setShowLogIn={setShowLogIn} setShowSignUp={setShowSignUp} />}
+    {showSignUp && <SignUp setShowSignUp={setShowSignUp} setShowLogIn={setShowLogIn} />}
     </div>
   );
 }
