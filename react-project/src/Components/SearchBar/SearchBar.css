@@ -1,4 +1,3 @@
-
 .Search {
   height: 30px;
   background-color: white;
@@ -87,4 +86,33 @@
 
 .optionCounterButton:disabled {
   cursor: not-allowed;
+}
+
+
+
+
+
+/* hotel styling */
+.searchItemHotelContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.searchItemHotel {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+.searchItemHotel h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.searchItemHotel p {
+  margin: 5px 0;
 }
