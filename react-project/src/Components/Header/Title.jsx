@@ -1,13 +1,13 @@
 import Logo from '/Logo.png';
-import './Title.css';
+import './Header.css';
 
 const Title = () => {
     return(
-        <div className="container">
+        <div>
         <a href="/index.html" target="_blank">
           <img src={Logo} className="logo" alt="EasyBook logo" />
         </a>
-        <h1 className="title">The Hotel Booking App</h1>
+        <h1 className="title">Book Smarter, Travel Easier.</h1>
       </div>
     )
  };

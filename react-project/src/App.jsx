@@ -1,15 +1,16 @@
 import './App.css';
 import { useState } from 'react';
-import Title from './Components/Header/Title';
-import Navbar from './Components/Header/Navbar';
-import Cities from './Components/Featured/Cities';
-import About from './Components/About/About';
-import Help from './Components/Help/Help';
-import LogIn from './Components/Authentication/LogIn';
-import SignUp from './Components/Authentication/SignUp';
-import MailList from './Components/MailList/MailList';
-import Featured from './Components/Featured/Featured';
-import Footer from './Components/Footer/Footer';
+import About from './Components/About/About'
+import Help from './Components/Help/Help'
+import Title from './Components/Header/Title'
+import Navbar from './Components/Header/Navbar'
+import LogIn from './Components/Authentication/LogIn'
+import SignUp from './Components/Authentication/SignUp'
+import Featured from './Components/Featured/Featured'
+import Footer from './Components/Footer/Footer'
+import MailList from './Components/MailList/MailList'
+import SearchBar from './Components/SearchBar/SearchBar'
+
 
 export default function App() {
   const [showLogIn, setShowLogIn] = useState(false);
@@ -24,8 +25,8 @@ export default function App() {
         return <Help />;
       default:
         return (
-          <div>
-            <Cities />  
+          <div className="content" id='home'>
+            <SearchBar />
             <Featured />   
           </div>
         );
@@ -33,18 +34,20 @@ export default function App() {
   };
 
   return (
-    <div>
-      <section id='home'>
+    <div className="app-container">
+      <section className="header-container">
         <Title />
         <Navbar setActiveContent={setActiveContent} setShowLogIn={setShowLogIn} setShowSignUp={setShowSignUp} />
       </section>
+    <div className="main-content">
       {renderContent()}
+    </div>
       {showLogIn && <LogIn setShowLogIn={setShowLogIn} setShowSignUp={setShowSignUp} />}
       {showSignUp && <SignUp setShowSignUp={setShowSignUp} setShowLogIn={setShowLogIn} />}
-      <div>
-        <Footer />
-        <MailList />
-      </div>
+    <div>
+      <Footer />
+      <MailList />
+    </div>
     </div>
   );
 }

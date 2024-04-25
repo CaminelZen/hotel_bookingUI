@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import './Navbar.css';
+import './Header.css';
 
 const Navbar = ({ setActiveContent, setShowLogIn, setShowSignUp }) => {
     return (

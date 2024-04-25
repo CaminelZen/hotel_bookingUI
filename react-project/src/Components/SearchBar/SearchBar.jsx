@@ -57,7 +57,7 @@ const SearchBar = () => {
       <div className="SearchItem">
         <FontAwesomeIcon icon={faPerson} className='Icon' />
         <span onClick={() => setOpenOptions(!openOptions)} className='SearchText'>{`${options.adult} adult, ${options.children} children, ${options.room} room`}</span>
-        {openOptions&&<div className="options">
+        {openOptions&& <div className="options">
           <div className="optionItem">
             <span className="optionText">Adult</span>
             <div className="optionCounter">
@@ -67,3 +67,10 @@ const SearchBar = () => {
               <span className="optionCounterNumber">{options.adult}</span>
               <button className="optionCounterButton" onClick={() => handleOption("adult", "i")}>+</button>
             </div>
+        </div></div>
+        };
+  </div>
+  </div>
+  );
+  }
+  export default SearchBar;
