@@ -9,7 +9,7 @@ import { useState, useRef, useEffect } from 'react';
 import { format } from 'date-fns';
 
 const SearchBar = ({ onSearchResults }) => {
-  const [locationn, setLocation] = useState('');
+  const [location, setLocation] = useState('');
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -43,7 +43,7 @@ const SearchBar = ({ onSearchResults }) => {
   };
 
   const fetchHotels = () => {
-    fetch(`http://localhost:8000/hotels/${locationn}`, {
+    fetch(`http://localhost:8000/hotels/`, {
       method: 'GET'
     })
       .then((response) => {
@@ -63,7 +63,7 @@ const SearchBar = ({ onSearchResults }) => {
   };
 
   const handleSearch = () => {
-    fetchHotels('amsterdam');
+    fetchHotels();
   };
 
   const handleKeyPress = (event) => {
@@ -91,7 +91,7 @@ const SearchBar = ({ onSearchResults }) => {
         <input type="text"
           placeholder='Choose your destination'
           className='SearchInput'
-          value={locationn}
+          value={location}
           onChange={(e) => handleChange(e.target.value)}
           onKeyPress={handleKeyPress}
         />
@@ -155,10 +155,8 @@ const SearchBar = ({ onSearchResults }) => {
           </div>
         </div>}
       </div>
-
       <div className="SearchItem">
-        <button className='SearchBtn' onClick={handleSearch}>Search</button>
-        
+        <button className='SearchBtn' onClick={handleSearch}>Search</button>    
       </div>
     </div>
   );
