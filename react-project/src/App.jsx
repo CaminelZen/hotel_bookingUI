@@ -1,15 +1,15 @@
 import './App.css';
 import { useState } from 'react';
-import About from './Components/About/About'
-import Help from './Components/Help/Help'
-import Title from './Components/Header/Title'
-import Navbar from './Components/Header/Navbar'
-import LogIn from './Components/Authentication/LogIn'
-import SignUp from './Components/Authentication/SignUp'
-import Featured from './Components/Featured/Featured'
+import About from './Components/About/About';
+import Help from './Components/Help/Help';
+import Title from './Components/Header/Title';
+import Navbar from './Components/Header/Navbar';
+import LogIn from './Components/Authentication/LogIn';
+import SignUp from './Components/Authentication/SignUp';
+import Featured from './Components/Featured/Featured';
 import MailList from './Components/Footer/MailList';
 import Results from './Components/Results/Results';
-import SearchBar from './Components/SearchBar/SearchBar'
+import SearchBar from './Components/SearchBar/SearchBar';
 
 export default function App() {
   const [showLogIn, setShowLogIn] = useState(false);
@@ -18,6 +18,7 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [cityClick, setCityClick] = useState([]);
 
   const handleLogout = () => {
     // Perform logout actions here
@@ -27,6 +28,12 @@ export default function App() {
 
   const handleSearchResults = (results) => {
     setSearchResults(results);
+    setActiveContent('results');
+  };
+
+  const handleCityClick = (cityHotels) => {
+    setCityClick(cityHotels);
+    setActiveContent('results');
   };
 
   const renderContent = () => {
@@ -36,11 +43,11 @@ export default function App() {
       case 'help':
         return <Help />;
       case 'results':
-          return <Results searchResults={searchResults} />;
+          return <Results searchResults={searchResults} cityClick={cityClick} />;
       default:
         return (
           <div id='home'>
-            <Featured />
+            <Featured onCityClick={handleCityClick} />
           </div>
         );
     }

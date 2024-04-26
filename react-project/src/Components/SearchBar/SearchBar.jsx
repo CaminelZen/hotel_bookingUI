@@ -43,7 +43,12 @@ const SearchBar = ({ onSearchResults }) => {
   };
 
   const fetchHotels = () => {
-    fetch(`http://localhost:8000/hotels/`, {
+    const queryParams = new URLSearchParams({
+      location: location,
+      // Add other parameters if needed (dates, number of guests, etc.)
+    });
+
+    fetch(`http://localhost:8000/hotels/?${queryParams}`, {
       method: 'GET'
     })
       .then((response) => {
@@ -54,8 +59,8 @@ const SearchBar = ({ onSearchResults }) => {
       })
       .then((data) => {
         const results = data;
-        onSearchResults(results);
         setHotels(data);
+        onSearchResults(results);
       })
       .catch((error) => {
         console.error('Error fetching hotel locations:', error);
