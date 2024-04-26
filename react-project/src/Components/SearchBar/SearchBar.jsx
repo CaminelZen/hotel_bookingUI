@@ -93,7 +93,7 @@ const SearchBar = ({ onSearchResults }) => {
           className='SearchInput'
           value={location}
           onChange={(e) => handleChange(e.target.value)}
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyPress}
         />
       </div>
 
