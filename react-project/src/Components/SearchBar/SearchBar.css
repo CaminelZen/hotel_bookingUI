@@ -87,33 +87,3 @@
 .optionCounterButton:disabled {
   cursor: not-allowed;
 }
-
-.SearchItemHotelContainer {
-  display: fixed;
-  left: -100px;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.SearchItemHotel {
-  width: calc(50% - 10px); /* Adjust width as needed */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 20px;
-}
-
-.HotelName {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.RoomNumber,
-.BedSize,
-.Price,
-.Availability,
-.Review,
-.Rating {
-  margin-top: 5px;
-}
