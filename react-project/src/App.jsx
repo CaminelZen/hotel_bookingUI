@@ -8,6 +8,7 @@ import LogIn from './Components/Authentication/LogIn'
 import SignUp from './Components/Authentication/SignUp'
 import Featured from './Components/Featured/Featured'
 import MailList from './Components/Footer/MailList';
+import Results from './Components/Results/Results';
 import SearchBar from './Components/SearchBar/SearchBar'
 
 export default function App() {
@@ -16,11 +17,16 @@ export default function App() {
   const [activeContent, setActiveContent] = useState('home');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
   const handleLogout = () => {
     // Perform logout actions here
     setIsLoggedIn(false);
     setUsername('');
+  };
+
+  const handleSearchResults = (results) => {
+    setSearchResults(results);
   };
 
   const renderContent = () => {
@@ -29,10 +35,11 @@ export default function App() {
         return <About />;
       case 'help':
         return <Help />;
+      case 'results':
+          return <Results searchResults={searchResults} />;
       default:
         return (
           <div id='home'>
-            <SearchBar />
             <Featured />
           </div>
         );
@@ -51,6 +58,7 @@ export default function App() {
           username={username} 
           handleLogout={handleLogout} 
         />
+        <SearchBar onSearchResults={handleSearchResults} />
       </section>
     <div className="main-content">
       {renderContent()}

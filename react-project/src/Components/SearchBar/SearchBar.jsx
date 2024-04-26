@@ -4,10 +4,11 @@ import { faPerson, faSearch, faCalendarDays } from '@fortawesome/free-solid-svg-
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
+import PropTypes from 'prop-types';
 import { useState, useRef, useEffect } from 'react';
 import { format } from 'date-fns';
 
-const SearchBar = () => {
+const SearchBar = ({ onSearchResults }) => {
   const [locationn, setLocation] = useState('');
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
@@ -23,8 +24,7 @@ const SearchBar = () => {
     room: 1,
   });
   const [openPersonOptions, setOpenPersonOptions] = useState(false);
-  const [hotels, setHotels] = useState([]);
-
+  const [, setHotels] = useState([]);
   const searchBarRef = useRef(null);
 
   useEffect(() => {
@@ -53,6 +53,8 @@ const SearchBar = () => {
         return response.json();
       })
       .then((data) => {
+        const results = data;
+        onSearchResults(results);
         setHotels(data);
       })
       .catch((error) => {
@@ -61,7 +63,7 @@ const SearchBar = () => {
   };
 
   const handleSearch = () => {
-    fetchHotels();
+    fetchHotels('amsterdam');
   };
 
   const handleKeyPress = (event) => {
@@ -156,24 +158,14 @@ const SearchBar = () => {
 
       <div className="SearchItem">
         <button className='SearchBtn' onClick={handleSearch}>Search</button>
-      </div>
-
-      <div className="SearchItemHotelContainer">
-  {/* Render fetched hotels */}
-  {hotels.map((hotel, index) => (
-    <div className="SearchItemHotel" key={index}>
-      <h2 className="HotelName">{hotel.hotel_name}</h2>
-      <p className="RoomNumber">Room Number: {hotel.room_number}</p>
-      <p className="BedSize">Bed Size: {hotel.bed_size}</p>
-      <p className="Price">Price: {hotel.price}</p>
-      <p className="Availability">Availability: {hotel.available}</p>
-      <p className="Review">Review: {hotel.review}</p>
-      <p className="Rating">Rating: {hotel.rating}</p>
-    </div>
-  ))}
+        
       </div>
     </div>
   );
+};
+
+SearchBar.propTypes = {
+  onSearchResults: PropTypes.func.isRequired
 };
 
 export default SearchBar;

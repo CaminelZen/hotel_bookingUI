@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { UserContext } from './context/UserContext';
 import './LogIn.css';
 
-const LogIn = ({ setShowLogIn, setShowSignUp }) => { 
+const LogIn = ({ setShowLogIn, setShowSignUp, setIsLoggedIn }) => { 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -19,7 +19,9 @@ const LogIn = ({ setShowLogIn, setShowSignUp }) => {
         const data = await response.json();
 
         if (response.ok) {
+            localStorage.setItem('token', data.access_token);
             setToken(data.access_token);
+            setIsLoggedIn(true);
         } else {
             setErrorMessage(data.detail);
         }
@@ -27,8 +29,8 @@ const LogIn = ({ setShowLogIn, setShowSignUp }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await submitLogIn();
         setShowLogIn(false);
+        await submitLogIn();
     };
 
     return (
@@ -50,7 +52,8 @@ const LogIn = ({ setShowLogIn, setShowSignUp }) => {
 }
 LogIn.propTypes = {
     setShowLogIn: PropTypes.func.isRequired,
-    setShowSignUp: PropTypes.func.isRequired
+    setShowSignUp: PropTypes.func.isRequired,
+    setIsLoggedIn: PropTypes.func.isRequired
 };
 
 export default LogIn;
