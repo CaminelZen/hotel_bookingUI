@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { UserContext } from './context/UserContext';
 import './LogIn.css';
 
-const LogIn = ({ setShowLogIn, setShowSignUp, setIsLoggedIn }) => { 
-    const [username, setUsername] = useState("");
+const LogIn = ({ setShowLogIn, setShowSignUp, setIsLoggedIn, username, setUsername }) => { 
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [, setToken] = useContext(UserContext);
@@ -20,8 +19,10 @@ const LogIn = ({ setShowLogIn, setShowSignUp, setIsLoggedIn }) => {
 
         if (response.ok) {
             localStorage.setItem('token', data.access_token);
+            localStorage.setItem('username', data.username);
             setToken(data.access_token);
             setIsLoggedIn(true);
+            setUsername(data.username);
         } else {
             setErrorMessage(data.detail);
         }
@@ -39,7 +40,7 @@ const LogIn = ({ setShowLogIn, setShowSignUp, setIsLoggedIn }) => {
               <span className="close" onClick={() => { setShowLogIn(false); }}>&times;</span>
               <h2>Log In</h2>
                   <div className='input-container'>
-                  <input type="text" placeholder="Username" value={username} onChange={(username) => setUsername(username.target.value)} />
+                  <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
                   <input type="password" placeholder="Password" value={password} onChange={(password) => setPassword(password.target.value)} />
                   </div>
                   <p className="main-button"><button onClick={handleSubmit}>Log In</button></p>
@@ -53,7 +54,9 @@ const LogIn = ({ setShowLogIn, setShowSignUp, setIsLoggedIn }) => {
 LogIn.propTypes = {
     setShowLogIn: PropTypes.func.isRequired,
     setShowSignUp: PropTypes.func.isRequired,
-    setIsLoggedIn: PropTypes.func.isRequired
+    setIsLoggedIn: PropTypes.func.isRequired,
+    setUsername: PropTypes.func.isRequired,
+    username: PropTypes.string.isRequired
 };
 
 export default LogIn;

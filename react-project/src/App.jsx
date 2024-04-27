@@ -1,15 +1,15 @@
 import './App.css';
 import { useState } from 'react';
-import About from './Components/About/About'
-import Help from './Components/Help/Help'
-import Title from './Components/Header/Title'
-import Navbar from './Components/Header/Navbar'
-import LogIn from './Components/Authentication/LogIn'
-import SignUp from './Components/Authentication/SignUp'
-import Featured from './Components/Featured/Featured'
+import About from './Components/About/About';
+import Help from './Components/Help/Help';
+import Title from './Components/Header/Title';
+import Navbar from './Components/Header/Navbar';
+import LogIn from './Components/Authentication/LogIn';
+import SignUp from './Components/Authentication/SignUp';
+import Featured from './Components/Featured/Featured';
 import MailList from './Components/Footer/MailList';
 import Results from './Components/Results/Results';
-import SearchBar from './Components/SearchBar/SearchBar'
+import SearchBar from './Components/SearchBar/SearchBar';
 
 export default function App() {
   const [showLogIn, setShowLogIn] = useState(false);
@@ -20,13 +20,18 @@ export default function App() {
   const [searchResults, setSearchResults] = useState([]);
 
   const handleLogout = () => {
-    // Perform logout actions here
     setIsLoggedIn(false);
     setUsername('');
   };
 
   const handleSearchResults = (results) => {
     setSearchResults(results);
+    setActiveContent('results');
+  };
+
+  const handleCityClick = (results) => {
+    setSearchResults(results);
+    setActiveContent('results');
   };
 
   const renderContent = () => {
@@ -40,7 +45,7 @@ export default function App() {
       default:
         return (
           <div id='home'>
-            <Featured />
+            <Featured onSearchResults={handleCityClick} />
           </div>
         );
     }
@@ -64,7 +69,7 @@ export default function App() {
       {renderContent()}
       <MailList />
     </div>
-    {showLogIn && <LogIn setShowLogIn={setShowLogIn} setShowSignUp={setShowSignUp} />}
+    {showLogIn && <LogIn setShowLogIn={setShowLogIn} setShowSignUp={setShowSignUp} setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />}
     {showSignUp && <SignUp setShowSignUp={setShowSignUp} setShowLogIn={setShowLogIn} />}
     </div>
   );

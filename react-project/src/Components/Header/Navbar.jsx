@@ -9,8 +9,10 @@ const Navbar = ({ setActiveContent, setShowLogIn, setShowSignUp, isLoggedIn, use
             <a href="#help" onClick={() => setActiveContent('help')}>Help</a>
             {isLoggedIn ? (
                 <>
-                    <span>Hi {username}</span>
-                    <a href="#logout" onClick={handleLogout}>Log Out</a>
+                    <span className='greeting'>Hi {username}</span>
+                                        <a href="#logout" onClick={handleLogout}>Log Out</a>
+
+
                 </>
             ) : (
                 <>
