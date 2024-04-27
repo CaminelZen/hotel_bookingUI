@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import "./Featured.css";
 
 // Import images
@@ -19,35 +20,37 @@ const cities = [
     { name: "Maastricht", image: Maastricht },
 ];
 
-const Featured = () => {
-    const [hotels, setHotels] = useState([]);
-    const [dialogVisible, setDialogVisible] = useState(false);
-
-    useEffect(() => {
-        fetchHotels();
-    }, []);
-
-    const fetchHotels = () => {
-        // Fetch hotels for each city
-        Promise.all(cities.map(city => {
-            return fetch(`http://localhost:8000/hotels/${location}`)
-                .then(response => response.json())
-                .then(data => ({
-                    city: city.name,
-                    hotels: data
-                }))
-                .catch(error => {
-                    console.error(`Error fetching hotels for ${city.name}:`, error);
-                    return { city: city.name, hotels: [] };
-                });
-        }))
-            .then(cityHotels => {
-                setHotels(cityHotels);
-            })
-            .catch(error => {
-                console.error('Error fetching hotels for cities:', error);
-            });
-    };
+const Featured = ({ onSearchResults }) => {
+    const [, setHotels] = useState([]);
+    
+    const fetchHotels = (cityName) => {
+        const queryParams = new URLSearchParams({
+          location: cityName,
+          // Add other parameters if needed (dates, number of guests, etc.)
+        });
+    
+        fetch(`http://localhost:8000/hotels/?${queryParams}`, {
+          method: 'GET'
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Failed to fetch hotel locations');
+            }
+            return response.json();
+          })
+          .then((data) => {
+            const results = data;
+            setHotels(data);
+            onSearchResults(results);
+          })
+          .catch((error) => {
+            console.error('Error fetching hotel locations:', error);
+          });
+      };
+    
+      const handleImageClick = (cityName) => {
+        fetchHotels(cityName);
+      };
 
     // Chunk the hotels array into rows of three
     const chunkArray = (arr, size) =>
@@ -55,42 +58,31 @@ const Featured = () => {
             arr.slice(i * size, i * size + size)
         );
 
-    const rows = chunkArray(hotels, 3);
-    const handleImageClick = () => {
-      setDialogVisible(true);
-  };
+    const rows = chunkArray(cities, 3); // Change 'hotels' to 'cities' to chunk the cities array
 
     return (
       <div className="featured">
-          {dialogVisible && (
-              <div className="dialog">
-                  <p>Not found</p>
-                  <button onClick={() => setDialogVisible(false)}>Close</button>
-              </div>
-          )}
           {rows.map((row, rowIndex) => (
               <div className="row" key={rowIndex}>
-                  {row.map((cityHotel, index) => (
+                  {row.map((city, index) => (
                       <div className="featuredItem" key={index}>
-                          <div className="imageContainer" onClick={handleImageClick}>
-                              <img src={cities.find(city => city.name === cityHotel.city).image} alt={cityHotel.city} className="featuredImg" />
+                          <div className="imageContainer" onClick={() => handleImageClick(city.name)}>
+                              <img src={city.image} alt={city.name} className="featuredImg" />
                           </div>
                           <div className="featuredTitles">
-                              <p>{cityHotel.city}</p>
-                              {cityHotel.hotels.length > 0 && ( /* Added parenthesis here */
-                                  <ul>
-                                      {cityHotel.hotels.map((hotel, hotelIndex) => (
-                                          <li key={hotelIndex}>
-                                              {hotel.hotel_name}
-                                          </li>
-                                      ))}
-                                  </ul>
-                              )} {/* Added closing parenthesis here */}
+                              <p>{city.name}</p>
+                              {/* Add logic for displaying hotels here */}
                           </div>
                       </div>
                   ))}
               </div>
           ))}
       </div>
-  );}
+  );
+}
+
+Featured.propTypes = {
+  onSearchResults: PropTypes.func.isRequired
+};
+
 export default Featured;

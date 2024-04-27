@@ -18,10 +18,8 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [cityClick, setCityClick] = useState([]);
 
   const handleLogout = () => {
-    // Perform logout actions here
     setIsLoggedIn(false);
     setUsername('');
   };
@@ -31,8 +29,8 @@ export default function App() {
     setActiveContent('results');
   };
 
-  const handleCityClick = (cityHotels) => {
-    setCityClick(cityHotels);
+  const handleCityClick = (results) => {
+    setSearchResults(results);
     setActiveContent('results');
   };
 
@@ -43,11 +41,11 @@ export default function App() {
       case 'help':
         return <Help />;
       case 'results':
-          return <Results searchResults={searchResults} cityClick={cityClick} />;
+          return <Results searchResults={searchResults} />;
       default:
         return (
           <div id='home'>
-            <Featured onCityClick={handleCityClick} />
+            <Featured onSearchResults={handleCityClick} />
           </div>
         );
     }
@@ -71,7 +69,7 @@ export default function App() {
       {renderContent()}
       <MailList />
     </div>
-    {showLogIn && <LogIn setShowLogIn={setShowLogIn} setShowSignUp={setShowSignUp} />}
+    {showLogIn && <LogIn setShowLogIn={setShowLogIn} setShowSignUp={setShowSignUp} setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />}
     {showSignUp && <SignUp setShowSignUp={setShowSignUp} setShowLogIn={setShowLogIn} />}
     </div>
   );
