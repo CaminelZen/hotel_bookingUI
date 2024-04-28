@@ -1,7 +1,29 @@
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import './Results.css'
 
+
+const BASE_URL = 'http://localhost:8000'
 
 const Results = ({ searchResults }) => {
+
+const[imageUrls, setImageUrls] = useState([])
+
+
+useEffect(() => {
+  if (searchResults && searchResults.length > 0) {
+    const urls = searchResults.map(results => {
+      if (results.image_url_type === 'absolute') {
+        return results.image_url;
+      } else {
+        return BASE_URL + results.image_url;
+      }
+    });
+    setImageUrls(urls);
+  }
+}, [searchResults]);
+
+
   return (
     <section>
     {searchResults.map((results, index) => (
@@ -13,6 +35,7 @@ const Results = ({ searchResults }) => {
         <p className="Availability">Availability: {results.available}</p>
         <p className="Review">Review: {results.review}</p>
         <p className="Rating">Rating: {results.rating}</p>
+        <img className="RoomImg" src={imageUrls[index]}/>
     </div>
 ))}
 </section>
