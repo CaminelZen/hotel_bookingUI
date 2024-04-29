@@ -6,10 +6,12 @@ import Title from './Components/Header/Title';
 import Navbar from './Components/Header/Navbar';
 import LogIn from './Components/Authentication/LogIn';
 import SignUp from './Components/Authentication/SignUp';
-import Featured from './Components/Featured/Featured';
-import MailList from './Components/Footer/MailList';
+import Featured from './Components/Featured/Featured'; 
+import MailList from './Components/Footer/MailList'; 
 import Results from './Components/Results/Results';
 import SearchBar from './Components/SearchBar/SearchBar';
+import Home from './Components/Home/Home'; 
+
 
 export default function App() {
   const [showLogIn, setShowLogIn] = useState(false);
@@ -28,11 +30,11 @@ export default function App() {
     setSearchResults(results);
     setActiveContent('results');
   };
-
-  const handleCityClick = (results) => {
+ 
+   const handleCityClick = (results) => {
     setSearchResults(results);
     setActiveContent('results');
-  };
+  }; 
 
   const renderContent = () => {
     switch (activeContent) {
@@ -44,16 +46,22 @@ export default function App() {
           return <Results searchResults={searchResults} />;
       default:
         return (
-          <div id='home'>
+          <div id='home'> 
+            
             <Featured onSearchResults={handleCityClick} />
-          </div>
+           </div>
         );
     }
   };
 
   return (
-    <div className="app-container">
-      <section className="header-container">
+      <>
+      <div className='homeImg'>
+      <Home/>
+      </div>
+     <div className="app-container">
+      <section className="header-container"> 
+        
         <Title />
         <Navbar 
           setActiveContent={setActiveContent} 
@@ -62,15 +70,18 @@ export default function App() {
           isLoggedIn={isLoggedIn} 
           username={username} 
           handleLogout={handleLogout} 
-        />
-        <SearchBar onSearchResults={handleSearchResults} />
+        /> 
+        
+      <SearchBar onSearchResults={handleSearchResults} />
       </section>
     <div className="main-content">
       {renderContent()}
-      <MailList />
+      
+      <MailList /> 
     </div>
     {showLogIn && <LogIn setShowLogIn={setShowLogIn} setShowSignUp={setShowSignUp} setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />}
     {showSignUp && <SignUp setShowSignUp={setShowSignUp} setShowLogIn={setShowLogIn} />}
     </div>
+  </>
   );
-}
+}  
