@@ -8,9 +8,10 @@
   padding: 10px;
   border-radius: 5px;
   position: relative;
-  top: 30px;
+  top: 0px;
   width: 100%;
   max-width: 1024px;
+  left: 200px;
 }
 
 .Icon {

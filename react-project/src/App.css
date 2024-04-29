@@ -19,9 +19,9 @@
   left: 0;
   right: 0;
   width: 100%;
-  height: 20%;
+  height: 10%;
   border-radius: 0 100px 0 100px;
-  background: linear-gradient(white, rgb(54, 136, 156));
+  /* background: linear-gradient(white, rgb(54, 136, 156)); */
   padding: 0;
   z-index: 2;
 }
@@ -122,13 +122,5 @@
   cursor: pointer;
 }
 
-.homeImg {
-   
-    background-size: cover; /* Ensure that the background image covers the entire slide */
-    background-position: center; /* Center the background image within the slide */
-    padding: 5%;
-    margin-left: -100px;
-    margin-right: 50px;
-    margin-top: 40px;
-  }
+
   

@@ -142,7 +142,7 @@ const SearchBar = ({ onSearchResults }) => {
             <span className="optionText">Children</span>
             <div className="optionCounter">
               <button
-                disabled={options.children <= 1}
+                disabled={options.children <= 0}
                 className="optionCounterButton" onClick={() => handleOption("children", "d")}>-</button>
               <span className="optionCounterNumber">{options.children}</span>
               <button className="optionCounterButton" onClick={() => handleOption("children", "i")}>+</button>
