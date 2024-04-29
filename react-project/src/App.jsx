@@ -13,6 +13,7 @@ import SearchBar from './Components/SearchBar/SearchBar';
 import Home from './Components/Home/Home'; 
 
 
+
 export default function App() {
   const [showLogIn, setShowLogIn] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
@@ -47,7 +48,6 @@ export default function App() {
       default:
         return (
           <div id='home'> 
-            
             <Featured onSearchResults={handleCityClick} />
            </div>
         );
