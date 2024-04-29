@@ -1,19 +1,44 @@
-.SearchItemHotelContainer {
-  display: flex;    /*changed from fixed*/
-  left: -100px; 
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 20px;
+.ResultsContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.FilterContainer {
+  /* width: 550px; */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.FilterSection {
+  margin-bottom: 10px;
+}
+
+.FilterSection label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.FilterSection input {
   
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.HotelsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .SearchItemHotel {
-  width: calc(50% - 10px); /* Adjust width as needed */
+  width: calc(50% - 10px);
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 20px;
- 
 }
 
 .HotelName {
@@ -26,14 +51,17 @@
 .Price,
 .Availability,
 .Review,
-.Rating
- {
+.Rating {
   margin-top: 5px;
 }
 
 .RoomImg {
   max-width: 100%;
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 5px; /* Apply border radius to image */
-  
+  height: auto;
+  border-radius: 5px;
+}
+.FilterTitle {
+  text-align: left;
+  padding: 1%;
+  font-weight: 500;
 }

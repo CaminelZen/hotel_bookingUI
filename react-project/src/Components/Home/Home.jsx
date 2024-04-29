@@ -51,6 +51,7 @@ export default function Home() {
                     effect='fade'
                     autoplay={{ delay: 2500, disableOnInteraction: false }} // Autoplay configuration
                     loop={true} // Enable loop
+                    centeredSlides={true}
                     navigation
                     pagination={{ clickable: true }}
                     scrollbar={{ draggable: true }}

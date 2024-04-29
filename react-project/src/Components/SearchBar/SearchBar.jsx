@@ -45,6 +45,7 @@ const SearchBar = ({ onSearchResults }) => {
   const fetchHotels = () => {
     const queryParams = new URLSearchParams({
       location: location,
+      
       // Add other parameters if needed (dates, number of guests, etc.)
     });
 
