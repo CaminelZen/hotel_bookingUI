@@ -121,3 +121,14 @@
   right: 15px;
   cursor: pointer;
 }
+
+.homeImg {
+   
+    background-size: cover; /* Ensure that the background image covers the entire slide */
+    background-position: center; /* Center the background image within the slide */
+    padding: 5%;
+    margin-left: -100px;
+    margin-right: 50px;
+    margin-top: 40px;
+  }
+  
