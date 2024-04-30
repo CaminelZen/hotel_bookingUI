@@ -83,7 +83,7 @@ const Results = ({ searchResults }) => {
               <div className="HotelInfo">
                 <p><span className="Title">Room Number:</span> {results.room_number}</p>
                 <p><span className="Title">Bed Size:</span> {results.bed_size}</p>
-                <p><span className="Title">Price:</span> {results.price}</p>
+                <p><span className="Title">Price:</span> €  {results.price}</p>
                 <p><span className="Title">Availability:</span> {results.available ? 'Available' : 'Not Available'}</p>
               </div>
               <div className="ReviewsContainer">

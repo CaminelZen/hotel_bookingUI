@@ -11,6 +11,7 @@ import MailList from './Components/Footer/MailList';
 import Results from './Components/Results/Results';
 import SearchBar from './Components/SearchBar/SearchBar';
 import Home from './Components/Home/Home'; 
+import ReviewBox from './Components/Review/ReviewBox';
 
 
 
@@ -21,6 +22,8 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  
+
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -57,7 +60,7 @@ export default function App() {
   return (
       <>
       <div className='homeImg'>
-      <Home/>
+      <Home/> 
       </div>
      <div className="app-container">
       <section className="header-container"> 
@@ -77,7 +80,8 @@ export default function App() {
     <div className="main-content">
       {renderContent()}
       
-      <MailList /> 
+      <MailList />
+      <ReviewBox/>
     </div>
     {showLogIn && <LogIn setShowLogIn={setShowLogIn} setShowSignUp={setShowSignUp} setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />}
     {showSignUp && <SignUp setShowSignUp={setShowSignUp} setShowLogIn={setShowLogIn} />}
