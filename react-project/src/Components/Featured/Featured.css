@@ -1,7 +1,7 @@
 .featured {
   position: relative;
   top: 90px;
-  max-width: 1024px;
+  max-width: 2048px;
   margin: 30px;
   bottom: 90px;
   flex-wrap: wrap;
@@ -20,6 +20,7 @@
   flex-basis: calc(33.333% - 10px); /* Adjust width for three items per row */
   position: relative;
   color: white;
+  cursor: pointer;
 }
 
 .imageContainer {

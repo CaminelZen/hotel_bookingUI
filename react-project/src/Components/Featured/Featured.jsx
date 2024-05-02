@@ -29,7 +29,7 @@ const Featured = ({ onSearchResults }) => {
           // Add other parameters if needed (dates, number of guests, etc.)
         });
     
-        fetch(`http://localhost:8000/hotels/?${queryParams}`, {
+        fetch(`http://127.0.0.1:8000/hotels?${queryParams}`, {
           method: 'GET'
         })
           .then((response) => {
