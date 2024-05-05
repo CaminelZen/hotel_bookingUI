@@ -1,11 +1,8 @@
-import './Help.css';
-
 const Help = () => {
     return (
-        <section className='help' id='help'>
-        <div className="row">
-          <div className="content">
-            <h3>Welcome to the Help Center</h3>
+        <section className="flex flex-wrap items-center gap-24" id='help'>
+          <div className="flex-1 basis-[51rem]">
+            <h3 className="text-2xl font-[Arial] text-[#34197f] text-center">Welcome to the Help Center</h3>
             <h4>Booking Process:</h4>
             <ul>
                 <li><strong>How to Book a Hotel:</strong> Learn how to search for hotels, select dates, and complete your reservation.</li>
@@ -62,7 +59,7 @@ const Help = () => {
 
             </ul>
 
-            <h2>Terms of Service and Policies:</h2>
+            <h3 className="text-2xl font-[Arial] text-[#34197f] text-center">Terms of Service and Policies:</h3>
             <ul>
 
                 <li><strong>Terms of Service:</strong> Please review and agree to the terms of service and booking policies.</li>
@@ -74,7 +71,6 @@ const Help = () => {
                 <li><strong>Share Your Thoughts:</strong> We value your feedback! Let us know how we can improve EasyBook.</li>
             </ul>
                   </div>
-                </div>
               </section>
     );
 }

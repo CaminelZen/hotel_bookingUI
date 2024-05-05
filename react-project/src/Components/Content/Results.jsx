@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-import './Results.css'
-import Star from '../Star/Star'
+import Star from '../Reviews/Star'
 
 const BASE_URL = 'http://localhost:8000'
 
@@ -52,9 +51,9 @@ const Results = ({ searchResults }) => {
   return (
     <section>
       <p className='FilterTitle'>Filter by:</p>
-      <div className="ResultsContainer">
-        <div className="FilterContainer">
-          <div className="FilterSection">
+      <div className="flex justify-center">
+        <div className="p-2 border border-gray-300 rounded-md mr-5">
+          <div className="mb-2.5">
 
             <label>Min Price:</label>
             <input
@@ -76,29 +75,29 @@ const Results = ({ searchResults }) => {
           </div>
         </div>
 
-        <div className="HotelsContainer">
+        <div className="flex flex-wrap justify-center">
           {filteredResults.map((results, index) => (
-            <div className="SearchItemHotel" key={index}>
-              <h2 className="HotelName">{results.hotel_name}</h2>
+            <div className="w-[calc(50%-10px)] border border-gray-300 rounded-md p-2 mb-5" key={index}>
+              <h2 className="text-xl font-bold">{results.hotel_name}</h2>
               <div className="HotelInfo">
-                <p><span className="Title">Room Number:</span> {results.room_number}</p>
-                <p><span className="Title">Bed Size:</span> {results.bed_size}</p>
-                <p><span className="Title">Price:</span> €  {results.price}</p>
-                <p><span className="Title">Availability:</span> {results.available ? 'Available' : 'Not Available'}</p>
+                <p><span className="font-bold">Room Number:</span> {results.room_number}</p>
+                <p><span className="font-bold">Bed Size:</span> {results.bed_size}</p>
+                <p><span className="font-bold">Price:</span> €  {results.price}</p>
+                <p><span className="font-bold">Availability:</span> {results.available ? 'Available' : 'Not Available'}</p>
               </div>
               <div className="ReviewsContainer">
                 <p className="ReviewTitle" style={{ fontWeight: "bold" }}>Reviews:</p>
                 {results.reviews.map((review, reviewIndex) => (
-                  <p className="Review" key={reviewIndex}>{review.text}</p>
+                  <p className="mt-1.5" key={reviewIndex}>{review.text}</p>
                 ))}
               </div>
               <div className="RatingsContainer">
                 <p className="RatingTitle" style={{ fontWeight: "bold" }}>Ratings: </p>
                 {results.ratings.map((rating, ratingIndex) => (
-                  <p className="Rating" key={ratingIndex}> {rating.rating}</p>
+                  <p className="mt-1.5" key={ratingIndex}> {rating.rating}</p>
                 ))}
               </div>
-              <img className="RoomImg" src={imageUrls[index]} alt={`Room ${index}`} />
+              <img className="max-w-full h-auto rounded-md" src={imageUrls[index]} alt={`Room ${index}`} />
             </div>
           ))}
         </div>
