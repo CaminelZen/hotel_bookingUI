@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import "./Featured.css";
 
 // Import images
 import Amsterdam from '/Amsterdam.jpg';
@@ -61,15 +60,15 @@ const Featured = ({ onSearchResults }) => {
     const rows = chunkArray(cities, 3); // Change 'hotels' to 'cities' to chunk the cities array
 
     return (
-      <div className="featured">
+      <div className="relative top-24 max-w-[2048px] m-8 bottom-24 flex flex-wrap justify-start">
           {rows.map((row, rowIndex) => (
-              <div className="row" key={rowIndex}>
+              <div className="flex my-5 w-full justify-between gap-5" key={rowIndex}>
                   {row.map((city, index) => (
-                      <div className="featuredItem" key={index}>
-                          <div className="imageContainer" onClick={() => handleImageClick(city.name)}>
-                              <img src={city.image} alt={city.name} className="featuredImg" />
+                      <div className="relative text-white cursor-pointer basis-[calc(33.333%-10px)]" key={index}>
+                          <div className="relative" onClick={() => handleImageClick(city.name)}>
+                              <img src={city.image} alt={city.name} className="w-full h-auto object-cover" />
                           </div>
-                          <div className="featuredTitles">
+                          <div className="absolute bottom-0 left-1 bg-black bg-opacity-50 w-[80%] h-[30%] p-1 rounded-bl-none rounded-br-lg">
                               <p>{city.name}</p>
                               {/* Add logic for displaying hotels here */}
                           </div>
