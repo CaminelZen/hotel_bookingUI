@@ -6,7 +6,7 @@ import Title from './Components/Header/Title';
 import Navbar from './Components/Header/Navbar';
 import LogIn from './Components/Authentication/LogIn';
 import SignUp from './Components/Authentication/SignUp';
-import Featured from './Components/Featured/Featured'; 
+import Featured from './Components/Home/Featured'
 import MailList from './Components/Footer/MailList'; 
 import Results from './Components/Results/Results';
 import SearchBar from './Components/SearchBar/SearchBar';
@@ -59,7 +59,7 @@ export default function App() {
 
   return (
       <>
-      <div className='homeImg'>
+      <div className="w-full h-full bg-cover bg-center object-cover -ml-2.5 mt-10 p-0">
       <Home/> 
       </div>
      <div className="app-container">

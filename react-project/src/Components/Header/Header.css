@@ -13,7 +13,7 @@
   
   .navbar {
     position: absolute;
-    bottom: 10px; /* Adjust bottom positioning */
+    bottom: 50px; /* Adjust bottom positioning */
     right: 30px; /* Adjust right positioning */
     display: flex;
   }

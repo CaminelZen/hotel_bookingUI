@@ -1,18 +1,13 @@
-import './Home.css'
 import { useState } from 'react';
-/* import {useHistory} from 'react-router-dom' */
 import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
-import { EffectFade } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay } from 'swiper/modules';
 import Results from '../Results/Results'
 
 
 export default function Home() {
     const [hotels, setHotels] = useState([]);
-
     const fetchHotels = () => {
-
         fetch(`http://localhost:8000/hotels`, {
             method: 'GET',
         })
@@ -23,10 +18,7 @@ export default function Home() {
                 return response.json();
             })
             .then(data => {
-                console.log(data)
-                // Assuming data is an array of hotels
                 setHotels(data);
-                // You can perform any other actions with the fetched data here
             })
             .catch(error => {
                 console.error('Error fetching hotels:', error);
@@ -38,6 +30,12 @@ export default function Home() {
         setShowResults(true);
         fetchHotels();
     };
+    const slideImg = [
+        { src: '/room2.jpg', alt: 'Room 2' },
+        { src: '/room3.jpg', alt: 'Room 3' },
+        { src: '/room4.jpg', alt: 'Room 4' },
+        { src: '/room5.jpg', alt: 'Room 5' },
+      ];
 
     return (
         <div className="home-container">
@@ -57,33 +55,21 @@ export default function Home() {
                     scrollbar={{ draggable: true }}
 
                 >
-                    <SwiperSlide>
-                        <div className="slide-content">
-                            <h1 className="title">Book Smarter, Travel Easier</h1>
+                    {slideImg.map((slide, index) => (
+                    <SwiperSlide key={index}>
+                        <div className="relative h-screen">
+                            <img
+                            src={slide.src}
+                            alt={slide.alt}
+                            className="w-full h-full object-cover"
+                            />
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center p-4">
+                            <h1 className="absolute -top-full -left-1/2 text-[#103346] font-[Arial] whitespace-nowrap">Book Smarter, Travel Easier</h1>
                             <button className="btn" onClick={handleShowResults}>Explore Now</button>
                         </div>
-                        <img src='/room2.jpg' alt="room" style={{ width: "100%", height: "100vh" }} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="slide-content">
-                            <h1 className="title">Book Smarter, Travel Easier</h1>
-                            <button className="btn" onClick={handleShowResults}>Explore Now</button>
-                        </div>
-                        <img src='/room3.jpg' alt="room" style={{ width: "140%", height: "100vh" }} />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="slide-content">
-                            <h1 className="title">Book Smarter, Travel Easier</h1>
-                            <button className="btn" onClick={handleShowResults}>Explore Now</button>
-                        </div>
-                        <img src='/room4.jpg' alt="room" style={{ width: "140%", height: "100vh" }} /></SwiperSlide>
-                    <SwiperSlide>
-                        <div className="slide-content">
-                            <h1 className="title">Book Smarter, Travel Easier</h1>
-                            <button className="btn" onClick={handleShowResults}>Explore Now</button>
-                        </div>
-                        <img src='/room5.jpg' alt="room" style={{ width: "140%", height: "100vh" }} /></SwiperSlide>
-
+                       </div>
+                     </SwiperSlide>
+                    ))}  
                 </Swiper>
             )}
         </div>

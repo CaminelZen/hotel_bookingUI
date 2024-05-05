@@ -30,9 +30,8 @@
   position: relative;
   flex-direction: column;
   align-items: center;
-  margin-top: 80px; /* Adjust according to header height */
   width: 100%;
-  max-width: 800px; /* Adjust maximum width as needed */
+  max-width: 1024; 
 }
 
 .login {
