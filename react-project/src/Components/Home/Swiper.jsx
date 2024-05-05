@@ -2,7 +2,7 @@ import { useState } from 'react';
 import 'swiper/css/bundle';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay } from 'swiper/modules';
-import Results from '../Results/Results'
+import Results from '../Content/Results'
 
 
 export default function Home() {
@@ -38,7 +38,7 @@ export default function Home() {
       ];
 
     return (
-        <div className="home-container">
+        <div>
             {showResults ? (
                 <Results searchResults={hotels} />
             ) : (
@@ -48,24 +48,22 @@ export default function Home() {
                     slidesPerView={1}
                     effect='fade'
                     autoplay={{ delay: 2500, disableOnInteraction: false }} // Autoplay configuration
-                    loop={true} // Enable loop
+                    loop={true}
                     centeredSlides={true}
                     navigation
                     pagination={{ clickable: true }}
                     scrollbar={{ draggable: true }}
-
                 >
                     {slideImg.map((slide, index) => (
                     <SwiperSlide key={index}>
-                        <div className="relative h-screen">
+                        <div>
                             <img
                             src={slide.src}
                             alt={slide.alt}
-                            className="w-full h-full object-cover"
                             />
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center p-4">
-                            <h1 className="absolute -top-full -left-1/2 text-[#103346] font-[Arial] whitespace-nowrap">Book Smarter, Travel Easier</h1>
-                            <button className="btn" onClick={handleShowResults}>Explore Now</button>
+                        <div>
+                            <h1>Book Smarter, Travel Easier</h1>
+                            <button onClick={handleShowResults}>Explore Now</button>
                         </div>
                        </div>
                      </SwiperSlide>

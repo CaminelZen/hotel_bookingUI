@@ -1,30 +1,25 @@
-import './App.css';
 import { useState } from 'react';
-import About from './Components/About/About';
-import Help from './Components/Help/Help';
-import Title from './Components/Header/Title';
-import Navbar from './Components/Header/Navbar';
 import LogIn from './Components/Authentication/LogIn';
 import SignUp from './Components/Authentication/SignUp';
-import Featured from './Components/Home/Featured'
+import About from './Components/Content/About';
+import Help from './Components/Content/Help';
+import Title from './Components/Header/Title';
+import Navbar from './Components/Header/Navbar';
+import SearchBar from './Components/Header/SearchBar';
 import MailList from './Components/Footer/MailList'; 
-import Results from './Components/Results/Results';
-import SearchBar from './Components/SearchBar/SearchBar';
-import Home from './Components/Home/Home'; 
-import ReviewBox from './Components/Review/ReviewBox';
-
-
+import Results from './Components/Content/Results';
+import Featured from './Components/Home/Featured';
+import Home from './Components/Home/Swiper'; 
+import ReviewBox from './Components/Reviews/ReviewBox';
 
 export default function App() {
-  const [showLogIn, setShowLogIn] = useState(false);
-  const [showSignUp, setShowSignUp] = useState(false);
   const [activeContent, setActiveContent] = useState('home');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
+  const [showLogInModal, setShowLogInModal] = useState(false);
+  const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   
-
-
   const handleLogout = () => {
     setIsLoggedIn(false);
     setUsername('');
@@ -62,14 +57,14 @@ export default function App() {
       <div className="w-full h-full bg-cover bg-center object-cover -ml-2.5 mt-10 p-0">
       <Home/> 
       </div>
-     <div className="app-container">
-      <section className="header-container"> 
+     <div className="flex flex-col items-center">
+      <section className="fixed top-0 left-0 right-0 w-full h-[15%] bg-[#faf7f7] p-0 z-20"> 
         
         <Title />
         <Navbar 
-          setActiveContent={setActiveContent} 
-          setShowLogIn={setShowLogIn} 
-          setShowSignUp={setShowSignUp} 
+          setActiveContent={setActiveContent}
+          setShowSignUpModal={setShowSignUpModal}
+          setShowLogInModal={setShowLogInModal} 
           isLoggedIn={isLoggedIn} 
           username={username} 
           handleLogout={handleLogout} 
@@ -77,14 +72,14 @@ export default function App() {
         
       <SearchBar onSearchResults={handleSearchResults} />
       </section>
-    <div className="main-content">
+    <div className="flex relative flex-col items-center w-full max-w-[1024px]">
       {renderContent()}
       
       <MailList />
       <ReviewBox/>
     </div>
-    {showLogIn && <LogIn setShowLogIn={setShowLogIn} setShowSignUp={setShowSignUp} setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />}
-    {showSignUp && <SignUp setShowSignUp={setShowSignUp} setShowLogIn={setShowLogIn} />}
+    {showLogInModal && <LogIn setShowLogInModal={setShowLogInModal} setShowSignUpModal={setShowSignUpModal} setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />}
+    {showSignUpModal && <SignUp setShowSignUpModal={setShowSignUpModal} setShowLogInModal={setShowLogInModal} />}
     </div>
   </>
   );

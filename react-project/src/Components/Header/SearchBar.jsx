@@ -1,4 +1,3 @@
-import './SearchBar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPerson, faSearch, faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { DateRange } from 'react-date-range';
@@ -91,24 +90,24 @@ const SearchBar = ({ onSearchResults }) => {
   };
 
   return (
-    <div className="Search" ref={searchBarRef}>
-      <div className="SearchItem">
-        <FontAwesomeIcon icon={faSearch} className='Icon' />
+    <div className="flex items-center justify-around p-2.5 bg-white border-3 border-[#103346] rounded-md relative top-0 w-full max-w-[1024px] left-50" ref={searchBarRef}>
+      <div className="flex items-center gap-2.5">
+        <FontAwesomeIcon icon={faSearch} className="text-gray-300" />
         <input type="text"
           placeholder='Choose your destination'
-          className='SearchInput'
+          className="border-none outline-none"
           value={location}
           onChange={(e) => handleChange(e.target.value)}
           onKeyDown={handleKeyPress}
         />
       </div>
 
-      <div className="SearchItem">
-        <FontAwesomeIcon icon={faCalendarDays} className='Icon' />
+      <div className="flex items-center gap-2.5">
+        <FontAwesomeIcon icon={faCalendarDays} className="text-gray-300" />
         <span onClick={() => {
           setOpenDate(!openDate);
           setOpenPersonOptions(false);
-        }} className='SearchText'>
+        }} className="text-gray-300 cursor-pointer">
           {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")} `}
         </span>
         {openDate && <DateRange
@@ -116,53 +115,53 @@ const SearchBar = ({ onSearchResults }) => {
           onChange={item => setDate([item.selection])}
           moveRangeOnFirstSelection={false}
           ranges={date}
-          className='date'
+          className="absolute top-[50px] z-20"
         />}
       </div>
 
-      <div className="SearchItem">
-        <FontAwesomeIcon icon={faPerson} className='Icon' />
+      <div className="flex items-center gap-2.5">
+        <FontAwesomeIcon icon={faPerson} className="text-gray-300" />
         <span onClick={() => {
           setOpenPersonOptions(!openPersonOptions);
           setOpenDate(false);
-        }} className='SearchText'>
+        }} className="text-gray-300 cursor-pointer">
           {`${options.adult} adult, ${options.children} children, ${options.room} room`}
         </span>
-        {openPersonOptions && <div className="options">
-          <div className="optionItem">
-            <span className="optionText">Adult</span>
-            <div className="optionCounter">
+        {openPersonOptions && <div className="absolute top-[50px] z-20 bg-white text-gray-500 rounded-md shadow-sm">
+          <div className="w-[200px] flex justify-between m-2.5">
+            <span className="text-gray-300 cursor-pointer">Adult</span>
+            <div className="flex items-center gap-2.5 text-sm text-black">
               <button
                 disabled={options.adult <= 1}
-                className="optionCounterButton" onClick={() => handleOption("adult", "d")}>-</button>
+                className="w-7.5 h-7.5 border border-[#0071c2] text-[#0071c2] cursor-pointer bg-white" onClick={() => handleOption("adult", "d")}>-</button>
               <span className="optionCounterNumber">{options.adult}</span>
-              <button className="optionCounterButton" onClick={() => handleOption("adult", "i")}>+</button>
+              <button className="w-7.5 h-7.5 border border-[#0071c2] text-[#0071c2] cursor-pointer bg-white" onClick={() => handleOption("adult", "i")}>+</button>
             </div>
           </div>
-          <div className="optionItem">
-            <span className="optionText">Children</span>
-            <div className="optionCounter">
+          <div className="w-[200px] flex justify-between m-2.5">
+            <span className="text-gray-300 cursor-pointer">Children</span>
+            <div className="flex items-center gap-2.5 text-sm text-black">
               <button
                 disabled={options.children <= 0}
-                className="optionCounterButton" onClick={() => handleOption("children", "d")}>-</button>
+                className="w-7.5 h-7.5 border border-[#0071c2] text-[#0071c2] cursor-pointer bg-white" onClick={() => handleOption("children", "d")}>-</button>
               <span className="optionCounterNumber">{options.children}</span>
-              <button className="optionCounterButton" onClick={() => handleOption("children", "i")}>+</button>
+              <button className="w-7.5 h-7.5 border border-[#0071c2] text-[#0071c2] cursor-pointer bg-white" onClick={() => handleOption("children", "i")}>+</button>
             </div>
           </div>
-          <div className="optionItem">
-            <span className="optionText">Room</span>
-            <div className="optionCounter">
+          <div className="w-[200px] flex justify-between m-2.5">
+            <span className="text-gray-300 cursor-pointer">Room</span>
+            <div className="flex items-center gap-2.5 text-sm text-black">
               <button
                 disabled={options.room <= 1}
-                className="optionCounterButton" onClick={() => handleOption("room", "d")}>-</button>
+                className="w-7.5 h-7.5 border border-[#0071c2] text-[#0071c2] cursor-pointer bg-white" onClick={() => handleOption("room", "d")}>-</button>
               <span className="optionCounterNumber">{options.room}</span>
-              <button className="optionCounterButton" onClick={() => handleOption("room", "i")}>+</button>
+              <button className="w-7.5 h-7.5 border border-[#0071c2] text-[#0071c2] cursor-pointer bg-white" onClick={() => handleOption("room", "i")}>+</button>
             </div>
           </div>
         </div>}
       </div>
-      <div className="SearchItem">
-        <button className='SearchBtn' onClick={handleSearch}>Search</button>    
+      <div className="flex items-center gap-2.5">
+        <button className="bg-[#103346] text-white font-medium border-none p-2.5 cursor-pointer" onClick={handleSearch}>Search</button>    
       </div>
     </div>
   );

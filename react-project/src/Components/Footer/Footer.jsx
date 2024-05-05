@@ -1,8 +1,6 @@
-import "./MailList.css"
-
 const Footer = () => {
     return(
-        <div className="footer">
+        <div className="text-xs w-full mt-5">
             <div className="fLists">
                 <ul className="fList">
                     <li className="fListItem">Phone: 1-800-EASYBOOK</li>

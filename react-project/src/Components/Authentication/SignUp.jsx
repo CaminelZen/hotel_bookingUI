@@ -1,14 +1,14 @@
 import { useState, useContext } from "react";
 import PropTypes from 'prop-types';
-import { UserContext } from "./context/UserContext";
-import './LogIn.css';
+import { UserContext } from "./UserContext";
 
-const SignUp = ({ setShowSignUp, setShowLogIn }) => {
+const SignUp = ({ setShowSignUpModal, setShowLogInModal }) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [, setToken] = useContext(UserContext);
+    const [showModal, setShowModal] = useState(true);
 
     const submitRegistration = async () => {
         const requestOptions = {
@@ -34,30 +34,67 @@ const SignUp = ({ setShowSignUp, setShowLogIn }) => {
     const newUser = (e) => {
         e.preventDefault();
         submitRegistration();
-        setShowSignUp(false);
+        setShowSignUpModal(false);
+        setShowModal(false);
     };
 
+    const closeModal = () => {
+        setShowModal(false);
+        setShowSignUpModal(false);
+    };
+    if (!showModal) {
+        return null;
+    }
+
     return (
-        <div className="login">
-            <div className="login-content">
-            <span className="close" onClick={() => {setShowSignUp(false) }}>&times;</span>
-            <h2>Sign Up</h2>
-                <div className='input-container'>
-                <input type="text" placeholder="Username" value={username} onChange={(username) => setUsername(username.target.value)} />
-                <input type="email" placeholder="Email" value={email} onChange={(email) => setEmail(email.target.value)} />
-                <input type="password" placeholder="Password" value={password} onChange={(password) => setPassword(password.target.value)} />
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div className="bg-[#ece9e4] p-5 rounded-xl border-2 border-[#103346] shadow-lg w-[400px] relative z-50">
+                <span className="absolute top-2.5 right-3.5 cursor-pointer" onClick={closeModal}>&times;</span>
+                <h2>Sign Up</h2>
+                <div className="flex flex-col gap-4 mt-4">
+                    <input
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        className="w-full p-2.5 border border-gray-300 rounded transition duration-300 ease-in-out"
+                    />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full p-2.5 border border-gray-300 rounded transition duration-300 ease-in-out"
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="w-full p-2.5 border border-gray-300 rounded transition duration-300 ease-in-out"
+                    />
                 </div>
-                <p className="main-button"><button onClick={newUser}>Sign Up</button></p>
-                <p className="other-button">If you already have an account, please:
-                <button onClick={() => { setShowLogIn(true); setShowSignUp(false); }}>Log In</button></p>
+                <div className="mt-4 flex justify-between items-center">
+                    <button onClick={newUser} className="bg-[#103346] text-white border-none m-0 mr-5 rounded-md cursor-pointer">
+                        Sign Up
+                    </button>
+                    <div className="text-base">
+                        Already have an account? 
+                        <button className="bg-[#103346] text-white border-none m-0 mr-5 rounded-md cursor-pointer" onClick={() => { setShowLogInModal(true); setShowSignUpModal(false); }}>
+                            Log In
+                        </button>
+                    </div>
+                </div>
+                {errorMessage && (
+                    <div className="mt-2 text-red-500 text-sm">{errorMessage}</div>
+                )}
             </div>
-            {errorMessage}
-          </div>
-  );
-}
+        </div>
+    );
+};
 SignUp.propTypes = {
-  setShowLogIn: PropTypes.func.isRequired,
-  setShowSignUp: PropTypes.func.isRequired
+  setShowLogInModal: PropTypes.func.isRequired,
+  setShowSignUpModal: PropTypes.func.isRequired
 };
 
 export default SignUp;
