@@ -6,10 +6,16 @@ const ReviewBox = () => {
   const [text, setText] = useState('');
   const [hotelId, setHotelId] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [token,] = useContext(UserContext);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [token] = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!token) {
+      setErrorMessage('You need to be logged in to submit a review.');
+      return;
+    }
 
     const requestOptions = {
       method: 'POST',
@@ -17,7 +23,7 @@ const ReviewBox = () => {
         'Content-Type': 'application/json',
         'Authorization': "Bearer " + token
       },
-      body: JSON.stringify({ hotel_id: hotelId, text: text, user_id: userId })
+      body: JSON.stringify({ hotel_id: hotelId, text: text , user_id:userId})
     };
 
     try {
@@ -27,7 +33,7 @@ const ReviewBox = () => {
       if (!response.ok) {
         throw new Error(data.detail);
       } else {
-        // Handle success, if needed
+        setSuccessMessage('Review submitted successfully!');
       }
     } catch (error) {
       setErrorMessage(error.message);
@@ -38,10 +44,11 @@ const ReviewBox = () => {
     <div className="review-box">
       <h3>Write a Review</h3>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="user_id">User ID:</label>
-          <input type="text" id="user_id" value={userId} onChange={(e) => setUserId(e.target.value)} />
+      <div>
+          <label htmlFor="User_id">User ID:</label>
+          <input type="number" id="Userl_id" value={userId} onChange={(e) => setUserId(e.target.value)} />
         </div>
+
         <div>
           <label htmlFor="hotel_id">Hotel ID:</label>
           <input type="number" id="hotel_id" value={hotelId} onChange={(e) => setHotelId(e.target.value)} />
@@ -53,6 +60,7 @@ const ReviewBox = () => {
         <button type="submit">Submit Review</button>
       </form>
       {errorMessage && <p>{errorMessage}</p>}
+      {successMessage && <p>{successMessage}</p>}
     </div>
   );
 };
