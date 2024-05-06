@@ -5,6 +5,7 @@ import { Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay } from 's
 import Results from '../Content/Results'
 
 
+
 export default function Home() {
     const [hotels, setHotels] = useState([]);
     const fetchHotels = () => {
@@ -55,7 +56,7 @@ export default function Home() {
                     scrollbar={{ draggable: true }}
                 >
                     {slideImg.map((slide, index) => (
-                    <SwiperSlide key={index}>
+                    <SwiperSlide  key={index}>
                         <div>
                             <img
                             src={slide.src}

@@ -10,8 +10,9 @@ import MailList from './Components/Footer/MailList';
 import Results from './Components/Content/Results';
 import Featured from './Components/Home/Featured';
 import Home from './Components/Home/Swiper'; 
-import ReviewBox from './Components/Reviews/ReviewBox';
+import ReviewAndRating from './Components/Reviews/ReviewAndRating';
 import UserProfile from './Components/UserProfile/UserProfile';
+
 
 export default function App() {
   const [activeContent, setActiveContent] = useState('home');
@@ -20,6 +21,7 @@ export default function App() {
   const [showLogInModal, setShowLogInModal] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+  const [, setShowUserProfile] = useState(false);
   
 
   useEffect(() => {
@@ -57,10 +59,12 @@ export default function App() {
         return <Results searchResults={searchResults} />;
       case "userProfile":
         return <UserProfile />
+        case "ReviewAndRating":
+          return <ReviewAndRating />
       default:
         return (
           <div id="home">
-            {/* <Featured onSearchResults={handleCityClick} /> */}
+            <Featured onSearchResults={handleCityClick} />
           </div>
         );
     }
@@ -69,14 +73,17 @@ export default function App() {
   return (
       <>
       <div className="w-full h-full bg-cover bg-center object-cover -ml-2.5 mt-10 p-0">
-     {/*  <Home/> */} 
+      <Home/> 
       </div>
      <div className="flex flex-col items-center">
       <section className="fixed top-0 left-0 right-0 w-full h-[15%] bg-[#faf7f7] p-0 z-20"> 
         
         <Title />
         <Navbar 
-          setActiveContent={setActiveContent}
+        setActiveContent={(content) => {
+          setActiveContent(content);
+          if (content === 'userProfile') setShowUserProfile(true); // Set state to display UserProfile
+        }}
           setShowSignUpModal={setShowSignUpModal}
           setShowLogInModal={setShowLogInModal} 
           isLoggedIn={isLoggedIn} 
@@ -89,8 +96,9 @@ export default function App() {
     <div className="flex relative flex-col items-center w-full max-w-[1024px]">
       {renderContent()}
       
-      {/* <MailList /> */}
-      <ReviewBox/>
+      <MailList />
+      
+      
     </div>
     {showLogInModal && <LogIn setShowLogInModal={setShowLogInModal} setShowSignUpModal={setShowSignUpModal} setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />}
     {showSignUpModal && <SignUp setShowSignUpModal={setShowSignUpModal} setShowLogInModal={setShowLogInModal} />}
