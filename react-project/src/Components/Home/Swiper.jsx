@@ -5,6 +5,7 @@ import { Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay } from 's
 import Results from '../Content/Results'
 
 
+
 export default function Home() {
     const [hotels, setHotels] = useState([]);
     const fetchHotels = () => {

@@ -10,8 +10,9 @@ import MailList from './Components/Footer/MailList';
 import Results from './Components/Content/Results';
 import Featured from './Components/Home/Featured';
 import Home from './Components/Home/Swiper'; 
-import ReviewBox from './Components/Reviews/ReviewBox';
+import ReviewAndRating from './Components/Reviews/ReviewAndRating';
 import UserProfile from './Components/UserProfile/UserProfile';
+
 
 export default function App() {
   const [activeContent, setActiveContent] = useState('home');
@@ -90,7 +91,8 @@ export default function App() {
       {renderContent()}
       
       {/* <MailList /> */}
-      <ReviewBox/>
+      <ReviewAndRating/>
+      
     </div>
     {showLogInModal && <LogIn setShowLogInModal={setShowLogInModal} setShowSignUpModal={setShowSignUpModal} setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />}
     {showSignUpModal && <SignUp setShowSignUpModal={setShowSignUpModal} setShowLogInModal={setShowLogInModal} />}
