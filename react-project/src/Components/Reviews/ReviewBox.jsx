@@ -1,33 +1,36 @@
-import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { UserContext } from '../Authentication/UserContext';
 
 const ReviewBox = () => {
   const [userId, setUserId] = useState('');
   const [text, setText] = useState('');
-  const [hotelId, setHotelId] = useState('')
+  const [hotelId, setHotelId] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [token,] = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ hotel_id: hotelId, text: text, user_id: userId })
-      };
 
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': "Bearer " + token
+      },
+      body: JSON.stringify({ hotel_id: hotelId, text: text, user_id: userId })
+    };
+
+    try {
       const response = await fetch('http://127.0.0.1:8000/reviews', requestOptions);
       const data = await response.json();
-      console.log(data);
-
-      if (response.ok) {
-        // Optionally, handle successful submission (e.g., display a success message)
-        console.log('Review submitted successfully');
+      console.log(data)
+      if (!response.ok) {
+        throw new Error(data.detail);
       } else {
-        // Handle error response from backend
-        console.error('Failed to submit review');
+        // Handle success, if needed
       }
     } catch (error) {
-      console.error('Error:', error);
+      setErrorMessage(error.message);
     }
   };
 
@@ -41,7 +44,7 @@ const ReviewBox = () => {
         </div>
         <div>
           <label htmlFor="hotel_id">Hotel ID:</label>
-          <input type="number" id="hotel_id" value={hotelId} onChange={(e) => setHotelId(e.target.value)}/>
+          <input type="number" id="hotel_id" value={hotelId} onChange={(e) => setHotelId(e.target.value)} />
         </div>
         <div>
           <label htmlFor="text">Review:</label>
@@ -49,12 +52,9 @@ const ReviewBox = () => {
         </div>
         <button type="submit">Submit Review</button>
       </form>
+      {errorMessage && <p>{errorMessage}</p>}
     </div>
   );
-};
-
-ReviewBox.propTypes = {
-  hotelId: PropTypes.number.isRequired,
 };
 
 export default ReviewBox;

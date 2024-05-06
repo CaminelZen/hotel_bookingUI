@@ -11,6 +11,7 @@ import Results from './Components/Content/Results';
 import Featured from './Components/Home/Featured';
 import Home from './Components/Home/Swiper'; 
 import ReviewBox from './Components/Reviews/ReviewBox';
+import UserProfile from './Components/UserProfile/UserProfile';
 
 export default function App() {
   const [activeContent, setActiveContent] = useState('home');
@@ -21,33 +22,36 @@ export default function App() {
   const [searchResults, setSearchResults] = useState([]);
   
   const handleLogout = () => {
+    localStorage.removeItem("token");
     setIsLoggedIn(false);
-    setUsername('');
+    setUsername("");
   };
 
   const handleSearchResults = (results) => {
     setSearchResults(results);
-    setActiveContent('results');
+    setActiveContent("results");
   };
- 
-   const handleCityClick = (results) => {
+
+  const handleCityClick = (results) => {
     setSearchResults(results);
-    setActiveContent('results');
-  }; 
+    setActiveContent("results");
+  };
 
   const renderContent = () => {
     switch (activeContent) {
-      case 'about':
+      case "about":
         return <About />;
-      case 'help':
+      case "help":
         return <Help />;
-      case 'results':
-          return <Results searchResults={searchResults} />;
+      case "results":
+        return <Results searchResults={searchResults} />;
+      case "userProfile":
+        return <UserProfile />
       default:
         return (
-          <div id='home'> 
+          <div id="home">
             <Featured onSearchResults={handleCityClick} />
-           </div>
+          </div>
         );
     }
   };

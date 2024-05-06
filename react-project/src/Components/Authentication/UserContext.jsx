@@ -10,12 +10,12 @@ export const UserProvider = (props) => {
         const fetchUser = async () => {
             const requestOptions = {
                 method: "GET",
-                Headers: {
+                headers: {
                     "Content-Type": "application/json",
                     Authorization: "Bearer " + token,
                 },
             };
-            const response = await fetch ("/users", requestOptions);
+            const response = await fetch ("http://localhost:8000/users", requestOptions);
 
             if (!response.ok) {
                 setToken(null);   
