@@ -1,6 +1,5 @@
 import { useState, useContext } from 'react';
 import { UserContext } from '../Authentication/UserContext';
-import PropTypes from 'prop-types';
 import StarRating from './Star';
 
 const ReviewAndRating = () => {
@@ -19,15 +18,15 @@ const ReviewAndRating = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ hotel_id: hotelId, text: text, user_id: userId })
+      body: JSON.stringify({ hotel_id: hotelId, text: text, user_id: userId }),
     };
 
     try {
       const response = await fetch('http://127.0.0.1:8000/reviews', requestOptions);
       const data = await response.json();
-      console.log(data)
+      console.log(data);
       if (!response.ok) {
         throw new Error(data.detail);
       } else {
@@ -45,9 +44,9 @@ const ReviewAndRating = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ hotel_id: hotelId, rating: rating, user_id: userId })
+      body: JSON.stringify({ hotel_id: hotelId, rating: rating, user_id: userId }),
     };
 
     try {
@@ -65,39 +64,34 @@ const ReviewAndRating = () => {
   };
 
   return (
-    <div className="review-box">
-      <h3>Write a Review and Rate</h3>
-      <form onSubmit={handleReviewSubmit}>
-        <div>
-          <label htmlFor="user_id">User ID:</label>
-          <input type="text" id="user_id" value={userId} onChange={(e) => setUserId(e.target.value)} />
+    <div className="review-box p-4 bg-white shadow-md rounded-lg">
+      <h3 className="text-lg font-semibold mb-4">Write a Review and Rate</h3>
+      <form onSubmit={handleReviewSubmit} className="mb-4">
+        <div className="mb-4">
+          <label htmlFor="user_id" className="block font-medium">User ID:</label>
+          <input type="text" id="user_id" value={userId} onChange={(e) => setUserId(e.target.value)} className="input" />
         </div>
-        <div>
-          <label htmlFor="hotel_id">Hotel ID:</label>
-          <input type="number" id="hotel_id" value={hotelId} onChange={(e) => setHotelId(e.target.value)} />
+        <div className="mb-4">
+          <label htmlFor="hotel_id" className="block font-medium">Hotel ID:</label>
+          <input type="number" id="hotel_id" value={hotelId} onChange={(e) => setHotelId(e.target.value)} className="input" />
         </div>
-        <div>
-          <label htmlFor="text">Review:</label>
-          <textarea id="text" value={text} onChange={(e) => setText(e.target.value)} />
+        <div className="mb-4">
+          <label htmlFor="text" className="block font-medium">Review:</label>
+          <textarea id="text" value={text} onChange={(e) => setText(e.target.value)} className="input" />
         </div>
-        <button type="submit">Submit Review</button>
+        <button type="submit" className="btn-primary">Submit Review</button>
       </form>
-      <form onSubmit={handleRatingSubmit}>
-        <div>
-          <label>Rating:</label>
+      <form onSubmit={handleRatingSubmit} className="mb-4">
+        <div className="mb-4">
+          <label className="block font-medium">Rating:</label>
           <StarRating rating={rating} onRatingChange={setRating} />
         </div>
-        <button type="submit">Submit Rating</button>
+        <button type="submit" className="btn-primary">Submit Rating</button>
       </form>
-      {errorMessage && <p>{errorMessage}</p>}
-      {successMessage && <p>{successMessage}</p>}
+      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+      {successMessage && <p className="text-green-500">{successMessage}</p>}
     </div>
   );
-};
-
-ReviewAndRating.propTypes = {
-  rating: PropTypes.number,
-  onRatingChange: PropTypes.func.isRequired
 };
 
 export default ReviewAndRating;

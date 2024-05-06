@@ -56,7 +56,7 @@ export default function Home() {
                     scrollbar={{ draggable: true }}
                 >
                     {slideImg.map((slide, index) => (
-                    <SwiperSlide key={index}>
+                    <SwiperSlide  key={index}>
                         <div>
                             <img
                             src={slide.src}
