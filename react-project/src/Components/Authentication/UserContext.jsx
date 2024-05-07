@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export const UserContext = createContext();
 
 export const UserProvider = (props) => {
-    const [token, setToken] = useState (localStorage.getItem("hotelBookingToken"));
+    const [token, setToken] = useState (localStorage.getItem("token"));
 
     useEffect (() => {
         const fetchUser = async () => {
@@ -21,7 +21,7 @@ export const UserProvider = (props) => {
                 setToken(null);   
             } else {
                 // Corrected: Set the updated token value
-                localStorage.setItem("hotelBookingToken", token);
+                localStorage.setItem("token", token);
             }
             
         };

@@ -36,6 +36,7 @@ const SignUp = ({ setShowSignUpModal, setShowLogInModal }) => {
         submitRegistration();
         setShowSignUpModal(false);
         setShowModal(false);
+        setShowLogInModal(true)
     };
 
     const closeModal = () => {
