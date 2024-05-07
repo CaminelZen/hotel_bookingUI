@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Results from '../Content/Results';
 import 'swiper/css';
 import 'swiper/css/navigation';

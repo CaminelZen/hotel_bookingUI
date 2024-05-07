@@ -13,6 +13,8 @@ import Home from './Components/Home/Home';
 import ReviewAndRating from './Components/Reviews/ReviewAndRating';
 import UserProfile from './Components/UserProfile/UserProfile';
 import CreateHotel from './Components/UserProfile/CreateHotel';
+import Footer from './Components/Footer/Footer'
+import { Detail } from './Components/Content/Detail';
 
 
 export default function App() {
@@ -65,6 +67,8 @@ export default function App() {
         return <CreateHotel />
       case "ReviewAndRating":
           return <ReviewAndRating />
+      case "detail":
+            return <Detail />;
       default:
         return (
           <div id="home">
@@ -100,7 +104,7 @@ export default function App() {
       {renderContent()}
       
       <MailList />
-      
+      <Footer />
       
     </div>
     {showLogInModal && <LogIn setShowLogInModal={setShowLogInModal} setShowSignUpModal={setShowSignUpModal} setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />}
