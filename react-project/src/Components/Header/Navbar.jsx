@@ -1,41 +1,27 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { FaBell } from 'react-icons/fa';
 
-const Navbar = ({ setActiveContent, setShowLogInModal, setShowSignUpModal, isLoggedIn, username, handleLogout }) => {
-    const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+const Navbar = ({ setActiveContent, setShowLogInModal, setShowSignUpModal, isLoggedIn, handleLogout }) => {
 
-    const toggleProfileDropdown = () => {
-        setShowProfileDropdown(!showProfileDropdown);
-    };
-
-    const handleEditProfile = () => {
-        setActiveContent('userProfile'); // Set active content to 'userProfile'
-        setShowProfileDropdown(false); // Close the profile dropdown
-    };
+    const buttonClass = 'px-3 py-2 transition duration-300 text-[#103346] font-[Arial] font-bold rounded-lg shadow-lg hover:shadow-xl hover:border-t-2 hover:border-l-2 hover:border-gray-300';
 
     return (
         <div className="absolute bottom-[50px] right-[30px] flex">
-            <a href="#home" onClick={() => setActiveContent('home')} className="ml-2.5 p-1.5 text-[#103346] font-[Arial] font-bold transition duration-300 shadow-none hover:shadow-sm hover:text-[#103346] hover:rounded-lg">Home</a>
-            <a href="#about" onClick={() => setActiveContent('about')} className="ml-2.5 p-1.5 text-[#103346] font-[Arial] font-bold transition duration-300 shadow-none hover:shadow-sm hover:text-[#103346] hover:rounded-lg">About</a>
-            <a href="#help" onClick={() => setActiveContent('help')} className="ml-2.5 p-1.5 text-[#103346] font-[Arial] font-bold transition duration-300 shadow-none hover:shadow-sm hover:text-[#103346] hover:rounded-lg">Help</a>
+            <a href="#home" className={buttonClass} onClick={() => setActiveContent('home')}>Home</a>
+            <a href="#about" className={buttonClass} onClick={() => setActiveContent('about')}>About</a>
+            <a href="#help" className={buttonClass} onClick={() => setActiveContent('help')}>Help</a>
             
             {isLoggedIn ? (
                 <>
-                    <div className="relative ml-2.5">
-                        <button onClick={toggleProfileDropdown} className="p-1.5 text-[#103346] font-[Arial] font-bold transition duration-300 shadow-none hover:shadow-sm hover:text-[#103346] hover:rounded-lg">Hi {username}</button>
-                        {showProfileDropdown && (
-                            <div className="absolute right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg">
-                                <a href="#edit-profile" onClick={handleEditProfile} className="block p-2 hover:bg-gray-100">Edit Profile</a>
-                                {/* Add other profile options here */}
-                            </div>
-                        )}
-                    </div>
-                    <a href="#logout" onClick={handleLogout} className="ml-2.5 p-1.5 text-[#103346] font-[Arial] font-bold transition duration-300 shadow-none hover:shadow-sm hover:text-[#103346] hover:rounded-lg">Log Out</a>
+                    <a href="#notifications" className={buttonClass + 'py-1'} onClick={() => alert('notifications')}><FaBell /></a>
+                    <a href="#userProfile" className={buttonClass} onClick={() => setActiveContent('userProfile')}>Profile</a>
+                    <a href="#createHotel" className={buttonClass} onClick={() => setActiveContent('userProfile')}>Create Hotel</a>
+                    <a href="#logout" className={buttonClass} onClick={handleLogout}>Log Out</a>
                 </>
             ) : (
                 <>
-                    <a href="#login" onClick={() => setShowLogInModal(true)} className="ml-2.5 p-1.5 text-[#103346] font-[Arial] font-bold transition duration-300 shadow-none hover:shadow-sm hover:text-[#103346] hover:rounded-lg">Log In</a>
-                    <a href="#signup" onClick={() => setShowSignUpModal(true)} className="ml-2.5 p-1.5 text-[#103346] font-[Arial] font-bold transition duration-300 shadow-none hover:shadow-sm hover:text-[#103346] hover:rounded-lg">Sign Up</a>
+                    <a href="#login" className={buttonClass} onClick={() => setShowLogInModal(true)}>Log In</a>
+                    <a href="#signup" className={buttonClass} onClick={() => setShowSignUpModal(true)}>Sign Up</a>
                 </>
             )}
         </div>
