@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Results from '../Content/Results';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -12,7 +12,6 @@ const slideImg = [
   { src: '/room2.jpg', alt: 'Room 2' },
   { src: '/room3.jpg', alt: 'Room 3' },
   { src: '/room5.jpg', alt: 'Room 5' },
-  { src: '/room6.jpg', alt: 'Room 6' },
   { src: '/room7.jpg', alt: 'Room 7' },
 ];
 
@@ -50,23 +49,23 @@ export default function Home() {
       ) : (
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay]}
-          spaceBetween={0} // Make sure this doesn't cause overlaps
+          spaceBetween={50} // Make sure this doesn't cause overlaps
           slidesPerView={1}
           effect="fade" // Can be removed if causing issues
-          autoplay={{ delay: 2500, disableOnInteraction: false }} // Autoplay configuration
+          autoplay={{ delay: 2000, disableOnInteraction: false }} // Autoplay configuration
           loop={true} // Ensure consistent loop behavior
           centeredSlides={true} // Keeps slides centered
-          navigation
+          navigation={true}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
         >
           {slideImg.map((slide, index) => (
             <SwiperSlide key={index}>
-              <div className="relative"> {/* Positioning should be relative to avoid overlap */}
+              <div className="relative w-full h-[80%] ml-3 p-0"> {/* Positioning should be relative to avoid overlap */}
                 <img
-                  className="w-full h-full object-cover" // Ensure full width/height and cover
                   src={slide.src}
                   alt={slide.alt}
+                  className="w-full h-full object-cover"
                 />
                 <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-white">
                   <h1>Book Smarter, Travel Easier</h1>

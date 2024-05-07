@@ -65,6 +65,9 @@ export default function App() {
       default:
         return (
           <div id="home">
+            <div className="relative w-full max-w-[1024px]">
+              <Home />
+            </div>
             <Featured onSearchResults={handleCityClick} />
           </div>
         );
@@ -89,7 +92,6 @@ export default function App() {
         /> 
         
       <SearchBar onSearchResults={handleSearchResults} />
-      <Home />
       </section>
     <div className="flex relative flex-col items-center w-full max-w-[1024px]">
       {renderContent()}
