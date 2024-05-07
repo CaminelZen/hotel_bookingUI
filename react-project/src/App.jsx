@@ -9,7 +9,7 @@ import SearchBar from './Components/Header/SearchBar';
 import MailList from './Components/Footer/MailList'; 
 import Results from './Components/Content/Results';
 import Featured from './Components/Home/Featured';
-import Home from './Components/Home/Swiper'; 
+import Home from './Components/Home/Home'; 
 import ReviewAndRating from './Components/Reviews/ReviewAndRating';
 import UserProfile from './Components/UserProfile/UserProfile';
 
@@ -28,6 +28,7 @@ export default function App() {
     const storedToken = localStorage.getItem("token");
     if (storedToken && storedToken !== "null") {
       setIsLoggedIn(true);
+      console.log('token')
     } else {
       setIsLoggedIn(false);
     }
@@ -59,7 +60,7 @@ export default function App() {
         return <Results searchResults={searchResults} />;
       case "userProfile":
         return <UserProfile />
-        case "ReviewAndRating":
+      case "ReviewAndRating":
           return <ReviewAndRating />
       default:
         return (
@@ -72,12 +73,8 @@ export default function App() {
 
   return (
       <>
-      <div className="w-full h-full bg-cover bg-center object-cover -ml-2.5 mt-10 p-0">
-      <Home/> 
-      </div>
      <div className="flex flex-col items-center">
       <section className="fixed top-0 left-0 right-0 w-full h-[15%] bg-[#faf7f7] p-0 z-20"> 
-        
         <Title />
         <Navbar 
         setActiveContent={(content) => {
@@ -92,6 +89,7 @@ export default function App() {
         /> 
         
       <SearchBar onSearchResults={handleSearchResults} />
+      <Home />
       </section>
     <div className="flex relative flex-col items-center w-full max-w-[1024px]">
       {renderContent()}

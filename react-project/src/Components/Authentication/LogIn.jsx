@@ -5,7 +5,7 @@ import { UserContext } from './UserContext';
 const LogIn = ({ setShowLogInModal, setShowSignUpModal, setIsLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
   const [, setToken] = useContext(UserContext);
   const [showModal, setShowModal] = useState(true);
 
@@ -20,7 +20,7 @@ const LogIn = ({ setShowLogInModal, setShowSignUpModal, setIsLoggedIn }) => {
       const response = await fetch("http://127.0.0.1:8000/login", requestOptions);
       const data = await response.json();
 
-      if (response.ok && data.access_token && data.username) {
+      if (response.ok) {
         localStorage.setItem('token', data.access_token);
         localStorage.setItem('username', data.username);
         setToken(data.access_token);

@@ -34,7 +34,7 @@ const UserProfile = () => {
       const response = await fetch(`http://localhost:8000/users`, requestOptions);
       const data = await response.json();
       if (!response.ok) {
-        throw new Error(data.detail);
+        throw new Error(data.detail || "Failed to update profile");
       }
     } catch (error) {
       setErrorMessage(error.message);
