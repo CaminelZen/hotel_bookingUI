@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Results from '../Content/Results';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -49,13 +49,13 @@ export default function Home() {
       ) : (
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade, Autoplay]}
-          spaceBetween={0} // Make sure this doesn't cause overlaps
+          spaceBetween={50} // Make sure this doesn't cause overlaps
           slidesPerView={1}
           effect="fade" // Can be removed if causing issues
-          autoplay={{ delay: 2500, disableOnInteraction: false }} // Autoplay configuration
+          autoplay={{ delay: 2000, disableOnInteraction: false }} // Autoplay configuration
           loop={true} // Ensure consistent loop behavior
           centeredSlides={true} // Keeps slides centered
-          navigation
+          navigation={true}
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
         >
