@@ -12,6 +12,7 @@ import Featured from './Components/Home/Featured';
 import Home from './Components/Home/Home'; 
 import ReviewAndRating from './Components/Reviews/ReviewAndRating';
 import UserProfile from './Components/UserProfile/UserProfile';
+import CreateHotel from './Components/UserProfile/CreateHotel';
 
 
 export default function App() {
@@ -60,6 +61,8 @@ export default function App() {
         return <Results searchResults={searchResults} />;
       case "userProfile":
         return <UserProfile />
+      case "createHotel":
+        return <CreateHotel />
       case "ReviewAndRating":
           return <ReviewAndRating />
       default:

@@ -13,9 +13,9 @@ const Navbar = ({ setActiveContent, setShowLogInModal, setShowSignUpModal, isLog
             
             {isLoggedIn ? (
                 <>
-                    <a href="#notifications" className={buttonClass + 'py-1'} onClick={() => alert('notifications')}><FaBell /></a>
+                    <a href="#notifications" className='px-1 py-1 t-3 transition duration-300 text-[#103346] rounded-lg' onClick={() => alert('notifications')}><FaBell /></a>
                     <a href="#userProfile" className={buttonClass} onClick={() => setActiveContent('userProfile')}>Profile</a>
-                    <a href="#createHotel" className={buttonClass} onClick={() => setActiveContent('userProfile')}>Create Hotel</a>
+                    <a href="#createHotel" className={buttonClass} onClick={() => setActiveContent('createHotel')}>Create Hotel</a>
                     <a href="#logout" className={buttonClass} onClick={handleLogout}>Log Out</a>
                 </>
             ) : (
