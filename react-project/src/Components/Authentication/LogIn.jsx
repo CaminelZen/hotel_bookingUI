@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import PropTypes from 'prop-types';
 import { UserContext } from './UserContext';
+import { GoogleLogin } from '@react-oauth/google';
 
 const LogIn = ({ setShowLogInModal, setShowSignUpModal, setIsLoggedIn }) => {
   const [username, setUsername] = useState('');
@@ -33,6 +34,16 @@ const LogIn = ({ setShowLogInModal, setShowSignUpModal, setIsLoggedIn }) => {
     } catch (error) {
       setErrorMessage("An error occurred during login. Please check your internet connection.");
     }
+  };
+  
+  const handleGoogleLoginSuccess = (response) => {
+    console.log('Google login successful', response);
+    // Handle successful login, e.g., send token to backend or store in context/state
+  };
+
+  const handleGoogleLoginFailure = (response) => {
+    console.error('Google login failed', response);
+    // Handle login failure, e.g., show an error message
   };
 
   const handleSubmit = async (e) => {
@@ -78,6 +89,14 @@ const LogIn = ({ setShowLogInModal, setShowSignUpModal, setIsLoggedIn }) => {
           If you do not have an account, please:
           <button onClick={() => { setShowSignUpModal(true); setShowLogInModal(false); }} className="bg-[#103346] text-white border-none m-0 mr-5 rounded-md cursor-pointer">Sign Up</button>
         </p>
+        <GoogleLogin
+        clientId="YOUR_GOOGLE_CLIENT_ID" // Replace with your Google OAuth Client ID
+        buttonText="Log in with Google"
+        onSuccess={handleGoogleLoginSuccess}
+        onFailure={handleGoogleLoginFailure}
+        cookiePolicy={'single_host_origin'}
+        className="my-4" // Add spacing between elements
+      />
       </div>
       {errorMessage && (
         <div className="error-message">

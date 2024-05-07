@@ -1,13 +1,16 @@
 import { useState, useContext } from "react";
+import { UserContext } from "../Authentication/UserContext";
 
 const CreateHotel = () => {
   const [hotel_name, setHotel_name] = useState("");
+  const [location, setLocation] = useState("");
   const [roomNumber, setRoomNumber] = useState("");
-  const [bedSize, setBedSize] = useState("");
+  const [bed_size, setBed_size] = useState("");
   const [price, setPrice] = useState("");
-  const [availability, setAvailability] = useState("");
+  const [available, setAvailable] = useState(true);
   const [description, setDescription] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [token] = useContext(UserContext); 
   
   const submitCreateHotel = async () => {
     const requestOptions = {
@@ -18,10 +21,11 @@ const CreateHotel = () => {
       },
       body: JSON.stringify({
         hotel_name: hotel_name,
+        location: location,
         roomNumber: roomNumber,
-        bedSize: bedSize,
+        bed_size: bed_size,
         price: price,
-        availability: availability,
+        available: available,
         description: description,
       }),
     };
@@ -50,10 +54,11 @@ const CreateHotel = () => {
           <div className="space-y-4">
             {[
               { label: "Hotel Name", value: hotel_name, onChange: setHotel_name },
+              { label: "Location", value: location, onChange: setLocation },
               { label: "Room Number", value: roomNumber, onChange: setRoomNumber },
-              { label: "Bed Size", value: bedSize, onChange: setBedSize },
+              { label: "Bed Size", value: bed_size, onChange: setBed_size },
               { label: "Price", value: price, onChange: setPrice },
-              { label: "Availability", value: availability, onChange: setAvailability },
+              { label: "Availability", value: available, onChange: setAvailable },
               { label: "Description", value: description, onChange: setDescription },
             ].map((field, index) => (
               <div key={index} className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4"> {/* Flex layout */}

@@ -7,7 +7,7 @@ const UserProfile = () => {
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [gender, setGender] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState(null);
   const [address, setAddress] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [token] = useContext(UserContext); // Access authentication token from context
@@ -47,10 +47,10 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="w-4/5 h-4/5 flex center mt-8">
+    <div  className="w-4/5 h-4/5 flex center">
       <div className="bg-white shadow-md rounded-lg px-8 py-6"> {/* Adjusted width */}
         <h2 className="text-2xl font-semibold mb-4 mt-20">Edit Profile</h2>
-        <form onSubmit={handleSubmit}>
+        <form  className="w-4/5 h-4/5 flex center" onSubmit={handleSubmit}>
           <div className="space-y-4">
             {[
               { label: "Username", value: username, onChange: setUsername },

@@ -13,7 +13,8 @@ import Home from './Components/Home/Home';
 import ReviewAndRating from './Components/Reviews/ReviewAndRating';
 import UserProfile from './Components/UserProfile/UserProfile';
 import CreateHotel from './Components/UserProfile/CreateHotel';
-import Footer from './Components/Footer/Footer'
+import Footer from './Components/Footer/Footer';
+import HotelBooking from './Components/UserProfile/Bookings';
 import { Detail } from './Components/Content/Detail';
 
 
@@ -65,6 +66,8 @@ export default function App() {
         return <UserProfile />
       case "createHotel":
         return <CreateHotel />
+      case "bookings":
+        return <HotelBooking />
       case "ReviewAndRating":
           return <ReviewAndRating />
       case "detail":

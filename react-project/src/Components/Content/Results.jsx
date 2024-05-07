@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import Star from "../Reviews/Star";
+import ShowRouteButton from '../UserProfile/ShowRouteButton';
 import { Detail } from "./Detail";
 
 const BASE_URL = "http://localhost:8000";
 
-const Results = ({ searchResults }) => {
+const Results = ({ searchResults, setActiveContent }) => {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
@@ -60,6 +61,8 @@ const Results = ({ searchResults }) => {
     const totalRating = ratings.reduce((acc, rating) => acc + rating.rating, 0);
     return ratings.length > 0 ? totalRating / ratings.length : 0;
   };
+
+  const buttonClass = "w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition";
 
   return (
     <section>
@@ -133,9 +136,12 @@ const Results = ({ searchResults }) => {
                   {results.description}
                 </p>
               </div>
-              
-            </div>
-            <button className="DetailButton bg-blue-500 text-white mr-2" onClick={() => handleDetailClick(results)}>Detail</button>
+              </div>
+    <div className="flex flex-col space-y-2">
+      <ShowRouteButton destination={location} className={buttonClass} />
+      <button className={buttonClass} onClick={() => handleDetailClick(results)}>Detail</button>
+      <button className={buttonClass} onClick={() => setActiveContent('bookings')}>Book Now</button>
+          </div>
           </div>
         ))}
       </div>
@@ -146,6 +152,7 @@ const Results = ({ searchResults }) => {
 
 Results.propTypes = {
   searchResults: PropTypes.array.isRequired,
+  setActiveContent: PropTypes.func.isRequired,
 };
 
 export default Results;
