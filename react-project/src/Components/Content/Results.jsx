@@ -65,41 +65,44 @@ const Results = ({ searchResults, setActiveContent }) => {
   const buttonClass = "w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition";
 
   return (
-    <section>
-      <p className="FilterTitle" style={{ marginBottom: '1rem', textAlign: 'center', fontSize: '1rem', fontWeight: 'bold', color: '#333' }}>Filter by:</p>
+    <section className="flex items-start mt-[0.2rem]">
+    {/* Left side: Filter */}
+      <div className="w-1/4 bg-gray-100 p-4" style={{ minHeight: '100vh' }}>
+        <p className="FilterTitle" style={{ marginBottom: '1rem', textAlign: 'center', fontSize: '1rem', fontWeight: 'bold', color: '#333' }}>Filter by:</p>
+        
+        <div className="flex flex-col mb-4">
+          <label>Min Price:</label>
+          <input
+            type="number"
+            value={minPrice}
+            onChange={(e) => setMinPrice(e.target.value)}
+            onBlur={handleFilterChange}
+          />
+          
+          <label>Max Price:</label>
+          <input
+            type="number"
+            value={maxPrice}
+            onChange={(e) => setMaxPrice(e.target.value)}
+            onBlur={handleFilterChange}
+          />
 
-      <div className="flex justify-center mb-1 mt-1">
-        <div className="p-1 border border-gray-300 rounded-md mr-5">
-          <div className="mb-2 flex">
-            <label className="mr-2">Min Price:</label>
-            <input
-              type="number"
-              value={minPrice}
-              onChange={(e) => setMinPrice(e.target.value)}
-              onBlur={handleFilterChange}
-            />
-            <label className="mx-2">Max Price:</label>
-            <input
-              type="number"
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(e.target.value)}
-              onBlur={handleFilterChange}
-            />
-            <label className="mx-2">Star</label>
-            <Star />
-            <button
-              type="button"
-              className="btn btn-outline-primary btn-sm ml-2"
-              style={{ backgroundColor: "blue", color: "white" }}
-              onClick={clearFilters}
-            >
-              Clear Filter
-            </button>
-          </div>
+          <label>Star</label>
+          <Star />
+          
+          <button
+            type="button"
+            className="btn btn-outline-primary btn-sm"
+            style={{ backgroundColor: 'blue', color: 'white' }}
+            onClick={clearFilters}
+          >
+            Clear Filters
+          </button>
         </div>
       </div>
-
-      <div className="flex flex-wrap justify-center">
+      
+      {/* Right side: Results */}
+      <div className="w-3/4 flex flex-wrap justify-center p-4">
         {filteredResults.map((results, index) => (
           <div
             className="flex items-center w-full border border-gray-300 rounded-md p-2 mb-5"
@@ -107,7 +110,7 @@ const Results = ({ searchResults, setActiveContent }) => {
           >
             <div className="w-1/3 pr-4">
               <img
-                className="max-w-full h-auto rounded-md"
+                className="max-w-full rounded-md"
                 src={imageUrls[index]}
                 alt={`Room ${index}`}
               />

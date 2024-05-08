@@ -10,6 +10,9 @@ import { format } from 'date-fns';
 const SearchBar = ({ onSearchResults }) => {
   const [location, setLocation] = useState('');
   const [openDate, setOpenDate] = useState(false);
+  const [openPersonOptions, setOpenPersonOptions] = useState(false);
+  const [, setHotels] = useState([]);
+  const searchBarRef = useRef(null);
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -22,9 +25,6 @@ const SearchBar = ({ onSearchResults }) => {
     children: 0,
     room: 1,
   });
-  const [openPersonOptions, setOpenPersonOptions] = useState(false);
-  const [, setHotels] = useState([]);
-  const searchBarRef = useRef(null);
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);

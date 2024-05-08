@@ -89,14 +89,14 @@ const LogIn = ({ setShowLogInModal, setShowSignUpModal, setIsLoggedIn }) => {
           If you do not have an account, please:
           <button onClick={() => { setShowSignUpModal(true); setShowLogInModal(false); }} className="bg-[#103346] text-white border-none m-0 mr-5 rounded-md cursor-pointer">Sign Up</button>
         </p>
-        <GoogleLogin
+        {/* <GoogleLogin
         clientId="YOUR_GOOGLE_CLIENT_ID" // Replace with your Google OAuth Client ID
         buttonText="Log in with Google"
         onSuccess={handleGoogleLoginSuccess}
         onFailure={handleGoogleLoginFailure}
         cookiePolicy={'single_host_origin'}
         className="my-4" // Add spacing between elements
-      />
+      /> */}
       </div>
       {errorMessage && (
         <div className="error-message">
