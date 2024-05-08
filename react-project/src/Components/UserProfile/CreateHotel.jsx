@@ -4,8 +4,8 @@ import { UserContext } from "../Authentication/UserContext";
 const CreateHotel = () => {
   const [hotel_name, setHotel_name] = useState("");
   const [location, setLocation] = useState("");
-  const [roomNumber, setRoomNumber] = useState("");
-  const [bed_size, setBed_size] = useState("");
+  const [room_number, setRoom_number] = useState("");
+  const [bed_size, setBed_size] = useState("king");
   const [price, setPrice] = useState("");
   const [available, setAvailable] = useState(true);
   const [description, setDescription] = useState("");
@@ -22,7 +22,7 @@ const CreateHotel = () => {
       body: JSON.stringify({
         hotel_name: hotel_name,
         location: location,
-        roomNumber: roomNumber,
+        room_number: room_number,
         bed_size: bed_size,
         price: price,
         available: available,
@@ -55,7 +55,7 @@ const CreateHotel = () => {
             {[
               { label: "Hotel Name", value: hotel_name, onChange: setHotel_name },
               { label: "Location", value: location, onChange: setLocation },
-              { label: "Room Number", value: roomNumber, onChange: setRoomNumber },
+              { label: "Room Number", value: room_number, onChange: setRoom_number },
               { label: "Bed Size", value: bed_size, onChange: setBed_size },
               { label: "Price", value: price, onChange: setPrice },
               { label: "Availability", value: available, onChange: setAvailable },
