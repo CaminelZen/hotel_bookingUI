@@ -89,7 +89,7 @@ export default function App() {
   return (
       <>
      <div className="flex flex-col items-center">
-      <section className="fixed top-0 left-0 right-0 w-full h-[15%] bg-[#faf7f7] p-0 z-20"> 
+      <section className="fixed top-0 left-0 right-0 w-full h-[15%] bg-white p-0 z-20"> 
         <Title />
         <Navbar 
         setActiveContent={(content) => {

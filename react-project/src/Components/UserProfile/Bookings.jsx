@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { UserContext } from '../Authentication/UserContext';
-import { format } from 'date-fns'; // For date formatting
+/* import { format } from 'date-fns'; // For date formatting */
 
 const HotelBooking = () => {
   const [guestName, setGuestName] = useState('');
@@ -8,7 +8,7 @@ const HotelBooking = () => {
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
   const [roomId, setRoomId] = useState('');
-  const [isConfirmed, setIsConfirmed] = useState(true);
+  const [isConfirmed, ] = useState(true);
   const [token] = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');

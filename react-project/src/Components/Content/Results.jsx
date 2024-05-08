@@ -1,7 +1,12 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import Star from "../Reviews/Star";
+<<<<<<< Updated upstream
 import ShowRouteButton from '../UserProfile/ShowRouteButton';
+=======
+import ShowRouteButton from "../UserProfile/ShowRouteButton";
+import { Detail } from "./Detail";
+>>>>>>> Stashed changes
 
 const BASE_URL = "http://localhost:8000";
 
@@ -59,15 +64,27 @@ const Results = ({ searchResults, setSelectedResult, setActiveContent }) => {
     return ratings.length > 0 ? totalRating / ratings.length : 0;
   };
 
-  const buttonClass = "w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition";
+  const buttonClass =
+    "w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition";
 
   return (
-    <section className="flex items-start mt-[0.2rem]">
-    {/* Left side: Filter */}
-      <div className="w-1/4 bg-gray-100 p-4" style={{ minHeight: '100vh' }}>
-        <p className="FilterTitle" style={{ marginBottom: '1rem', textAlign: 'center', fontSize: '1rem', fontWeight: 'bold', color: '#333' }}>Filter by:</p>
-        
-        <div className="flex flex-col mb-4">
+    <section className="flex items-start mt-[60rem]">
+      {/* Left side: Filter */}
+      <div className="w-1/4 bg-gray-100 p-4 " style={{ minHeight: "250vh" }}>
+        <p
+          className="FilterTitle"
+          style={{
+            marginBottom: "1rem",
+            textAlign: "center",
+            fontSize: "1rem",
+            fontWeight: "bold",
+            color: "#333",
+          }}
+        >
+          Filter by:
+        </p>
+
+        <div className="flex flex-col mb-4 p-2rem mt-8">
           <label>Min Price:</label>
           <input
             type="number"
@@ -75,7 +92,7 @@ const Results = ({ searchResults, setSelectedResult, setActiveContent }) => {
             onChange={(e) => setMinPrice(e.target.value)}
             onBlur={handleFilterChange}
           />
-          
+
           <label>Max Price:</label>
           <input
             type="number"
@@ -86,18 +103,18 @@ const Results = ({ searchResults, setSelectedResult, setActiveContent }) => {
 
           <label>Star</label>
           <Star />
-          
+
           <button
             type="button"
             className="btn btn-outline-primary btn-sm"
-            style={{ backgroundColor: 'blue', color: 'white' }}
+            style={{ backgroundColor: "blue", color: "white" }}
             onClick={clearFilters}
           >
             Clear Filters
           </button>
         </div>
       </div>
-      
+
       {/* Right side: Results */}
       <div className="w-3/4 flex flex-wrap justify-center p-4">
         {filteredResults.map((results, index) => (
@@ -136,16 +153,31 @@ const Results = ({ searchResults, setSelectedResult, setActiveContent }) => {
                   {results.description}
                 </p>
               </div>
-              </div>
-    <div className="flex flex-col space-y-2">
-      <ShowRouteButton destination={location} className={buttonClass} />
-      <button className={buttonClass} onClick={() => handleDetailClick(results)}>Detail</button>
-      <button className={buttonClass} onClick={() => setActiveContent('bookings')}>Book Now</button>
-          </div>
+            </div>
+            <div className="flex flex-col space-y-2">
+              <ShowRouteButton destination={location} className={buttonClass} />
+              <button
+                className={buttonClass}
+                onClick={() => handleDetailClick(results)}
+              >
+                Detail
+              </button>
+              <button
+                className={buttonClass}
+                onClick={() => setActiveContent("bookings")}
+              >
+                Book Now
+              </button>
+            </div>
           </div>
         ))}
       </div>
+<<<<<<< Updated upstream
      </section>
+=======
+      {showDetail && selectedResult && <Detail result={selectedResult} />}
+    </section>
+>>>>>>> Stashed changes
   );
 };
 
