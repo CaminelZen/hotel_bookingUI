@@ -1,7 +1,7 @@
 import  { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 
-export const Detail = ({ result }) => {
+const Detail = ({ result }) => {
     const [, setHotels] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -64,3 +64,5 @@ Detail.propTypes = {
         ).isRequired
     }).isRequired
 };
+
+export default Detail;

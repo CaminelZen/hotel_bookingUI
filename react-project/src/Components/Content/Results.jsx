@@ -2,20 +2,17 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import Star from "../Reviews/Star";
 import ShowRouteButton from '../UserProfile/ShowRouteButton';
-import { Detail } from "./Detail";
 
 const BASE_URL = "http://localhost:8000";
 
-const Results = ({ searchResults, setActiveContent }) => {
+const Results = ({ searchResults, setSelectedResult, setActiveContent }) => {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
-  const [showDetail, setShowDetail] = useState(false); // State to toggle detail view
-  const [selectedResult, setSelectedResult] = useState(null); // State to store selected result
 
   const handleDetailClick = (result) => {
-    setShowDetail(true); // Show detail view
+    setActiveContent('detail'); // Show detail view
     setSelectedResult(result); // Store selected result
   };
 
@@ -148,8 +145,7 @@ const Results = ({ searchResults, setActiveContent }) => {
           </div>
         ))}
       </div>
-      {showDetail && selectedResult && <Detail result={selectedResult} />} 
-    </section>
+     </section>
   );
 };
 

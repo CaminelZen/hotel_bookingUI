@@ -36,15 +36,15 @@ const LogIn = ({ setShowLogInModal, setShowSignUpModal, setIsLoggedIn }) => {
     }
   };
   
-  const handleGoogleLoginSuccess = (response) => {
-    console.log('Google login successful', response);
-    // Handle successful login, e.g., send token to backend or store in context/state
-  };
+  // const handleGoogleLoginSuccess = (response) => {
+  //   console.log('Google login successful', response);
+  //   // Handle successful login, e.g., send token to backend or store in context/state
+  // };
 
-  const handleGoogleLoginFailure = (response) => {
-    console.error('Google login failed', response);
-    // Handle login failure, e.g., show an error message
-  };
+  // const handleGoogleLoginFailure = (response) => {
+  //   console.error('Google login failed', response);
+  //   // Handle login failure, e.g., show an error message
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();

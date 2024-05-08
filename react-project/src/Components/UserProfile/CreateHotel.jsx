@@ -7,7 +7,7 @@ const CreateHotel = ({ setActiveContent }) => {
   const [location, setLocation] = useState("location");
   const [room_number, setRoom_number] = useState("");
   const [bed_size, setBed_size] = useState("king");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState('0');
   const [available, setAvailable] = useState(true);
   const [available_dates, setAvailable_dates] = useState([]);
   const [image_url, setImage_url] = useState("imageUrl");

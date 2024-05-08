@@ -15,7 +15,7 @@ import UserProfile from './Components/UserProfile/UserProfile';
 import CreateHotel from './Components/UserProfile/CreateHotel';
 import Footer from './Components/Footer/Footer';
 import HotelBooking from './Components/UserProfile/Bookings';
-import { Detail } from './Components/Content/Detail';
+import Detail from './Components/Content/Detail';
 
 
 export default function App() {
@@ -25,6 +25,7 @@ export default function App() {
   const [showLogInModal, setShowLogInModal] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+  const [selectedResult, setSelectedResult] = useState(null); 
   const [, setShowUserProfile] = useState(false);
   
 
@@ -69,9 +70,10 @@ export default function App() {
       case "bookings":
         return <HotelBooking setActiveContent={setActiveContent}/>
       case "ReviewAndRating":
-          return <ReviewAndRating setActiveContent={setActiveContent}/>
+        return <ReviewAndRating setActiveContent={setActiveContent}/>
       case "detail":
-            return <Detail />;
+        return <Detail result={selectedResult} />
+
       default:
         return (
           <div id="home">
