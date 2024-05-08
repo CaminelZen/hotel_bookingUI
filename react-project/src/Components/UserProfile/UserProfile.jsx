@@ -12,9 +12,11 @@ const UserProfile = ({ setActiveContent }) => {
   const [dateOfBirth, setDateOfBirth] = useState(null);
   const [address, setAddress] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [token] = useContext(UserContext); // Access authentication token from context
+  const [token] = useContext(UserContext);
+  const [isSuccess, setIsSuccess] = useState(false); 
 
   const submitEditProfile = async () => {
+    setErrorMessage("");
     const requestOptions = {
       method: "PUT",
       headers: {
@@ -38,7 +40,9 @@ const UserProfile = ({ setActiveContent }) => {
       if (!response.ok) {
         throw new Error(data.detail || "Failed to update profile");
       }
+      setIsSuccess(true);
     } catch (error) {
+      console.error(error);
       setErrorMessage(error.message);
     }
   };
@@ -46,6 +50,12 @@ const UserProfile = ({ setActiveContent }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await submitEditProfile();
+  };
+
+  const handleClose = () => {
+    setIsSuccess(false); 
+    setActiveContent('home'); // Ensure 'home' is the correct target
+    console.log("Active content set to 'home'"); // Confirm if this runs
   };
 
   return (
@@ -84,6 +94,19 @@ const UserProfile = ({ setActiveContent }) => {
         </form>
         {errorMessage && <div className="text-red-500 text-center mt-4">{errorMessage}</div>}
       </div>
+      {isSuccess && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white rounded p-6">
+            <h2 className="text-2xl font-bold mb-4">Profile updated successfully!</h2>
+            <button
+              onClick={handleClose}
+              className="bg-indigo-600 text-white font-bold px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
