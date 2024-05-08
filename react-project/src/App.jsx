@@ -108,13 +108,15 @@ export default function App() {
     <div className="flex relative flex-col items-center w-full max-w-[1024px]">
       {renderContent()}
       
-      <MailList />
-      <Footer />
+     
       
     </div>
     {showLogInModal && <LogIn setShowLogInModal={setShowLogInModal} setShowSignUpModal={setShowSignUpModal} setIsLoggedIn={setIsLoggedIn} setUsername={setUsername} />}
     {showSignUpModal && <SignUp setShowSignUpModal={setShowSignUpModal} setShowLogInModal={setShowLogInModal} />}
     </div>
+
+    <MailList />
+    <Footer />
   </>
   );
 }  
