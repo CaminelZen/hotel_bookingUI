@@ -1,23 +1,21 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import Star from "../Reviews/Star";
-<<<<<<< Updated upstream
-import ShowRouteButton from '../UserProfile/ShowRouteButton';
-=======
 import ShowRouteButton from "../UserProfile/ShowRouteButton";
-import { Detail } from "./Detail";
->>>>>>> Stashed changes
+import  Detail  from "./Detail";
 
 const BASE_URL = "http://localhost:8000";
 
-const Results = ({ searchResults, setSelectedResult, setActiveContent }) => {
+const Results = ({ searchResults, setActiveContent }) => {
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
   const [imageUrls, setImageUrls] = useState([]);
+  const [selectedResult, setSelectedResult] = useState("");
+  const [showDetail, setShowDetail] = useState(false);
 
   const handleDetailClick = (result) => {
-    setActiveContent('detail'); // Show detail view
+    setShowDetail(true); // Show detail view
     setSelectedResult(result); // Store selected result
   };
 
@@ -68,7 +66,7 @@ const Results = ({ searchResults, setSelectedResult, setActiveContent }) => {
     "w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition";
 
   return (
-    <section className="flex items-start mt-[60rem]">
+    <section className="flex items-start mt-[80rem]">
       {/* Left side: Filter */}
       <div className="w-1/4 bg-gray-100 p-4 " style={{ minHeight: "250vh" }}>
         <p
@@ -172,12 +170,8 @@ const Results = ({ searchResults, setSelectedResult, setActiveContent }) => {
           </div>
         ))}
       </div>
-<<<<<<< Updated upstream
-     </section>
-=======
       {showDetail && selectedResult && <Detail result={selectedResult} />}
     </section>
->>>>>>> Stashed changes
   );
 };
 

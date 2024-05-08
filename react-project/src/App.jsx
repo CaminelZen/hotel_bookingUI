@@ -25,7 +25,7 @@ export default function App() {
   const [showLogInModal, setShowLogInModal] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const [selectedResult, setSelectedResult] = useState(null); 
+   
   const [, setShowUserProfile] = useState(false);
   
 
@@ -72,7 +72,7 @@ export default function App() {
       case "ReviewAndRating":
         return <ReviewAndRating setActiveContent={setActiveContent}/>
       case "detail":
-        return <Detail result={selectedResult} />
+        return <Detail />
 
       default:
         return (
