@@ -59,7 +59,8 @@ const CreateHotel = ({ setActiveContent }) => {
 
   const handleClose = () => {
     setIsSuccess(false); 
-    setActiveContent('home');
+    setActiveContent('home'); // Ensure 'home' is the correct target
+    console.log("Active content set to 'home'"); // Confirm if this runs
   };
 
   return (

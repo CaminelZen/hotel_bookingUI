@@ -1,7 +1,9 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../Authentication/UserContext";
+import Sidebar from "./SideBar";
+import PropTypes from 'prop-types';
 
-const UserProfile = () => {
+const UserProfile = ({ setActiveContent }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,10 +49,11 @@ const UserProfile = () => {
   };
 
   return (
-    <div  className="w-4/5 h-4/5 flex center">
-      <div className="bg-white shadow-md rounded-lg px-8 py-6"> {/* Adjusted width */}
+    <div  className="w-full h-full flex">
+      <Sidebar setActiveContent={setActiveContent} />
+      <div className="w-3/4 bg-white shadow-md rounded-lg px-8 py-6"> 
         <h2 className="text-2xl font-semibold mb-4 mt-20">Edit Profile</h2>
-        <form  className="w-4/5 h-4/5 flex center" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="space-y-4">
             {[
               { label: "Username", value: username, onChange: setUsername },
@@ -84,5 +87,9 @@ const UserProfile = () => {
     </div>
   );
 };
+
+UserProfile.propTypes = {
+  setActiveContent: PropTypes.func.isRequired,
+}
 
 export default UserProfile;

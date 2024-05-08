@@ -61,15 +61,15 @@ export default function App() {
       case "help":
         return <Help />;
       case "results":
-        return <Results searchResults={searchResults} />;
+        return <Results searchResults={searchResults}/>;
       case "userProfile":
-        return <UserProfile />
+        return <UserProfile setActiveContent={setActiveContent}/>
       case "createHotel":
-        return <CreateHotel />
+        return <CreateHotel setActiveContent={setActiveContent}/>
       case "bookings":
-        return <HotelBooking />
+        return <HotelBooking setActiveContent={setActiveContent}/>
       case "ReviewAndRating":
-          return <ReviewAndRating />
+          return <ReviewAndRating setActiveContent={setActiveContent}/>
       case "detail":
             return <Detail />;
       default:
