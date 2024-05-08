@@ -1,18 +1,24 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../Authentication/UserContext";
+import PropTypes from 'prop-types';
 
-const CreateHotel = () => {
-  const [hotel_name, setHotel_name] = useState("");
-  const [location, setLocation] = useState("");
+const CreateHotel = ({ setActiveContent }) => {
+  const [hotel_name, setHotel_name] = useState("hotel name");
+  const [location, setLocation] = useState("location");
   const [room_number, setRoom_number] = useState("");
   const [bed_size, setBed_size] = useState("king");
   const [price, setPrice] = useState("");
   const [available, setAvailable] = useState(true);
-  const [description, setDescription] = useState("");
+  const [available_dates, setAvailable_dates] = useState([]);
+  const [image_url, setImage_url] = useState("imageUrl");
+  const [image_url_type, setImage_url_type] = useState("absolute");
+  const [description, setDescription] = useState("description");
   const [errorMessage, setErrorMessage] = useState("");
-  const [token] = useContext(UserContext); 
-  
+  const [isSuccess, setIsSuccess] = useState(false); 
+  const [token] = useContext(UserContext);
+
   const submitCreateHotel = async () => {
+    setErrorMessage("");
     const requestOptions = {
       method: "POST",
       headers: {
@@ -26,6 +32,9 @@ const CreateHotel = () => {
         bed_size: bed_size,
         price: price,
         available: available,
+        available_dates : available_dates,
+        image_url: image_url,
+        image_url_type: image_url_type,
         description: description,
       }),
     };
@@ -36,7 +45,9 @@ const CreateHotel = () => {
       if (!response.ok) {
         throw new Error(data.detail || "Failed to create hotel");
       }
+      setIsSuccess(true);
     } catch (error) {
+      console.error(error);
       setErrorMessage(error.message);
     }
   };
@@ -46,9 +57,14 @@ const CreateHotel = () => {
     await submitCreateHotel();
   };
 
+  const handleClose = () => {
+    setIsSuccess(false); 
+    setActiveContent('home');
+  };
+
   return (
     <div className="w-4/5 h-4/5 flex center mt-8">
-      <div className="bg-white shadow-md rounded-lg px-8 py-6"> {/* Adjusted width */}
+      <div className="bg-white shadow-md rounded-lg px-8 py-6"> 
         <h2 className="text-2xl font-semibold mb-4 mt-20">Create Hotel</h2>
         <form onSubmit={handleSubmit}>
           <div className="space-y-4">
@@ -59,10 +75,13 @@ const CreateHotel = () => {
               { label: "Bed Size", value: bed_size, onChange: setBed_size },
               { label: "Price", value: price, onChange: setPrice },
               { label: "Availability", value: available, onChange: setAvailable },
+              { label: "Available Dates", value: available_dates, onChange: setAvailable_dates },
+              { label: "Add photo url", value: image_url, onChange: setImage_url },
+              { label: "Type photo url", value: image_url_type, onChange: setImage_url_type },
               { label: "Description", value: description, onChange: setDescription },
             ].map((field, index) => (
-              <div key={index} className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4"> {/* Flex layout */}
-                <label className="w-full md:w-1/3 text-gray-700 text-sm font-medium">{field.label}</label> {/* Label with flexible width */}
+              <div key={index} className="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4"> 
+                <label className="w-full md:w-1/3 text-gray-700 text-sm font-medium">{field.label}</label>
                 <input
                   type="text"
                   value={field.value}
@@ -81,8 +100,26 @@ const CreateHotel = () => {
         </form>
         {errorMessage && <div className="text-red-500 text-center mt-4">{errorMessage}</div>}
       </div>
+
+      {isSuccess && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white rounded p-6">
+            <h2 className="text-2xl font-bold mb-4">Hotel Created Successfully!</h2>
+            <button
+              onClick={handleClose}
+              className="bg-indigo-600 text-white font-bold px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-300"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
+};
+
+CreateHotel.propTypes = {
+  setActiveContent: PropTypes.func.isRequired,
 };
 
 export default CreateHotel;

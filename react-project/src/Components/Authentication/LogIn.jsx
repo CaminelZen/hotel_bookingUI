@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import PropTypes from 'prop-types';
 import { UserContext } from './UserContext';
-import { GoogleLogin } from '@react-oauth/google';
+// import { GoogleLogin } from '@react-oauth/google';
 
 const LogIn = ({ setShowLogInModal, setShowSignUpModal, setIsLoggedIn }) => {
   const [username, setUsername] = useState('');
